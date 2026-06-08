@@ -44,7 +44,7 @@ const STEPS = [
 
 export default function HowToApply() {
   return (
-    <div className="min-h-screen bg-white font-sans text-black selection:bg-gold-foil selection:text-black">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white">
       <div className="max-w-5xl mx-auto px-6 md:px-8 py-24">
         <Breadcrumbs />
         
@@ -52,14 +52,14 @@ export default function HowToApply() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-24"
+          className="mb-24 text-left"
         >
-          <span className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil block mb-4">Funding Process</span>
-          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter uppercase leading-none mb-8">
+          <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C79F6E] block mb-4">Funding Process</span>
+          <h1 className="text-4xl md:text-6xl font-sans font-light tracking-tight uppercase leading-none mb-8 text-[#1E1B18]">
             How to Apply <br />
-            <span className="text-white bg-[#162518] px-4 py-1.5 rounded-2xl inline-block shadow-md">for Funding</span>
+            <span className="text-[#FAF6F0] bg-[#1E1B18] px-5 py-2 inline-block rounded-2xl transform -rotate-1 shadow-md font-sans text-3xl md:text-4xl mt-3">for Funding</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-light">
+          <p className="text-base md:text-lg text-neutral-500 max-w-2xl leading-relaxed font-light">
             The NEF follows a rigorous and transparent process to ensure that funding is allocated to viable, 
             sustainable, and high-impact black-owned businesses.
           </p>
@@ -67,7 +67,7 @@ export default function HowToApply() {
 
         <div className="relative space-y-12">
           {/* Vertical Line */}
-          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-neutral-200"></div>
+          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-[#EFE6DA]/85"></div>
 
           {STEPS.map((step, index) => (
             <motion.div
@@ -79,26 +79,26 @@ export default function HowToApply() {
               className="relative pl-16 md:pl-24 group"
             >
               {/* Connector dot on the line */}
-              <div className="absolute left-[21px] md:left-[29px] top-6 w-2.5 h-2.5 bg-gold-foil rounded-full z-20 border-2 border-white shadow-md"></div>
+              <div className="absolute left-[21px] md:left-[29px] top-6 w-2.5 h-2.5 bg-[#E89D7A] rounded-full z-20 border-2 border-[#FCFAF7] shadow-sm"></div>
 
-              <div className="bg-[#FAF9F6] p-8 md:p-12 border border-neutral-200/50 rounded-[2.5rem] group-hover:bg-[#162518] transition-all duration-500 shadow-sm hover:shadow-[0_40px_80px_rgba(22,37,24,0.08)]">
+              <div className="bg-white p-8 md:p-12 border border-[#EFE6DA]/70 rounded-[2.2rem] group-hover:bg-[#1E1B18] transition-all duration-500 shadow-sm hover:shadow-[0_32px_80px_rgba(42,38,34,0.06)]">
                 <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
                   {/* Step Day Pill Inspired by Design Reference "Day 1-3" etc */}
                   <div className="inline-flex items-center gap-3">
-                    <span className="px-5 py-2.5 rounded-full bg-black text-white text-xs font-mono tracking-widest font-black uppercase group-hover:bg-gold-foil group-hover:text-black transition-all duration-500 shadow-sm">
+                    <span className="px-5 py-2.5 rounded-full bg-[#FCFAF7] text-[#1E1B18] text-[9px] font-mono tracking-widest font-bold uppercase group-hover:bg-[#E89D7A] group-hover:text-white transition-all duration-500 shadow-sm border border-[#EFE6DA]/60 group-hover:border-[#E89D7A]">
                       Phase {step.id}
                     </span>
-                    <span className="h-px w-8 bg-neutral-200 group-hover:bg-white/20 transition-all"></span>
+                    <span className="h-px w-8 bg-[#EFE6DA] group-hover:bg-white/10 transition-all"></span>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-white group-hover:bg-white/10 flex items-center justify-center transition-all duration-500 shadow-sm">
-                    <step.icon size={22} className="text-black group-hover:text-gold-foil transition-colors duration-500" />
+                  <div className="w-11 h-11 rounded-full bg-[#FAF8F5] group-hover:bg-white/10 flex items-center justify-center transition-all duration-500 shadow-xs">
+                    <step.icon size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors duration-500" />
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 text-[#162518] group-hover:text-white transition-colors duration-500">
+                <h3 className="text-xl md:text-2xl font-sans font-light uppercase tracking-tight mb-4 text-[#1E1B18] group-hover:text-white transition-colors duration-500">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 group-hover:text-gray-300 transition-colors duration-500 leading-relaxed font-light text-base md:text-lg">
+                <p className="text-neutral-500 group-hover:text-white/70 transition-colors duration-500 leading-relaxed font-light text-sm md:text-base">
                   {step.description}
                 </p>
               </div>
@@ -106,15 +106,15 @@ export default function HowToApply() {
           ))}
         </div>
 
-        <div className="mt-28 p-12 bg-black text-white rounded-[2.5rem] relative overflow-hidden border border-white/5 shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gold-foil/5 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="max-w-2xl relative z-10">
-            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-6">Ready to start your journey?</h2>
-            <p className="text-gray-400 mb-10 leading-relaxed font-light text-base md:text-lg">
+        <div className="mt-28 p-12 bg-[#1E1B18] text-white rounded-[2.2rem] relative overflow-hidden border border-white/5 shadow-xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E89D7A]/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="max-w-2xl relative z-10 text-left">
+            <h2 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight mb-6">Ready to start your journey?</h2>
+            <p className="text-white/50 mb-10 leading-relaxed font-light text-sm md:text-base">
               Ensure you have all your documentation ready, including your BEE certificate, business plan, 
               and financial statements for the last three years (if applicable).
             </p>
-            <button className="px-10 py-4 bg-gold-foil text-black font-black uppercase text-xs tracking-widest hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-105 active:scale-95">
+            <button className="px-10 py-4 bg-[#E89D7A] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
               Download Application Form
             </button>
           </div>

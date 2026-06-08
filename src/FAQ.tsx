@@ -56,17 +56,23 @@ function AccordionItem({ question, answer, icon: Icon, isOpen, onClick }: Accord
           <ChevronDown size={24} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
       </button>
-      {isOpen && (
-        <div
-          className="overflow-hidden"
-        >
-          <div className="pb-8 pl-18 pr-12">
-            <p className="text-gray-500 leading-relaxed max-w-2xl">
-              {answer}
-            </p>
-          </div>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="pb-8 pl-18 pr-12">
+              <p className="text-gray-500 leading-relaxed max-w-2xl font-light">
+                {answer}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
