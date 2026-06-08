@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
@@ -90,23 +90,19 @@ function ScrollToTop() {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSidebarHidden, setIsSidebarHidden] = useState(() => {
-    return localStorage.getItem("nef-sidebar-hidden") === "true";
-  });
+  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const toggleSidebar = () => {
-    setIsSidebarHidden(prev => {
-      const newVal = !prev;
-      localStorage.setItem("nef-sidebar-hidden", String(newVal));
-      return newVal;
-    });
-  };
   const [activeSection, setActiveSection] = useState("01");
   const location = useLocation();
   const navigate = useNavigate();
 
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActiveMegaMenu(null);
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const isSubPage = location.pathname !== "/";
 
@@ -184,226 +180,534 @@ export default function App() {
     });
   };
 
+  const [menuHoverTimeout, setMenuHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (menuId: string) => {
+    if (menuHoverTimeout) clearTimeout(menuHoverTimeout);
+    setActiveMegaMenu(menuId);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 150);
+    setMenuHoverTimeout(timeout);
+  };
+
+  const handleNavItemClick = (item: { href: string; isExternal: boolean }) => {
+    setIsMenuOpen(false);
+    setActiveMegaMenu(null);
+    
+    if (item.isExternal) {
+      navigate(item.href);
+    } else {
+      if (isSubPage) {
+        navigate("/");
+        setTimeout(() => {
+          document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+        }, 250);
+      } else {
+        document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white font-sans text-black selection:bg-gold-foil selection:text-black flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white flex flex-col relative">
       <ScrollToTop />
-      {/* Sticky Sidebar Navigation */}
-      <div className={`hidden md:flex w-1/3 h-screen bg-forest-earth flex-col justify-between p-16 text-white fixed top-0 left-0 z-[100] border-r border-white/5 transition-transform duration-500 ease-in-out ${isSidebarHidden ? "-translate-x-full" : "translate-x-0"}`}>
-        <div className="space-y-24">
-          <div className="flex items-center justify-between">
-            <img src="https://empowerment-pulse-tracker.lovable.app/assets/nef-logo-B_u3VTf0.png" alt="NEF Logo" className="h-24 w-auto object-contain" />
-            <button
-              onClick={toggleSidebar}
-              title="Hide Navigation Menu"
-              className="p-1.5 rounded-full border border-white/10 text-white/60 hover:text-white hover:border-gold-foil hover:bg-gold-foil hover:text-black transition-all duration-300 flex items-center justify-center cursor-pointer"
+      
+      {/* Sticky Horizontal Navigation Bar */}
+      <header 
+        className="fixed top-0 left-0 w-full z-[100] bg-[#FCFAF7]/95 backdrop-blur-md border-b border-[#EFE6DA]/40 h-20 transition-all duration-300"
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="max-w-7xl mx-auto h-full px-6 md:px-8 flex items-center justify-between relative">
+          
+          {/* Logo Area */}
+          <div 
+            className="flex items-center gap-3 cursor-pointer" 
+            onClick={() => handleNavItemClick({ href: "#home", isExternal: false })}
+          >
+            <img 
+              src="https://empowerment-pulse-tracker.lovable.app/assets/nef-logo-B_u3VTf0.png" 
+              alt="NEF Logo" 
+              className="h-11 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-102" 
+            />
+          </div>
+
+          {/* Desktop Navigation Links (Middle) */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 h-full">
+            
+            {/* About Navigation Trigger */}
+            <div 
+              className="relative h-full"
+              onMouseEnter={() => handleMouseEnter("about")}
             >
-              <ChevronLeft size={16} />
+              <button
+                onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
+                className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
+                  activeMegaMenu === "about" || location.pathname.startsWith("/about/") || location.pathname === "/performance-report-2025"
+                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+                }`}
+              >
+                About the NEF
+                <ChevronDown size={11} className={`transition-transform duration-300 ${activeMegaMenu === "about" ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+
+            {/* Funding Solutions Navigation Trigger */}
+            <div 
+              className="relative h-full"
+              onMouseEnter={() => handleMouseEnter("funding")}
+            >
+              <button
+                onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
+                className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
+                  activeMegaMenu === "funding" || location.pathname === "/our-funds" || location.pathname === "/funding-criteria" || location.pathname === "/check-eligibility" || location.pathname === "/how-to-apply" || location.pathname === "/non-financial-support"
+                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+                }`}
+              >
+                Funding Solutions
+                <ChevronDown size={11} className={`transition-transform duration-300 ${activeMegaMenu === "funding" ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+
+            {/* Investee Stories */}
+            <button
+              onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
+              className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center ${
+                location.pathname.startsWith("/investee-stories")
+                  ? "text-[#E89D7A] border-[#E89D7A]" 
+                  : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+              }`}
+            >
+              Stories
+            </button>
+
+            {/* FAQ */}
+            <button
+              onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+              className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center ${
+                location.pathname === "/faq"
+                  ? "text-[#E89D7A] border-[#E89D7A]" 
+                  : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+              }`}
+            >
+              FAQ
+            </button>
+
+            {/* Contact */}
+            <button
+              onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
+              className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center ${
+                activeSection === "07" && !isSubPage
+                  ? "text-[#E89D7A] border-[#E89D7A]" 
+                  : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+              }`}
+            >
+              Contact
+            </button>
+          </nav>
+
+          {/* Right Area (Have Questions & Eligibility Action) */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            
+            {/* Have Questions Advisor Bubble Inspired by Mockup */}
+            <div 
+              onClick={() => {
+                const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
+                if (chatbotBtn) chatbotBtn.click();
+              }}
+              className="hidden xl:flex items-center gap-3 cursor-pointer group px-3 py-1.5 rounded-full hover:bg-[#EFE6DA]/20 transition-all duration-300"
+            >
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" 
+                  alt="Advisor Professional" 
+                  className="w-10 h-10 rounded-full object-cover border border-[#EFE6DA]/85 shadow-sm"
+                />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-[#FCFAF7] rounded-full animate-pulse"></span>
+              </div>
+              <div className="text-left leading-tight">
+                <div className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">Have Questions?</div>
+                <div className="text-[10px] text-[#C79F6E] font-extrabold uppercase tracking-wide group-hover:text-[#E89D7A] transition-colors">Ask an Advisor.</div>
+              </div>
+            </div>
+
+            {/* Primary Action Button */}
+            <button
+              onClick={() => navigate("/check-eligibility")}
+              className="px-6 py-2.5 bg-[#1E1B18] text-[#FCFAF7] hover:bg-[#E89D7A] hover:text-white rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
+            >
+              Check Eligibility
             </button>
           </div>
-          
-          <div className="space-y-12">
-            <div className="flex flex-col gap-8">
-              {NAV_LINKS.map((link) => (
-                <div 
-                  key={link.id} 
-                  className="space-y-4"
-                  onMouseEnter={() => setHoveredLink(link.id)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <button 
-                    onClick={() => {
-                      if (link.isExternal) {
-                        navigate(link.href);
-                      } else {
-                        if (isSubPage) {
-                          navigate("/");
-                          setTimeout(() => {
-                            document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                          }, 100);
-                        } else {
-                          document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }
-                    }}
-                    className="group flex items-center gap-6 text-left w-full"
-                  >
-                    <span className={`text-xs font-bold transition-colors ${activeSection === link.id ? "text-gold-foil" : "opacity-40 group-hover:opacity-100"}`}>
-                      {link.id}
-                    </span>
-                    <div className="flex flex-col">
-                      <span className={`text-sm font-bold uppercase tracking-widest transition-all ${activeSection === link.id ? "text-white translate-x-2" : "opacity-20 group-hover:opacity-60"}`}>
-                        {link.title}
-                      </span>
-                      {link.subLinks && (
-                        <div className="h-0.5 bg-gold-foil mt-1 transition-all duration-500 origin-left" style={{ width: hoveredLink === link.id ? '100%' : '0%' }}></div>
-                      )}
+
+          {/* Mobile menu trigger button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-[#1E1B18] hover:text-[#E89D7A] transition-colors relative z-[120]"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+        </div>
+
+        {/* --- DESKTOP MEGA MENU DRAWER RENDERER --- */}
+        <AnimatePresence>
+          {activeMegaMenu && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-20 left-0 w-full bg-white border-b border-[#EFE6DA]/80 shadow-[0_24px_50px_rgba(42,38,34,0.06)] py-12 px-8 z-[-1] overflow-hidden"
+              onMouseEnter={() => {
+                if (menuHoverTimeout) clearTimeout(menuHoverTimeout);
+              }}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="max-w-7xl mx-auto grid grid-cols-12 gap-12">
+                
+                {/* 1. ABOUT MEGA MENU */}
+                {activeMegaMenu === "about" && (
+                  <>
+                    {/* Column 1: Strategic Compass */}
+                    <div className="col-span-4 flex flex-col gap-6">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Strategic Compass</h4>
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Mandate, Vision & Mission</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Understand our legal directives, socioeconomic impact values, and transformation targets.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Leadership & Board</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Review our executive leadership panels, investment committees, and charter directives.
+                            </p>
+                          </div>
+                        </button>
+                      </div>
                     </div>
-                  </button>
 
-                  <AnimatePresence initial={false}>
-                    {link.subLinks && (hoveredLink === link.id || (activeSection === link.id && !hoveredLink)) && (
-                      <motion.div 
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="ml-12 flex flex-col gap-4 overflow-hidden"
+                    {/* Column 2: Scorecard & Transparency */}
+                    <div className="col-span-4 flex flex-col gap-6 border-l border-[#EFE6DA]/40 pl-8">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Transparency & Audit</h4>
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Performance Report 2025</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Examine our dynamic scorecard highlighting disbursements, portfolio valuations, and jobs created.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">General FAQ & Criteria</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Review compliance, BEE thresholds, application guidelines, and financial limits.
+                            </p>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Column 3: Featured Bento Card (Mockup Inspired) */}
+                    <div className="col-span-4 bg-[#FCFAF7] p-6 rounded-3xl border border-[#EFE6DA]/70 flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
+                      <div className="space-y-3 relative z-10">
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] block">Milestone Impact</span>
+                        <h4 className="text-lg font-sans font-light uppercase tracking-tight text-[#1E1B18]">Driving South Africa's Growth</h4>
+                        <p className="text-neutral-500 text-[11px] font-light leading-relaxed">
+                          The NEF has deployed over R15 Billion across agricultural, manufacturing, and franchising portfolios, expanding rural transformation and socioeconomic opportunity.
+                        </p>
+                      </div>
+                      <button 
+                        onClick={() => {
+                          setActiveMegaMenu(null);
+                          navigate("/performance-report-2025");
+                        }}
+                        className="relative z-10 mt-6 px-5 py-2 bg-[#1E1B18] text-white hover:bg-[#E89D7A] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm cursor-pointer"
                       >
-                        {link.subLinks.map((sub) => (
-                          <button
-                            key={sub.id}
-                            onClick={() => {
-                              if (sub.isExternal) {
-                                navigate(sub.href);
-                              } else {
-                                document.querySelector(sub.href)?.scrollIntoView({ behavior: 'smooth' });
-                              }
-                            }}
-                            className="group flex items-center gap-4 text-left font-mono"
-                          >
-                            <div className={`w-1 h-1 bg-gold-foil transition-transform ${location.pathname === sub.href ? "scale-100" : "scale-0"}`}></div>
-                            <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${location.pathname === sub.href ? "text-gold-foil" : "opacity-30 group-hover:opacity-100"}`}>
-                              {sub.title}
-                            </span>
-                          </button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <div className="space-y-4">
-          <div className="flex gap-6">
-            <a 
-              href="https://twitter.com/nefcorp" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 hover:text-gold-foil transition-all duration-300"
-            >
-              Twitter
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/national-empowerment-fund" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 hover:text-gold-foil transition-all duration-300"
-            >
-              LinkedIn
-            </a>
-          </div>
-          <div className="space-y-2">
-            <div className="h-px w-12 bg-gold-foil"></div>
-            <div className="h-px w-8 bg-white opacity-20"></div>
-          </div>
-        </div>
-      </div>
+                        View Interactive Report
+                      </button>
+                    </div>
+                  </>
+                )}
 
-      {/* Mobile Navigation */}
-      <nav className={`md:hidden fixed top-0 left-0 w-full z-[110] flex justify-between items-center px-8 py-6 transition-colors duration-500 ease-in-out ${isMenuOpen ? "bg-black" : "bg-transparent"}`}>
-        <div className={`transition-all duration-500 ${isMenuOpen ? "text-white" : "text-white mix-blend-difference"}`}>
-          <img src="https://empowerment-pulse-tracker.lovable.app/assets/nef-logo-B_u3VTf0.png" alt="NEF Logo" className="h-12 w-auto object-contain" />
-        </div>
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 hover:opacity-70 transition-opacity relative w-10 h-10 flex items-center justify-center z-[120]"
-        >
-          <div>
-            {isMenuOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white mix-blend-difference" />}
-          </div>
-        </button>
-      </nav>
+                {/* 2. FUNDING solutions MEGA MENU */}
+                {activeMegaMenu === "funding" && (
+                  <>
+                    {/* Column 1: Financial Options */}
+                    <div className="col-span-4 flex flex-col gap-6">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Financial Options</h4>
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Our Main Funds</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Structural capital programs addressing franchising, rural, and industrial lifecycles.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Funding Criteria</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Evaluate your company metrics against our transformation, equity, and BEE thresholds.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <Zap size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Check Your Eligibility</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Leverage our rapid digital advisor checklist to verify matching finance structures.
+                            </p>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
 
-      {/* Mobile Menu Overlay */}
+                    {/* Column 2: Incubation & Training */}
+                    <div className="col-span-4 flex flex-col gap-6 border-l border-[#EFE6DA]/40 pl-8">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Support & Execution</h4>
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Non-Financial Support</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Sustain growth with mentorship, training workshops, and incubation guidance.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Application Roadmap</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Step-by-step masterclass guidelines on assembling file submissions successfully.
+                            </p>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Column 3: Featured Portal Bento (Charcoal Theme) */}
+                    <div className="col-span-4 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/15 transition-all duration-500"></div>
+                      <div className="space-y-3 relative z-10">
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Instant Digital Screening</span>
+                        <h4 className="text-lg font-sans font-light uppercase tracking-tight">Ready to Partner with Us?</h4>
+                        <p className="text-white/50 text-[11px] font-light leading-relaxed">
+                          Take our simplified business screening layout matrix. It matches your structure to exact funds in less than 3 minutes.
+                        </p>
+                      </div>
+                      <button 
+                        onClick={() => {
+                          setActiveMegaMenu(null);
+                          navigate("/check-eligibility");
+                        }}
+                        className="relative z-10 mt-6 px-5 py-2 bg-[#E89D7A] text-white hover:bg-white hover:text-[#1E1B18] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer"
+                      >
+                        Apply for Screening
+                      </button>
+                    </div>
+                  </>
+                )}
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* Mobile Drawer Navigation (Slide-down with beautiful transparency) */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-10%" }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-10%" }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[105] bg-black text-white p-12 flex flex-col justify-center overflow-y-auto will-change-transform"
+            className="fixed inset-0 z-[105] bg-white text-[#1E1B18] pt-28 px-6 pb-10 flex flex-col justify-between overflow-y-auto"
           >
-            <div className="flex flex-col gap-8 mt-20">
-              {NAV_LINKS.map((link, i) => (
-                <div 
-                  key={link.id} 
-                  className="space-y-4"
-                >
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      if (link.isExternal) {
-                        navigate(link.href);
-                      } else {
-                        if (isSubPage) {
-                          navigate("/");
-                          setTimeout(() => {
-                            document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                          }, 100);
-                        } else {
-                          document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }
-                    }}
-                    className="text-4xl font-bold uppercase tracking-tighter text-left group"
+            <div className="flex flex-col gap-6 mt-4">
+              
+              {/* About Group */}
+              <div className="space-y-2.5">
+                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">About Us</div>
+                <div className="pl-4 flex flex-col gap-2 border-l border-[#EFE6DA]/60">
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
                   >
-                    <span className={`transition-colors duration-300 ${activeSection === link.id ? "text-gold-foil" : "opacity-40 group-hover:opacity-100"}`}>
-                      {link.title}
-                    </span>
+                    Mandate, Mission & Vision
                   </button>
-                  {link.subLinks && (
-                    <div 
-                      className="flex flex-col gap-4 pl-4 border-l border-white/10 overflow-hidden"
-                    >
-                      {link.subLinks.map((sub) => (
-                        <button
-                          key={sub.id}
-                          onClick={() => {
-                            setIsMenuOpen(false);
-                            if (sub.isExternal) {
-                              navigate(sub.href);
-                            } else {
-                              document.querySelector(sub.href)?.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                          className={`text-xl font-bold uppercase tracking-widest text-left transition-colors duration-300 ${location.pathname === sub.href ? "text-gold-foil" : "opacity-30 hover:opacity-100"}`}
-                        >
-                          {sub.title}
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Performance Report 2025
+                  </button>
                 </div>
-              ))}
+              </div>
+
+              {/* Funding Solutions Group */}
+              <div className="space-y-2.5">
+                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Funding Solutions</div>
+                <div className="pl-4 flex flex-col gap-2 border-l border-[#EFE6DA]/60">
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Our Funds
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Funding Criteria
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Check Eligibility
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Non-Financial Support
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    How to Apply
+                  </button>
+                </div>
+              </div>
+
+              {/* Success Stories */}
+              <div className="space-y-1.5">
+                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Case Studies</div>
+                <button
+                  onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
+                  className="text-xl font-sans font-light text-left uppercase tracking-tight block w-full hover:text-[#E89D7A] transition-colors"
+                >
+                  Investee Stories
+                </button>
+              </div>
+
+              {/* FAQ and Contact */}
+              <div className="space-y-2">
+                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Support & Portal</div>
+                <div className="flex gap-6 pl-4 border-l border-[#EFE6DA]/60">
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+                    className="text-sm font-sans text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    FAQ
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
+                    className="text-sm font-sans text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                  >
+                    Contact
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom Actions inside responsive mobile menu overlay */}
+            <div className="mt-8 pt-6 border-t border-[#EFE6DA]/60 flex flex-col gap-3">
+              <button
+                onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
+                className="w-full py-3 bg-[#1E1B18] text-white font-bold text-[10px] uppercase tracking-widest rounded-full text-center shadow-md active:scale-98 cursor-pointer"
+              >
+                Check Eligibility
+              </button>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
+                  if (chatbotBtn) chatbotBtn.click();
+                }}
+                className="w-full py-3 border border-[#1E1B18]/15 text-[#1E1B18] font-bold text-[10px] uppercase tracking-widest rounded-full text-center hover:bg-neutral-50 active:scale-98 cursor-pointer"
+              >
+                Ask an AI Assistant
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Restore Sidebar Floating Button (Desktop only, when hidden) */}
-      <AnimatePresence>
-        {isSidebarHidden && (
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            onClick={toggleSidebar}
-            title="Show Navigation Menu"
-            className="hidden md:flex fixed top-8 left-8 z-[110] items-center gap-2 bg-neutral-900/95 text-white border border-white/15 px-4 py-2.5 rounded-full hover:bg-gold-foil hover:text-black hover:border-gold-foil transition-all duration-300 text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-black/40 group cursor-pointer"
-          >
-            <Menu size={14} className="group-hover:rotate-90 transition-transform duration-300" />
-            <span>Show Menu</span>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Main Content Area */}
-      <main className={`w-full transition-all duration-500 ease-in-out ${isSidebarHidden ? "md:w-full md:ml-0" : "md:w-2/3 md:ml-[33.333%]"}`}>
+      {/* Main Content Area: Takes Full Width on Desktop & Mobile */}
+      <main className="w-full pt-20 transition-all duration-500 min-h-screen">
         <Routes>
           <Route path="/about/mandate-vision-mission" element={<MandateVisionMission />} />
           <Route path="/our-funds" element={<OurFunds />} />
