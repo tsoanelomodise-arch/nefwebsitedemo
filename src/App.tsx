@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown } from "lucide-react";
+import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
@@ -334,6 +334,37 @@ export default function App() {
                 <div className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">Have Questions?</div>
                 <div className="text-[10px] text-[#C79F6E] font-extrabold uppercase tracking-wide group-hover:text-[#E89D7A] transition-colors">Ask an Advisor.</div>
               </div>
+            </div>
+
+            {/* Social Media Links (Visible at all times inside header) */}
+            <div className="flex items-center gap-2 border-r border-[#EFE6DA]/40 pr-4 mr-1">
+              <a 
+                href="https://twitter.com/nefcorp" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Twitter"
+                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
+              >
+                <Twitter size={14} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/national-empowerment-fund" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="LinkedIn"
+                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
+              >
+                <Linkedin size={14} />
+              </a>
+              <a 
+                href="https://www.facebook.com/NationalEmpowermentFund" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Facebook"
+                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
+              >
+                <Facebook size={14} />
+              </a>
             </div>
 
             {/* Primary Action Button */}
@@ -723,73 +754,167 @@ export default function App() {
           <Route path="/" element={
             <>
               {/* Hero Section */}
-              <section id="home" className="relative h-screen overflow-hidden bg-[#FAF6F0]">
-                <div className="absolute inset-0">
-                  {/* Image Background */}
-                  <div className="absolute inset-0 bg-[#EFE6DA]/85 z-0"></div>
-                  <div className="absolute inset-0 z-10 transition-all duration-1000 ease-in-out">
-                    <img 
-                      src={HERO_SLIDES[currentSlide].image} 
-                      alt={HERO_SLIDES[currentSlide].title} 
-                      className="w-full h-full object-cover grayscale opacity-30 contrast-110 scale-102 transition-all duration-1000"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6F0] via-transparent to-[#FAF6F0]/65 z-10"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#FFF1E6]/40 z-10"></div>
-                  </div>
+              <section id="home" className="relative h-screen overflow-hidden bg-gradient-to-b from-[#8FA3B0] via-[#C9AFA3] to-[#E6A07E]">
+                
+                {/* 1. Atmospheric Background Blend */}
+                <div className="absolute inset-0 z-10 transition-all duration-1000 ease-in-out">
+                  <img 
+                    src={HERO_SLIDES[currentSlide].image} 
+                    alt={HERO_SLIDES[currentSlide].title} 
+                    className="w-full h-full object-cover grayscale opacity-20 contrast-125 scale-102 transition-all duration-1000 mix-blend-overlay"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7]/20 via-transparent to-transparent z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#E6A07E]/10 z-10"></div>
+                </div>
 
-                  {/* Content Box */}
-                  <div className="absolute inset-0 z-20 flex flex-col justify-center p-6 md:p-24 max-w-7xl mx-auto">
-                    <div className="glass-card p-10 md:p-16 rounded-[2.5rem] max-w-2xl shadow-[0_40px_100px_rgba(42,38,34,0.08)] animate-in fade-in zoom-in-95 duration-700 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-48 h-48 bg-[#E89D7A]/10 rounded-full blur-3xl pointer-events-none"></div>
+                {/* 2. Distinctive Rounded Formatting Frame (Border Overlay Inspired by Mockup) */}
+                <div 
+                  className="absolute inset-4 md:inset-8 border-[3px] border-white/90 rounded-[2.5rem] pointer-events-none z-30"
+                  style={{ 
+                    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 32% 100%, 32% 90%, 8% 90%, 8% 100%, 0% 100%)" 
+                  }}
+                />
+
+                {/* 3. "SCROLL DOWN" Custom Cutout Marker Inspired by Mockup */}
+                <div className="absolute bottom-8 left-[10%] md:left-[11%] lg:left-[12%] text-white text-[9.5px] font-sans font-extrabold uppercase tracking-[0.3em] z-30 select-none flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-white/90 rounded-full animate-ping"></span>
+                  SCROLL DOWN
+                </div>
+
+                {/* 4. Interactive Hero Layout Content Grid */}
+                <div className="absolute inset-4 md:inset-8 z-20 pt-28 pb-14 px-6 md:px-14 flex flex-col justify-end pointer-events-none">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-end w-full mt-auto pointer-events-auto">
+                    
+                    {/* A. LEFT AREA: Interactive Side-by-Side Cards (Mapping to Slides & Adler UX) */}
+                    <div className="col-span-12 md:col-span-6 lg:col-span-5 flex flex-col gap-4">
                       
-                      {/* Category Tag Inspired by Reference Screen Pill Design */}
-                      <span className="inline-block px-4 py-1.5 rounded-full bg-[#E89D7A] text-[#1E1B18] text-[9px] font-bold uppercase tracking-widest mb-6 border border-white/40 shadow-sm shadow-[#E89D7A]/25">
-                        NEF Catalyst
-                      </span>
+                      {/* Column Deck Wrapper */}
+                      <div className="flex flex-col sm:flex-row gap-3 w-full">
+                        {HERO_SLIDES.map((slide, index) => {
+                          const isActive = currentSlide === index;
+                          return (
+                            <button 
+                              key={slide.id}
+                              onClick={() => setCurrentSlide(index)}
+                              className={`flex-1 text-left flex flex-col justify-between min-h-[160px] md:min-h-[195px] rounded-3xl cursor-pointer select-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] border ${
+                                isActive 
+                                  ? "bg-white/95 backdrop-blur-md border-white text-[#1E1B18] shadow-[0_20px_40px_rgba(42,38,34,0.12)] p-4 md:p-5 hover:scale-101" 
+                                  : "bg-[#1E1B18]/15 hover:bg-white/5 border-white/10 hover:border-white/30 text-white p-4 md:p-5"
+                              }`}
+                            >
+                              {/* Top metadata row inside card */}
+                              <div className="flex items-center justify-between w-full">
+                                <div className="p-1 px-2.5 rounded-full bg-white/10 text-[9px] font-mono tracking-wider opacity-90 border border-white/10 uppercase">
+                                  {index === 0 && "BEE"}
+                                  {index === 1 && "CAPITAL"}
+                                  {index === 2 && "MAIN"}
+                                </div>
+                                <span className={`text-[9px] font-mono font-bold ${isActive ? "text-neutral-400" : "text-white/40"}`}>
+                                  {slide.id}
+                                </span>
+                              </div>
 
-                      <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light text-[#1E1B18] leading-[1.08] mb-6 uppercase tracking-tight">
-                        {HERO_SLIDES[currentSlide].title.split(' ').map((word, i) => (
-                          <React.Fragment key={i}>
-                            {i === 1 ? <span className="font-serif italic text-peach-accent text-glow-peach">{word}</span> : word}{' '}
-                            {i === 0 && <br />}
-                          </React.Fragment>
-                        ))}
-                      </h1>
-                      
-                      <p className="text-[#3A3530] text-sm md:text-base max-w-md mb-8 leading-relaxed font-light">
-                        {HERO_SLIDES[currentSlide].description}
-                      </p>
+                              {/* Title / Description area inside card */}
+                              <div className="mt-4">
+                                <h4 className={`text-xs md:text-[13px] font-sans font-black uppercase tracking-wider ${isActive ? "text-[#1E1B18]" : "text-white"}`}>
+                                  {index === 0 && "Transformation"}
+                                  {index === 1 && "Sustained Growth"}
+                                  {index === 2 && "Our Solutions"}
+                                </h4>
+                                
+                                {/* Vertical small details inspired by mockup (TIME / PRICE lists) */}
+                                <div className="mt-3.5 flex flex-col gap-1 border-t border-dashed pt-3 border-current/10">
+                                  <div className="flex justify-between items-center text-[8.5px] uppercase tracking-widest font-mono">
+                                    <span className={isActive ? "text-neutral-400" : "text-white/40"}>Direct:</span>
+                                    <span className="font-bold">
+                                      {index === 0 && "Empower"}
+                                      {index === 1 && "Disburse"}
+                                      {index === 2 && "Strategic"}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between items-center text-[8.5px] uppercase tracking-widest font-mono">
+                                    <span className={isActive ? "text-neutral-400" : "text-white/40"}>Limit:</span>
+                                    <span className="font-bold">
+                                      {index === 0 && "R10M+"}
+                                      {index === 1 && "R50M+"}
+                                      {index === 2 && "Flexible"}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
 
-                      {/* Pill Sliders Inspired by Reference */}
-                      <div className="flex gap-3">
-                        <button 
-                          onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                          className="w-11 h-11 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-[#1E1B18] hover:bg-[#E89D7A] hover:text-white hover:border-[#E89D7A] hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm"
-                        >
-                          <ChevronLeft size={18} />
-                        </button>
-                        <button 
-                          onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                          className="w-11 h-11 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-[#1E1B18] hover:bg-[#E89D7A] hover:text-white hover:border-[#E89D7A] hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm"
-                        >
-                          <ChevronRight size={18} />
-                        </button>
+                              {/* Card Footer action indicators */}
+                              <div className="mt-4 pt-2 flex items-center justify-between w-full border-t border-current/5">
+                                {isActive ? (
+                                  <span className="text-[8.5px] font-sans font-extrabold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1">
+                                    Active <span className="text-[10px]">→</span>
+                                  </span>
+                                ) : (
+                                  <span className="text-[8.5px] font-sans font-extrabold uppercase tracking-widest text-white/50 hover:text-white flex items-center gap-1 transition-colors">
+                                    Select <span className="text-[10px] opacity-40">→</span>
+                                  </span>
+                                )}
+                              </div>
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
+
+                    {/* B. RIGHT AREA: High Impact Display Typography, Description, Actions */}
+                    <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-col gap-5 text-left md:pl-10">
+                      <div>
+                        {/* Slide Subtitle tracking label */}
+                        <span className="text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-[#E89D7A] block mb-2 font-mono">
+                          {HERO_SLIDES[currentSlide].subtitle}
+                        </span>
+
+                        {/* Slide Master Heading */}
+                        <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-sans font-black uppercase text-white tracking-tighter leading-[0.95] mb-5">
+                          {HERO_SLIDES[currentSlide].title}
+                        </h1>
+
+                        {/* Slide Description paragraph */}
+                        <p className="text-white/80 text-xs md:text-sm lg:text-base font-sans font-light leading-relaxed mb-6 max-w-lg">
+                          {HERO_SLIDES[currentSlide].description}
+                        </p>
+
+                        {/* High fidelity Action Buttons */}
+                        <div className="flex flex-wrap gap-3">
+                          <button
+                            onClick={() => navigate("/our-funds")}
+                            className="px-6 py-3 bg-white text-[#1E1B18] hover:bg-[#E89D7A] hover:text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
+                          >
+                            Explore Solutions
+                          </button>
+                          
+                          <button
+                            onClick={() => navigate("/check-eligibility")}
+                            className="px-6 py-3 border-[1.5px] border-white/30 hover:border-white hover:bg-white/10 text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 active:scale-95 cursor-pointer"
+                          >
+                            Apply Screen Online
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
-                {/* Slide Indicators - Styled elegantly */}
-                <div className="absolute bottom-12 right-8 md:right-16 z-30 flex gap-2 w-auto bg-white/40 backdrop-blur-md p-1.5 rounded-full border border-white/50">
+                {/* 5. Sleek Horizontal Slide Indicators (Left Edge Margin) */}
+                <div className="absolute bottom-11 right-8 md:right-16 z-30 flex gap-2 w-auto bg-white/15 backdrop-blur-md p-1.5 rounded-full border border-white/20">
                   {HERO_SLIDES.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
-                      className={`h-1.5 transition-all duration-500 rounded-full ${currentSlide === i ? "w-8 bg-[#E58E62]" : "w-1.5 bg-[#1E1B18]/25 hover:bg-[#1E1B18]/45"}`}
+                      className={`h-1.5 transition-all duration-500 rounded-full cursor-pointer ${
+                        currentSlide === i ? "w-8 bg-white" : "w-1.5 bg-white/30 hover:bg-white/60"
+                      }`}
                     />
                   ))}
                 </div>
+
               </section>
 
               {/* About Section */}
