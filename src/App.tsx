@@ -372,20 +372,28 @@ export default function App() {
               <section id="home" className="relative h-screen overflow-hidden">
                 <div className="absolute inset-0">
                   {/* Image Background */}
-                  <div className="absolute inset-0 bg-gold-foil z-0"></div>
-                  <div className="absolute inset-0 z-10">
+                  <div className="absolute inset-0 bg-[#162518] z-0"></div>
+                  <div className="absolute inset-0 z-10 transition-all duration-1000 ease-in-out">
                     <img 
                       src={HERO_SLIDES[currentSlide].image} 
                       alt={HERO_SLIDES[currentSlide].title} 
-                      className="w-full h-full object-cover grayscale mix-blend-multiply opacity-80"
+                      className="w-full h-full object-cover grayscale opacity-50 scale-102 transition-all duration-1000"
                       referrerPolicy="no-referrer"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#162518] via-transparent to-[#162518]/80 z-10"></div>
                   </div>
 
                   {/* Content Box */}
-                  <div className="absolute inset-0 z-20 flex flex-col justify-center p-8 md:p-24">
-                    <div className="bg-black p-8 md:p-12 max-w-2xl shadow-2xl">
-                      <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 uppercase tracking-tighter">
+                  <div className="absolute inset-0 z-20 flex flex-col justify-center p-6 md:p-24 max-w-7xl mx-auto">
+                    <div className="backdrop-blur-xl bg-black/75 border border-white/10 p-10 md:p-16 rounded-[2.5rem] max-w-2xl shadow-[0_50px_100px_rgba(0,0,0,0.7)] animate-in fade-in zoom-in-95 duration-700 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gold-foil/5 rounded-full blur-2xl pointer-events-none"></div>
+                      
+                      {/* Category Tag Inspired by Reference Screen Pill Design */}
+                      <span className="inline-block px-4 py-1.5 rounded-full bg-gold-foil text-black text-[10px] font-black uppercase tracking-widest mb-6 border border-gold-foil/20">
+                        NEF Catalyst
+                      </span>
+
+                      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-6 uppercase tracking-tighter">
                         {HERO_SLIDES[currentSlide].title.split(' ').map((word, i) => (
                           <React.Fragment key={i}>
                             {i === 1 ? <span className="text-gold-foil">{word}</span> : word}{' '}
@@ -393,81 +401,89 @@ export default function App() {
                           </React.Fragment>
                         ))}
                       </h1>
-                      <p className="text-gray-400 text-lg md:text-xl max-w-md mb-8">
+                      
+                      <p className="text-gray-300 text-base md:text-lg max-w-md mb-8 leading-relaxed font-light">
                         {HERO_SLIDES[currentSlide].description}
                       </p>
-                      <div className="flex gap-4">
+
+                      {/* Pill Sliders Inspired by Reference */}
+                      <div className="flex gap-3">
                         <button 
                           onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                          className="bg-white text-black p-3 hover:bg-gold-foil transition-colors"
+                          className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-gold-foil hover:text-black hover:border-gold-foil hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm shadow-md"
                         >
-                          <ChevronLeft size={24} />
+                          <ChevronLeft size={20} />
                         </button>
                         <button 
                           onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                          className="bg-white text-black p-3 hover:bg-gold-foil transition-colors"
+                          className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-gold-foil hover:text-black hover:border-gold-foil hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm shadow-md"
                         >
-                          <ChevronRight size={24} />
+                          <ChevronRight size={20} />
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Slide Indicators */}
-                <div className="absolute bottom-12 right-8 md:right-16 z-30 flex gap-4">
+                {/* Slide Indicators - Styled elegantly */}
+                <div className="absolute bottom-12 right-8 md:right-16 z-30 flex gap-3 backdrop-blur-md bg-black/20 p-2 rounded-full border border-white/5">
                   {HERO_SLIDES.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
-                      className={`h-1 transition-all duration-500 ${currentSlide === i ? "w-12 bg-gold-foil" : "w-4 bg-white/30"}`}
+                      className={`h-2 transition-all duration-500 rounded-full ${currentSlide === i ? "w-10 bg-gold-foil" : "w-2 bg-white/30 hover:bg-white/55"}`}
                     />
                   ))}
                 </div>
               </section>
 
               {/* About Section */}
-              <section id="about" className="py-24 px-8 md:px-24 bg-gray-100 relative overflow-hidden">
-                <div className="absolute top-0 right-1/4 w-px h-full bg-black opacity-10"></div>
-                <div className="absolute top-1/4 right-0 w-1/4 h-px bg-black opacity-10"></div>
+              <section id="about" className="py-24 px-8 md:px-24 bg-[#FAF9F6] relative overflow-hidden border-b border-neutral-200/50">
+                <div className="absolute top-0 right-1/4 w-px h-full bg-neutral-200/50"></div>
+                <div className="absolute top-1/3 right-0 w-1/4 h-px bg-neutral-200/50"></div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-7xl mx-auto relative z-10">
                   <div className="space-y-8">
                     <div className="flex items-center gap-4">
-                      <div className="h-px w-12 bg-black"></div>
-                      <Zap size={20} />
+                      <div className="h-px w-12 bg-[#162518]"></div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-gold-foil">Our Legacy</span>
+                      <Zap size={16} className="text-gold-foil" />
                     </div>
-                    <p className="text-gray-600 max-w-sm leading-relaxed">
+                    <p className="text-gray-600 max-w-md leading-relaxed text-lg font-light">
                       The NEF provides financial and non-financial support to black-owned businesses, ensuring sustainable growth and economic transformation.
                     </p>
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-none">
                       About Our <br />
-                      <span className="text-gold-foil bg-black px-2">Mission</span>
+                      <span className="text-gold-foil bg-black px-4 py-1.5 inline-block rounded-2xl transform -rotate-1 shadow-lg">Mission</span>
                     </h2>
                   </div>
 
                   <div className="relative">
-                    <div className="aspect-square bg-black overflow-hidden relative group">
+                    <div className="aspect-square bg-black rounded-[2.5rem] overflow-hidden relative group shadow-[0_30px_60px_rgba(22,37,24,0.12)] border border-neutral-200/50">
                       <img 
                         src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop" 
                         alt="Culture" 
-                        className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-1000 ease-out"
                         referrerPolicy="no-referrer"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <button 
-                          className="w-16 h-16 bg-gold-foil rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
+                          className="w-20 h-20 bg-gold-foil rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 relative group"
                         >
-                          <Play fill="black" size={24} />
+                          <span className="absolute inset-x-0 inset-y-0 rounded-full bg-gold-foil/30 group-hover:animate-ping"></span>
+                          <Play fill="black" size={24} className="relative z-10 text-black translate-x-0.5" />
                         </button>
                       </div>
                     </div>
-                    <div className="absolute -bottom-8 -left-8 bg-white p-8 shadow-xl max-w-xs hidden md:block">
-                      <div className="flex items-center gap-4 mb-4">
-                        <ArrowRight size={20} />
+                    <div className="absolute -bottom-8 -left-8 bg-white border border-neutral-200/50 p-8 rounded-3xl shadow-[0_35px_70px_rgba(0,0,0,0.06)] max-w-xs hidden md:block group hover:-translate-y-1 transition-transform duration-500">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-neutral-50 flex items-center justify-center text-gold-foil border border-neutral-100 group-hover:bg-gold-foil group-hover:text-black transition-colors duration-300">
+                          <ArrowRight size={16} />
+                        </div>
                         <button 
                           onClick={() => navigate("/about/mandate-vision-mission")}
-                          className="text-xs font-bold uppercase tracking-widest border-b-2 border-black pb-1"
+                          className="text-xs font-black uppercase tracking-widest text-[#162518]"
                         >
                           Read More
                         </button>
@@ -479,9 +495,9 @@ export default function App() {
 
               {/* Funds Grid */}
               <section id="funds" className="py-24 px-8 md:px-24 bg-white">
-                <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-                  <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">
-                    Our <span className="text-gold-foil">Funds</span>
+                <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 max-w-7xl mx-auto">
+                  <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-none">
+                    Our <span className="text-gold-foil bg-[#162518] px-3 py-1.5 rounded-2xl text-white inline-block shadow-md">Funds</span>
                   </h2>
                   
                   <div className="flex flex-wrap gap-4 items-center">
@@ -492,81 +508,85 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
                   {filteredFunds.map((fund, index) => (
                     <div
                       key={fund.id}
                       onClick={() => setSelectedFund(fund)}
-                      className={`p-12 ${fund.color} group relative overflow-hidden min-h-[400px] flex flex-col justify-between cursor-pointer transition-all duration-500 ${
+                      className={`p-10 md:p-12 bg-[#FAF9F6] border border-neutral-200/60 rounded-[2.5rem] group relative overflow-hidden min-h-[420px] flex flex-col justify-between cursor-pointer transition-all duration-500 hover:shadow-[0_40px_80px_rgba(22,37,24,0.08)] transform hover:-translate-y-1.5 ${
                         comparisonList.find(f => f.id === fund.id) 
-                          ? "ring-4 ring-black ring-inset shadow-2xl scale-[0.98]" 
-                          : "hover:scale-[1.02]"
+                          ? "ring-4 ring-gold-foil ring-inset shadow-2xl scale-[0.98]" 
+                          : ""
                       }`}
                     >
-                    <div className="relative z-10 flex justify-between items-start">
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm font-bold opacity-40 block">{fund.id}</span>
-                        {comparisonList.find(f => f.id === fund.id) && (
-                          <div className="bg-black text-gold-foil rounded-full p-1">
-                            <CheckCircle2 size={12} />
-                          </div>
-                        )}
+                      <div className="relative z-10 flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-mono font-black text-gold-foil tracking-widest">{fund.id}</span>
+                          {comparisonList.find(f => f.id === fund.id) && (
+                            <div className="bg-gold-foil text-black rounded-full p-0.5">
+                              <CheckCircle2 size={12} fill="black" />
+                            </div>
+                          )}
+                        </div>
+                        <button 
+                          onClick={(e) => toggleComparison(fund, e)}
+                          className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-300 ${
+                            comparisonList.find(f => f.id === fund.id)
+                              ? "bg-black text-white border-black"
+                              : "border-[#162518]/20 text-[#162518] hover:bg-black hover:text-white hover:border-black"
+                          }`}
+                        >
+                          {comparisonList.find(f => f.id === fund.id) ? "Selected" : "+ Compare"}
+                        </button>
                       </div>
-                      <button 
-                        onClick={(e) => toggleComparison(fund, e)}
-                        className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 border transition-all duration-300 ${
-                          comparisonList.find(f => f.id === fund.id)
-                            ? "bg-black text-white border-black"
-                            : "border-black/20 hover:bg-black hover:text-white"
-                        }`}
-                      >
-                        {comparisonList.find(f => f.id === fund.id) ? "Selected" : "+ Compare"}
-                      </button>
-                    </div>
-                    <div className="relative z-10">
-                      <h3 className="text-3xl font-bold mb-4">{fund.title}</h3>
-                      <p className="text-gray-600 max-w-xs opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 group-hover:mb-8 transition-all duration-500 ease-in-out overflow-hidden">
-                        {fund.description}
-                      </p>
-                    </div>
-                    
-                    <div className="relative z-10 flex items-center gap-4">
-                      <fund.icon size={24} />
-                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-2">
-                        <span className="text-[10px] font-bold uppercase tracking-widest">Learn More</span>
-                        <ArrowRight size={16} />
-                      </div>
-                    </div>
 
-                    <div className="absolute top-0 right-0 w-1/2 h-full opacity-0 group-hover:opacity-20 transition-opacity duration-700">
-                      <img 
-                        src={fund.image} 
-                        alt={fund.title} 
-                        className="w-full h-full object-cover grayscale"
-                        referrerPolicy="no-referrer"
-                      />
+                      <div className="relative z-10 my-8">
+                        <h3 className="text-3xl font-black uppercase tracking-tighter text-[#162518] mb-4">{fund.title}</h3>
+                        <p className="text-gray-500 text-sm max-w-sm line-clamp-3 group-hover:line-clamp-none transition-all duration-500 ease-in-out leading-relaxed">
+                          {fund.description}
+                        </p>
+                      </div>
+                      
+                      <div className="relative z-10 flex items-center justify-between">
+                        <div className="w-12 h-12 rounded-full bg-[#162518] flex items-center justify-center text-white group-hover:bg-gold-foil group-hover:text-black transition-colors duration-300">
+                          <fund.icon size={20} />
+                        </div>
+                        <div className="flex items-center gap-2 opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-1.5">
+                          <span className="text-[10px] font-black uppercase tracking-widest text-[#162518]">Learn More</span>
+                          <ArrowRight size={14} className="text-[#162518]" />
+                        </div>
+                      </div>
+
+                      {/* Accent image background overlay */}
+                      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 group-hover:opacity-15 transition-all duration-700 ease-out transform pointer-events-none group-hover:scale-110">
+                        <img 
+                          src={fund.image} 
+                          alt={fund.title} 
+                          className="w-full h-full object-cover grayscale"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
                     </div>
-                  </div>
                   ))}
                 </div>
               </section>
 
               {/* Success Stories Preview Section */}
-              <section className="py-24 px-8 md:px-24 bg-black text-white overflow-hidden relative">
+              <section className="py-24 px-8 md:px-24 bg-black text-white overflow-hidden relative border-t border-white/5">
                 <div className="absolute top-0 left-1/2 w-px h-full bg-white opacity-5"></div>
                 <div className="absolute top-1/2 left-0 w-full h-px bg-white opacity-5"></div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 max-w-7xl mx-auto">
                   <div className="space-y-12">
                     <div className="space-y-6">
-                      <span className="text-gold-foil text-xs font-bold uppercase tracking-[0.5em] block">Impact & Transformation</span>
+                      <span className="text-gold-foil text-xs font-black uppercase tracking-[0.5em] block">Impact & Transformation</span>
                       <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none">
                         INVESTEE <br />
-                        <span className="text-transparent border-t-2 border-b-2 border-white/20 py-2">STORIES</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-400 to-gold-foil">STORIES</span>
                       </h2>
                     </div>
                     
-                    <p className="text-white/40 text-lg md:text-xl max-w-md font-light leading-relaxed">
+                    <p className="text-white/50 text-base md:text-lg max-w-md font-light leading-relaxed">
                       Discover how the NEF has partnered with black entrepreneurs to build sustainable businesses and create lasting economic impact across South Africa.
                     </p>
 
@@ -574,74 +594,90 @@ export default function App() {
                       onClick={() => navigate("/investee-stories")}
                       className="group flex items-center gap-6 text-left"
                     >
-                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-gold-foil group-hover:bg-gold-foil transition-all duration-500">
-                        <ArrowRight className="w-6 h-6 group-hover:text-black transition-colors" />
+                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:border-gold-foil group-hover:bg-gold-foil hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+                        <ArrowRight className="w-6 h-6 text-white group-hover:text-black transition-colors" />
                       </div>
-                      <div className="space-y-1">
-                        <span className="text-xs font-bold uppercase tracking-widest block">View All Stories</span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 block">Real Impact. Real People.</span>
+                      <div className="space-y-0.5">
+                        <span className="text-xs font-black uppercase tracking-widest block text-[#C4B493] group-hover:text-gold-foil transition-colors">View All Stories</span>
+                        <span className="text-[10px] font-mono tracking-widest font-black uppercase opacity-40 block">Real Impact. Real People.</span>
                       </div>
                     </button>
                   </div>
 
-                  <div className="relative grid grid-cols-2 gap-4">
-                    <div className="space-y-4">
+                  <div className="relative grid grid-cols-2 gap-6">
+                    <div className="space-y-6">
                       <div 
                         onClick={() => navigate("/investee-stories/the-orchards")}
-                        className="aspect-[3/4] bg-gray-900 overflow-hidden relative group cursor-pointer"
+                        className="aspect-[3/4] bg-[#111] rounded-3xl overflow-hidden relative group cursor-pointer border border-white/5 shadow-2xl"
                       >
                         <img 
                           src="https://images.unsplash.com/photo-1555633514-abcee6ad93e1?q=80&w=1000&auto=format&fit=crop" 
                           alt="Story 1" 
-                          className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                          className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <span className="text-[10px] font-bold uppercase tracking-widest bg-gold-foil text-black px-2 py-1">Retail</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                          <span className="text-[9px] font-black uppercase tracking-widest bg-gold-foil text-black px-4 py-1.5 rounded-full shadow-lg">Retail</span>
+                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                            <ArrowRight size={14} className="text-white" />
+                          </div>
                         </div>
                       </div>
                       <div 
                         onClick={() => navigate("/investee-stories/busamed-healthcare")}
-                        className="aspect-square bg-gray-900 overflow-hidden relative group cursor-pointer"
+                        className="aspect-square bg-[#111] rounded-3xl overflow-hidden relative group cursor-pointer border border-white/5 shadow-2xl"
                       >
                         <img 
                           src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" 
                           alt="Story 2" 
-                          className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                          className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <span className="text-[10px] font-bold uppercase tracking-widest bg-gold-foil text-black px-2 py-1">Healthcare</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                          <span className="text-[9px] font-black uppercase tracking-widest bg-gold-foil text-black px-4 py-1.5 rounded-full shadow-lg">Healthcare</span>
+                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                            <ArrowRight size={14} className="text-white" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-4 pt-12">
+                    <div className="space-y-6 pt-12">
                       <div 
                         onClick={() => navigate("/investee-stories/mamelodi-square")}
-                        className="aspect-square bg-gray-900 overflow-hidden relative group cursor-pointer"
+                        className="aspect-square bg-[#111] rounded-3xl overflow-hidden relative group cursor-pointer border border-white/5 shadow-2xl"
                       >
                         <img 
                           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop" 
                           alt="Story 3" 
-                          className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                          className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <span className="text-[10px] font-bold uppercase tracking-widest bg-gold-foil text-black px-2 py-1">Property</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                          <span className="text-[9px] font-black uppercase tracking-widest bg-gold-foil text-black px-4 py-1.5 rounded-full shadow-lg">Property</span>
+                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                            <ArrowRight size={14} className="text-white" />
+                          </div>
                         </div>
                       </div>
                       <div 
                         onClick={() => navigate("/investee-stories")}
-                        className="aspect-[3/4] bg-gray-900 overflow-hidden relative group cursor-pointer"
+                        className="aspect-[3/4] bg-[#111] rounded-3xl overflow-hidden relative group cursor-pointer border border-white/5 shadow-2xl"
                       >
                         <img 
                           src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1000&auto=format&fit=crop" 
                           alt="Story 4" 
-                          className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                          className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                          <span className="text-[10px] font-bold uppercase tracking-widest bg-gold-foil text-black px-2 py-1">Services</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                          <span className="text-[9px] font-black uppercase tracking-widest bg-gold-foil text-black px-4 py-1.5 rounded-full shadow-lg">Services</span>
+                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                            <ArrowRight size={14} className="text-white" />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -650,85 +686,102 @@ export default function App() {
               </section>
 
               {/* Team/Impact Section */}
-              <section className="bg-black py-24 px-8 md:px-24 text-white overflow-hidden">
-                <div className="max-w-4xl mx-auto text-center mb-24">
-                  <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 italic">
+              <section className="bg-[#0f110f] py-28 px-8 md:px-24 text-white overflow-hidden border-t border-white/5 relative">
+                <div className="absolute top-0 right-10 w-40 h-40 bg-gold-foil/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-10 w-40 h-40 bg-forest-earth/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div className="max-w-4xl mx-auto text-center mb-24 relative z-10">
+                  <span className="text-gold-foil text-[10px] font-mono uppercase tracking-[0.4em] mb-4 block">A Legacy of Empowerment</span>
+                  <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-10 italic leading-none">
                     "We are a team of visionaries, <br />
-                    <span className="text-gold-foil">shaping the future</span> of SA."
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-foil via-[#E6D4B5] to-white">shaping the future</span> of SA."
                   </h2>
-                  <div className="flex justify-center gap-8">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-gold-foil">R10B+</div>
-                      <div className="text-xs uppercase tracking-widest opacity-40">Disbursed</div>
+                  <div className="flex justify-center gap-12">
+                    <div className="text-center px-8 py-4 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
+                      <div className="text-5xl font-extrabold text-gold-foil mb-1">R10B+</div>
+                      <div className="text-[10px] font-mono uppercase tracking-widest opacity-50">Disbursed</div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-gold-foil">1000+</div>
-                      <div className="text-xs uppercase tracking-widest opacity-40">Businesses</div>
+                    <div className="text-center px-8 py-4 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
+                      <div className="text-5xl font-extrabold text-gold-foil mb-1">1000+</div>
+                      <div className="text-[10px] font-mono uppercase tracking-widest opacity-50">Businesses</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold uppercase tracking-tighter">Check our <br /> in-house team</h3>
-                    <div className="h-px w-full bg-white opacity-20"></div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
+                  <div className="space-y-6 flex flex-col justify-center">
+                    <span className="text-gold-foil text-xs font-mono uppercase tracking-widest">In-house leadership</span>
+                    <h3 className="text-3xl font-black uppercase tracking-tighter text-white leading-tight">Check our <br /> in-house team</h3>
+                    <div className="h-0.5 w-16 bg-gold-foil rounded-full"></div>
                   </div>
                   
                   <div className="relative group">
-                    <div className="aspect-[3/4] bg-gray-900 overflow-hidden relative">
+                    <div className="aspect-[3/4] bg-neutral-900 rounded-[2.5rem] overflow-hidden relative border border-white/5 shadow-2xl">
                       <img 
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
                         alt="Team" 
-                        className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute top-4 right-4 bg-gold-foil text-black text-[10px] font-bold px-2 py-1 uppercase">Insert Eyes</div>
-                    </div>
-                    <div className="mt-4 flex justify-between items-end">
-                      <div>
-                        <h4 className="font-bold">Mike</h4>
-                        <p className="text-xs opacity-40">da spike!</p>
+                      <div className="absolute top-6 right-6 bg-gold-foil/90 backdrop-blur-sm text-black text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Insert Eyes</div>
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
+                        <div className="flex justify-between items-end">
+                          <div>
+                            <h4 className="font-black text-xl text-white uppercase tracking-tight">Mike</h4>
+                            <p className="text-xs text-gold-foil font-mono opacity-80 mt-0.5">da spike!</p>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-gold-foil group-hover:text-black transition-all duration-300">
+                            <ArrowRight size={16} />
+                          </div>
+                        </div>
                       </div>
-                      <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </div>
 
                   <div className="relative group">
-                    <div className="aspect-[3/4] bg-gray-900 overflow-hidden relative">
+                    <div className="aspect-[3/4] bg-neutral-900 rounded-[2.5rem] overflow-hidden relative border border-white/5 shadow-2xl">
                       <img 
                         src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" 
                         alt="Team" 
-                        className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute top-4 right-4 bg-gold-foil text-black text-[10px] font-bold px-2 py-1 uppercase">Insert Eyes</div>
-                    </div>
-                    <div className="mt-4 flex justify-between items-end">
-                      <div>
-                        <h4 className="font-bold">Steven</h4>
-                        <p className="text-xs opacity-40">da handy!</p>
+                      <div className="absolute top-6 right-6 bg-gold-foil/90 backdrop-blur-sm text-black text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Insert Eyes</div>
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
+                        <div className="flex justify-between items-end">
+                          <div>
+                            <h4 className="font-black text-xl text-white uppercase tracking-tight">Steven</h4>
+                            <p className="text-xs text-gold-foil font-mono opacity-80 mt-0.5">da handy!</p>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-gold-foil group-hover:text-black transition-all duration-300">
+                            <ArrowRight size={16} />
+                          </div>
+                        </div>
                       </div>
-                      <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="py-32 px-8 md:px-24 bg-gold-foil text-center">
-                <div className="max-w-2xl mx-auto">
-                  <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-12">
+              <section id="contact" className="py-28 px-8 md:px-24 bg-gradient-to-br from-gold-foil to-[#D4B373] text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div className="max-w-3xl mx-auto relative z-10">
+                  <span className="text-black text-[10px] font-mono uppercase tracking-[0.4em] mb-4 block">Get In Touch</span>
+                  <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 text-black uppercase leading-none">
                     Got some questions?
                   </h2>
                   <button 
-                    className="group relative px-12 py-6 bg-black text-white font-bold uppercase tracking-widest overflow-hidden"
+                    className="group relative px-12 py-5 bg-black text-white font-black uppercase text-xs tracking-widest overflow-hidden rounded-full shadow-2xl hover:scale-105 duration-300"
                   >
                     <span className="relative z-10">Send Message</span>
                     <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    <span className="absolute inset-0 flex items-center justify-center text-black font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">Send Message</span>
+                    <span className="absolute inset-0 flex items-center justify-center text-black font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">Send Message</span>
                   </button>
-                  <p className="mt-12 text-sm font-medium opacity-60">
-                    or reach us via <span className="border-b border-black">hello@nefcorp.co.za</span>
+                  <p className="mt-10 text-sm font-semibold text-black/75">
+                    or reach us via <a href="mailto:hello@nefcorp.co.za" className="border-b-2 border-black font-black hover:opacity-100 transition-opacity">hello@nefcorp.co.za</a>
                   </p>
                 </div>
               </section>

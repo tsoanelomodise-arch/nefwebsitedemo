@@ -45,7 +45,7 @@ const STEPS = [
 export default function HowToApply() {
   return (
     <div className="min-h-screen bg-white font-sans text-black selection:bg-gold-foil selection:text-black">
-      <div className="max-w-5xl mx-auto px-8 py-24">
+      <div className="max-w-5xl mx-auto px-6 md:px-8 py-24">
         <Breadcrumbs />
         
         <motion.div
@@ -54,12 +54,12 @@ export default function HowToApply() {
           transition={{ duration: 0.8 }}
           className="mb-24"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.5em] opacity-40 block mb-4">Funding Process</span>
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none mb-8">
+          <span className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil block mb-4">Funding Process</span>
+          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter uppercase leading-none mb-8">
             How to Apply <br />
-            <span className="text-gold-foil bg-black px-4">for Funding</span>
+            <span className="text-white bg-[#162518] px-4 py-1.5 rounded-2xl inline-block shadow-md">for Funding</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-light">
             The NEF follows a rigorous and transparent process to ensure that funding is allocated to viable, 
             sustainable, and high-impact black-owned businesses.
           </p>
@@ -67,7 +67,7 @@ export default function HowToApply() {
 
         <div className="relative space-y-12">
           {/* Vertical Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-200"></div>
+          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-neutral-200"></div>
 
           {STEPS.map((step, index) => (
             <motion.div
@@ -76,24 +76,29 @@ export default function HowToApply() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative pl-20 group"
+              className="relative pl-16 md:pl-24 group"
             >
-              {/* Marker */}
-              <div className="absolute left-0 top-0 w-12 h-12 bg-black flex items-center justify-center z-10 group-hover:bg-gold-foil transition-colors duration-500">
-                <span className="text-white text-xs font-bold group-hover:text-black transition-colors duration-500">{step.id}</span>
-              </div>
-              
               {/* Connector dot on the line */}
-              <div className="absolute left-[23px] top-6 w-2 h-2 bg-gold-foil rounded-full z-20"></div>
+              <div className="absolute left-[21px] md:left-[29px] top-6 w-2.5 h-2.5 bg-gold-foil rounded-full z-20 border-2 border-white shadow-md"></div>
 
-              <div className="bg-white p-8 md:p-12 border border-gray-100 group-hover:bg-black transition-all duration-500 shadow-sm hover:shadow-2xl">
-                <div className="flex justify-between items-start mb-8">
-                  <step.icon size={32} className="text-black group-hover:text-gold-foil transition-colors duration-500" />
+              <div className="bg-[#FAF9F6] p-8 md:p-12 border border-neutral-200/50 rounded-[2.5rem] group-hover:bg-[#162518] transition-all duration-500 shadow-sm hover:shadow-[0_40px_80px_rgba(22,37,24,0.08)]">
+                <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
+                  {/* Step Day Pill Inspired by Design Reference "Day 1-3" etc */}
+                  <div className="inline-flex items-center gap-3">
+                    <span className="px-5 py-2.5 rounded-full bg-black text-white text-xs font-mono tracking-widest font-black uppercase group-hover:bg-gold-foil group-hover:text-black transition-all duration-500 shadow-sm">
+                      Phase {step.id}
+                    </span>
+                    <span className="h-px w-8 bg-neutral-200 group-hover:bg-white/20 transition-all"></span>
+                  </div>
+                  <div className="w-12 h-12 rounded-full bg-white group-hover:bg-white/10 flex items-center justify-center transition-all duration-500 shadow-sm">
+                    <step.icon size={22} className="text-black group-hover:text-gold-foil transition-colors duration-500" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4 group-hover:text-white transition-colors duration-500">
+
+                <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 text-[#162518] group-hover:text-white transition-colors duration-500">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 group-hover:text-gray-400 transition-colors duration-500 leading-relaxed">
+                <p className="text-gray-500 group-hover:text-gray-300 transition-colors duration-500 leading-relaxed font-light text-base md:text-lg">
                   {step.description}
                 </p>
               </div>
@@ -101,14 +106,15 @@ export default function HowToApply() {
           ))}
         </div>
 
-        <div className="mt-24 p-12 bg-black text-white">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold uppercase tracking-tighter mb-6">Ready to start your journey?</h2>
-            <p className="text-gray-400 mb-8 leading-relaxed">
+        <div className="mt-28 p-12 bg-black text-white rounded-[2.5rem] relative overflow-hidden border border-white/5 shadow-2xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold-foil/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="max-w-2xl relative z-10">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-6">Ready to start your journey?</h2>
+            <p className="text-gray-400 mb-10 leading-relaxed font-light text-base md:text-lg">
               Ensure you have all your documentation ready, including your BEE certificate, business plan, 
               and financial statements for the last three years (if applicable).
             </p>
-            <button className="px-12 py-4 bg-gold-foil text-black font-bold uppercase tracking-widest hover:bg-white transition-colors">
+            <button className="px-10 py-4 bg-gold-foil text-black font-black uppercase text-xs tracking-widest hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-105 active:scale-95">
               Download Application Form
             </button>
           </div>
