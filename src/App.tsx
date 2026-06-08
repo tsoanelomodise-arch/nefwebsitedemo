@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Search, Trash2, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Search, Trash2, SlidersHorizontal, HelpCircle, MessageSquare, Phone } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
@@ -316,29 +316,23 @@ export default function App() {
               </button>
             </div>
 
-            {/* FAQ */}
-            <button
-              onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
-              className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center ${
-                location.pathname === "/faq"
-                  ? "text-[#E89D7A] border-[#E89D7A]" 
-                  : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
-              }`}
+            {/* Contact & Support Navigation Trigger */}
+            <div 
+              className="relative h-full"
+              onMouseEnter={() => handleMouseEnter("contact")}
             >
-              FAQ
-            </button>
-
-            {/* Contact */}
-            <button
-              onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
-              className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center ${
-                activeSection === "07" && !isSubPage
-                  ? "text-[#E89D7A] border-[#E89D7A]" 
-                  : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
-              }`}
-            >
-              Contact
-            </button>
+              <button
+                onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
+                className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
+                  activeMegaMenu === "contact" || (activeSection === "07" && !isSubPage) || location.pathname === "/faq"
+                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
+                }`}
+              >
+                Contact & Support
+                <ChevronDown size={11} className={`transition-transform duration-300 ${activeMegaMenu === "contact" ? "rotate-180" : ""}`} />
+              </button>
+            </div>
           </nav>
 
           {/* Right Area (Have Questions & Eligibility Action) */}
@@ -666,24 +660,118 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Column 4: Featured Portal Bento (Charcoal Theme) - Eligibility Focus */}
-                    <div className="col-span-3 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group">
+                    {/* Column 4: Featured Portal Bento (Charcoal Theme) - Featured Success Story */}
+                    <div className="col-span-3 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group cursor-pointer"
+                      onClick={() => {
+                        setActiveMegaMenu(null);
+                        navigate("/investee-stories/mamelodi-square");
+                      }}
+                    >
+                      {/* Background styled image with dark blending */}
+                      <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-all duration-500 bg-cover bg-center mix-blend-luminosity"
+                        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop')` }}
+                      ></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18] via-[#1E1B18]/70 to-transparent z-10"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/20 transition-all duration-500 z-10"></div>
+                      
+                      <div className="space-y-3 relative z-20">
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Latest Success Story</span>
+                        <h4 className="text-lg font-sans font-black uppercase tracking-tight text-white group-hover:text-[#E89D7A] transition-colors">Mamelodi Square</h4>
+                        <p className="text-white/60 text-[11px] font-light leading-relaxed">
+                          How a landmark R50M retail development created 250+ community jobs and transformed local commerce infrastructure.
+                        </p>
+                      </div>
+                      <div className="relative z-20 mt-6 flex justify-between items-center w-full">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
+                          Read Story <span className="text-xs">→</span>
+                        </span>
+                        <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Urban Property</span>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* 3. CONTACT & SUPPORT MEGA MENU */}
+                {activeMegaMenu === "contact" && (
+                  <>
+                    {/* Column 1: Help & Assistance channels */}
+                    <div className="col-span-4 flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Support Channels</h4>
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <HelpCircle size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Frequently Asked Questions</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Get instant answers regarding fund terms, BEE criteria, limits, and application processes in our FAQ Hub.
+                            </p>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
+                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
+                        >
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
+                            <MessageSquare size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Submit an Inquiry</h5>
+                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
+                              Send your general or fund-specific inquiries directly to our administrative desk.
+                            </p>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Column 2: Regional Presence & Operations */}
+                    <div className="col-span-4 flex flex-col gap-6 border-l border-[#EFE6DA]/40 pl-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Direct Contact</h4>
+                      <div className="space-y-4 text-left p-3">
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-mono uppercase tracking-widest text-[#C79F6E] block font-extrabold">HQ Office / Johannesburg</span>
+                          <span className="text-[13px] font-medium text-[#1E1B18] block">Melrose Arch, 18 Melrose Boulevard</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 pt-1">
+                          <div className="space-y-0.5">
+                            <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Telephone</span>
+                            <a href="tel:+27113058000" className="text-[12px] font-bold text-[#1E1B18] hover:text-[#E89D7A] transition-colors">+27 11 305 8000</a>
+                          </div>
+                          <div className="space-y-0.5">
+                            <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Email Support</span>
+                            <a href="mailto:applications@nefcorp.co.za" className="text-[11px] font-bold text-[#1E1B18] hover:text-[#E89D7A] transition-colors break-all">applications@nefcorp.co.za</a>
+                          </div>
+                        </div>
+                        <p className="text-[10px] text-neutral-400 italic">
+                          Operating Hours: Mon - Fri (08:00 - 17:00). Closed on weekends and official public holidays.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Column 3: AI Advisor Assistant */}
+                    <div className="col-span-4 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group animate-in fade-in slide-in-from-bottom-2 duration-300">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/15 transition-all duration-500"></div>
                       <div className="space-y-3 relative z-10">
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Instant Screening</span>
-                        <h4 className="text-lg font-sans font-light uppercase tracking-tight">Partner with the NEF</h4>
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Digital Engagement</span>
+                        <h4 className="text-lg font-sans font-light uppercase tracking-tight">Speak with AI Advisor</h4>
                         <p className="text-white/50 text-[11px] font-light leading-relaxed">
-                          Take our simplified business screening layout matrix. Verify your matching capital structures online in less than 3 minutes.
+                          Unsure which fund applies to your BEE structure, or have quick compliance questions? Get instant criteria matching.
                         </p>
                       </div>
                       <button 
                         onClick={() => {
                           setActiveMegaMenu(null);
-                          navigate("/check-eligibility");
+                          const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
+                          if (chatbotBtn) chatbotBtn.click();
                         }}
                         className="relative z-10 mt-6 px-5 py-2 bg-[#E89D7A] text-white hover:bg-white hover:text-[#1E1B18] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer"
                       >
-                        Check Eligibility
+                        Launch Interactive Chat
                       </button>
                     </div>
                   </>
@@ -775,20 +863,20 @@ export default function App() {
               </div>
 
               {/* FAQ and Contact */}
-              <div className="space-y-2">
-                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Support & Portal</div>
-                <div className="flex gap-6 pl-4 border-l border-[#EFE6DA]/60">
-                  <button
-                    onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
-                    className="text-sm font-sans text-neutral-600 hover:text-[#E89D7A] transition-colors"
-                  >
-                    FAQ
-                  </button>
+              <div className="space-y-2.5">
+                <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Contact & Support</div>
+                <div className="pl-4 flex flex-col gap-2.5 border-l border-[#EFE6DA]/60">
                   <button
                     onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
-                    className="text-sm font-sans text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-medium text-left text-[#1E1B18] hover:text-[#E89D7A] transition-colors"
                   >
-                    Contact
+                    Contact Info & Form
+                  </button>
+                  <button
+                    onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+                    className="text-sm font-sans font-normal text-left text-neutral-500 hover:text-[#E89D7A] transition-colors pl-4 border-l border-[#E89D7A]/40"
+                  >
+                    ↳ Frequently Asked Questions (FAQ)
                   </button>
                 </div>
               </div>
