@@ -111,11 +111,19 @@ export default function App() {
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate real database submission timeout
+    
+    const mailtoLink = `mailto:tsoanelomodise@gmail.com?subject=${encodeURIComponent(
+      `Got some questions - Inquiry from ${contactForm.name}`
+    )}&body=${encodeURIComponent(
+      `Name: ${contactForm.name}\nEmail: ${contactForm.email}\n\nMessage:\n${contactForm.message}`
+    )}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-    }, 1200);
+      // Trigger user's mail client with pre-filled content
+      window.location.href = mailtoLink;
+    }, 1000);
   };
 
   useEffect(() => {
@@ -1226,21 +1234,61 @@ export default function App() {
                 <div className="absolute top-0 right-10 w-44 h-44 bg-[#E89D7A]/5 rounded-full blur-3xl pointer-events-none"></div>
                 <div className="absolute bottom-0 left-10 w-44 h-44 bg-[#C79F6E]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div className="max-w-4xl mx-auto text-center mb-24 relative z-10">
-                  <span className="text-[#C79F6E] text-[10px] font-mono uppercase tracking-[0.4em] mb-4 block">A Legacy of Empowerment</span>
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight mb-10 leading-none">
-                    "We are a team of visionaries, <br />
-                    <span className="font-serif italic text-peach-accent text-glow-peach">shaping the future</span> of SA."
-                  </h2>
-                  <div className="flex justify-center gap-12">
-                    <div className="text-center px-8 py-4 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
-                      <div className="text-4xl md:text-5xl font-light text-[#E89D7A] mb-1 font-sans">R10B+</div>
-                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-40">Disbursed</div>
+                <div className="max-w-6xl mx-auto relative z-10">
+                  <div className="text-center mb-16">
+                    <span className="text-[#C79F6E] text-[10px] font-mono uppercase tracking-[0.4em] mb-4 block">A Legacy of Empowerment</span>
+                    <h2 className="text-3xl md:text-5xl lg:text-3xl font-sans font-light tracking-tight mb-6 leading-none uppercase">
+                      Annual Review <br />
+                      <span className="font-serif italic text-[#E89D7A] lowercase">performance highlights</span>
+                    </h2>
+                    <p className="text-neutral-400 text-xs md:text-sm max-w-2xl mx-auto font-light leading-relaxed">
+                      A summary of our economic transformation, enterprise development, and job creation impact across South Africa during the latest review period.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">R7.4bn</div>
+                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Total Approvals</div>
                     </div>
-                    <div className="text-center px-8 py-4 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
-                      <div className="text-4xl md:text-5xl font-light text-[#E89D7A] mb-1 font-sans">1000+</div>
-                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-40">Businesses</div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">112k+</div>
+                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Jobs Supported</div>
                     </div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">1,240</div>
+                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">SMMEs Funded</div>
+                    </div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">42%</div>
+                      <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Black Women Owned</div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div className="flex gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-2xl items-center text-left">
+                      <div className="text-3xl font-light text-[#E89D7A]">85%</div>
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-white">Black Ownership</h4>
+                        <p className="text-[11px] text-neutral-400 font-light mt-1">Average black ownership maintained across our investment portfolio.</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-2xl items-center text-left">
+                      <div className="text-3xl font-light text-[#E89D7A]">R1.2bn</div>
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-white">Rural Development</h4>
+                        <p className="text-[11px] text-neutral-400 font-light mt-1">Dedicated funding deployed to support township and rural economies.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-12 text-center">
+                    <button
+                      onClick={() => navigate('/performance-report-2025')}
+                      className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#E89D7A] hover:text-white transition-colors"
+                    >
+                      View Full Performance Report 2025 <span className="text-xs">→</span>
+                    </button>
                   </div>
                 </div>
               </section>
@@ -1348,7 +1396,7 @@ export default function App() {
                   </AnimatePresence>
 
                   <p className="mt-8 text-[11px] font-light text-[#1E1B18]/75 tracking-wider text-center">
-                    or email us directly at <a href="mailto:applications@nefcorp.co.za" className="border-b border-[#1E1B18] font-bold hover:opacity-100 transition-opacity">applications@nefcorp.co.za</a>
+                    or email us directly at <a href="mailto:tsoanelomodise@gmail.com" className="border-b border-[#1E1B18] font-bold hover:opacity-100 transition-opacity">tsoanelomodise@gmail.com</a>
                   </p>
                 </div>
               </section>
