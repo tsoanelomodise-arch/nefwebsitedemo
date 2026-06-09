@@ -492,20 +492,6 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
-                          </div>
-                          <div>
-                            <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Our Main Funds</h5>
-                            <p className="text-neutral-500 font-light text-[11px] leading-relaxed mt-1">
-                              Structural capital programs addressing franchising, rural, and industrial lifecycles.
-                            </p>
-                          </div>
-                        </button>
-                        <button
-                          onClick={() => handleNavItemClick({ href: "/our-funds#portfolio-finder", isExternal: true })}
-                          className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
-                        >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
                             <SlidersHorizontal size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
                           </div>
                           <div>
@@ -790,12 +776,6 @@ export default function App() {
                 <div className="pl-4 flex flex-col gap-2 border-l border-[#EFE6DA]/60">
                   <button
                     onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
-                  >
-                    Our Funds
-                  </button>
-                  <button
-                    onClick={() => handleNavItemClick({ href: "/our-funds#portfolio-finder", isExternal: true })}
                     className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
                   >
                     Portfolio Finder
@@ -1396,7 +1376,7 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
                           className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
-                          Our Main Funds
+                          Portfolio Finder
                         </button>
                       </li>
                       <li>
