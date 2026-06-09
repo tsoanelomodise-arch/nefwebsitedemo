@@ -5,20 +5,10 @@ import {
 import React, { useState, useMemo, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
-import SectorFilter from "./components/SectorFilter";
 import { NEF_FUNDS } from "./data/funds";
 
 export default function OurFunds() {
   const navigate = useNavigate();
-
-  // --- TOP PORTFOLIO GRID STATES ---
-  const [selectedSecTop, setSelectedSecTop] = useState<string>("All");
-
-  const filteredFundsTop = useMemo(() => {
-    return selectedSecTop === "All" 
-      ? NEF_FUNDS 
-      : NEF_FUNDS.filter(fund => fund.details.sectors.includes(selectedSecTop));
-  }, [selectedSecTop]);
 
   // --- PORTFOLIO FINDER STATES ---
   const [selectedFund, setSelectedFund] = useState<typeof NEF_FUNDS[0] | null>(null);
@@ -130,102 +120,6 @@ export default function OurFunds() {
               across various sectors of the South African economy.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Funds Grid */}
-      <section className="py-24 px-6 md:px-8 bg-[#FCFAF7]">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-[#EFE6DA]/40 pb-12">
-            <h2 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight text-[#1E1B18]">
-              Filter by <span className="text-white bg-[#1E1B18] px-4 py-1.5 rounded-xl text-xs md:text-sm inline-block font-sans lowercase shadow-sm">Sector</span>
-            </h2>
-            <SectorFilter 
-              selectedSector={selectedSecTop} 
-              onSelectSector={setSelectedSecTop} 
-            />
-          </div>
-
-          <div className="grid grid-cols-1 gap-28">
-            {filteredFundsTop.map((fund, index) => (
-              <motion.div
-                key={fund.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group text-left"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                  <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                    <div className="relative aspect-[4/5] overflow-hidden bg-[#FAF8F5] rounded-[2.2rem] border border-[#EFE6DA]/85 shadow-[0_24px_50px_rgba(42,38,34,0.06)]">
-                      <img 
-                        src={fund.image} 
-                        alt={fund.title} 
-                        className="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div className="absolute bottom-10 left-10 w-12 h-12 rounded-full bg-[#E89D7A]/95 text-white flex items-center justify-center shadow-lg">
-                        <fund.icon size={20} />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-8">
-                    <div className="flex items-center gap-4">
-                      <span className="text-3xl font-mono font-black tracking-tighter text-[#E89D7A]">{fund.id}</span>
-                      <div className="w-16 h-px bg-[#EFE6DA]"></div>
-                    </div>
-                    
-                    <h2 className="text-3xl md:text-4xl font-sans font-light uppercase tracking-tight leading-none text-[#1E1B18]">
-                      {fund.title}
-                    </h2>
-                    
-                    <p className="text-sm md:text-base text-neutral-500 leading-relaxed italic font-light">
-                      "{fund.description}"
-                    </p>
-
-                    <div className="space-y-4">
-                      <h4 className="text-[9px] font-bold uppercase tracking-widest flex items-center gap-2 text-[#E89D7A]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#E89D7A]"></div>
-                        Key Objectives
-                      </h4>
-                      <p className="text-xs text-neutral-500 leading-relaxed font-light">
-                        {fund.details.objective}
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-4 pt-8 border-t border-[#EFE6DA]/40">
-                      <h4 className="text-[9px] font-bold uppercase tracking-widest flex items-center gap-2 text-[#1E1B18]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1E1B18]"></div>
-                        Focus Sectors
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {fund.details.sectors.map((sector, i) => (
-                          <span key={i} className="px-3 py-1.5 bg-white text-neutral-600 border border-[#EFE6DA]/80 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-2xs">
-                            {sector}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="pt-6">
-                      <Link 
-                        to="/how-to-apply"
-                        className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-[#1E1B18] group/link hover:text-[#E89D7A] transition-colors"
-                      >
-                        Learn More & Apply 
-                        <div className="w-8 h-8 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#1E1B18] border border-[#EFE6DA]/60 group-hover/link:bg-[#E89D7A] group-hover/link:text-white transition-all shadow-2xs">
-                          <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

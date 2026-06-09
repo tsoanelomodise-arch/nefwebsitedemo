@@ -60,8 +60,7 @@ const NAV_LINKS = [
     href: "/our-funds",
     isExternal: true,
     subLinks: [
-      { id: "03a", title: "Our Funds", href: "/our-funds", isExternal: true },
-      { id: "03b", title: "Portfolio Finder", href: "/our-funds#portfolio-finder", isExternal: true },
+      { id: "03b", title: "Portfolio Finder", href: "/our-funds", isExternal: true },
       { id: "03c", title: "Non-Financial Support", href: "/non-financial-support", isExternal: true },
       { id: "03d", title: "How to Apply", href: "/how-to-apply", isExternal: true },
       { id: "03e", title: "Funding Criteria", href: "/funding-criteria", isExternal: true },
@@ -1261,60 +1260,6 @@ export default function App() {
                     <div className="text-center px-8 py-4 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-sm shadow-xl">
                       <div className="text-4xl md:text-5xl font-light text-[#E89D7A] mb-1 font-sans">1000+</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest opacity-40">Businesses</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
-                  <div className="space-y-6 flex flex-col justify-center">
-                    <span className="text-[#E89D7A] text-xs font-mono uppercase tracking-widest">In-house leadership</span>
-                    <h3 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight text-white leading-tight">Check our <br /> in-house team</h3>
-                    <div className="h-0.5 w-16 bg-[#E89D7A] rounded-full"></div>
-                  </div>
-                  
-                  <div className="relative group">
-                    <div className="aspect-[3/4] bg-neutral-900 rounded-[2.2rem] overflow-hidden relative border border-white/5 shadow-2xl">
-                      <img 
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
-                        alt="Team" 
-                        className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-102 transition-all duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute top-6 right-6 bg-[#E89D7A]/95 text-[#1E1B18] text-[8px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Insert Eyes</div>
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
-                        <div className="flex justify-between items-end">
-                          <div>
-                            <h4 className="font-sans font-light text-lg text-white uppercase tracking-tight">Mike</h4>
-                            <p className="text-[10px] text-[#E89D7A] font-mono opacity-80 mt-0.5">da spike!</p>
-                          </div>
-                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-[#E89D7A] group-hover:text-white transition-all duration-300">
-                            <ArrowRight size={16} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="relative group">
-                    <div className="aspect-[3/4] bg-neutral-900 rounded-[2.2rem] overflow-hidden relative border border-white/5 shadow-2xl">
-                      <img 
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" 
-                        alt="Team" 
-                        className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-102 transition-all duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute top-6 right-6 bg-[#E89D7A]/95 text-[#1E1B18] text-[8px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Insert Eyes</div>
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
-                        <div className="flex justify-between items-end">
-                          <div>
-                            <h4 className="font-sans font-light text-lg text-white uppercase tracking-tight">Steven</h4>
-                            <p className="text-[10px] text-[#E89D7A] font-mono opacity-80 mt-0.5">da handy!</p>
-                          </div>
-                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-[#E89D7A] group-hover:text-white transition-all duration-300">
-                            <ArrowRight size={16} />
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
