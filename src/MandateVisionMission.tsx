@@ -6,7 +6,7 @@ export default function MandateVisionMission() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#F2901C] selection:text-white overflow-x-hidden">
       {/* Navigation Overlay */}
       <div className="fixed top-0 left-0 w-full z-50 p-8 flex justify-between items-center pointer-events-none">
         <button 
@@ -29,7 +29,7 @@ export default function MandateVisionMission() {
         {/* Left Column: Chocolate Slate */}
         <div className="w-full lg:w-1/3 bg-[#1E1B18] text-white p-12 lg:p-24 flex flex-col justify-between relative">
           <div className="space-y-12 relative z-10">
-            <div className="text-lg font-light tracking-widest text-[#E89D7A] uppercase">NEF CORP</div>
+            <div className="text-lg font-light tracking-widest text-[#F2901C] uppercase">NEF CORP</div>
             
             <div className="space-y-3">
               <div className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#C79F6E]">01 MANDATED GROWTH</div>
@@ -39,7 +39,7 @@ export default function MandateVisionMission() {
           </div>
 
           <div className="relative z-10 space-y-8">
-            <div className="h-0.5 w-16 bg-[#E89D7A]"></div>
+            <div className="h-0.5 w-16 bg-[#F2901C]"></div>
             <p className="text-white/50 text-xs font-light leading-relaxed max-w-xs">
               Driving economic transformation through strategic empowerment and sustainable investment.
             </p>
@@ -64,7 +64,7 @@ export default function MandateVisionMission() {
                 className="group flex items-center gap-6 text-left"
               >
                 <div className="w-14 h-14 rounded-full bg-[#1E1B18] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-md">
-                  <ArrowRight className="w-5 h-5 text-[#E89D7A]" />
+                  <ArrowRight className="w-5 h-5 text-[#F2901C]" />
                 </div>
                 <div className="space-y-1">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#1E1B18] block">Apply Now</span>
@@ -113,7 +113,7 @@ export default function MandateVisionMission() {
           <div className="lg:col-span-5 space-y-12">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-[#E89D7A]"></div>
+                <div className="w-12 h-px bg-[#F2901C]"></div>
                 <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C79F6E]">The Mandate</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-sans font-light tracking-tight leading-none uppercase">
@@ -133,7 +133,7 @@ export default function MandateVisionMission() {
               </div>
               {/* Play Button Overlay */}
               <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
-                <button className="w-14 h-14 rounded-full bg-[#E89D7A] flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
+                <button className="w-14 h-14 rounded-full bg-[#F2901C] flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
                   <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                 </button>
               </div>
@@ -148,13 +148,13 @@ export default function MandateVisionMission() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
                 <div className="space-y-4 p-8 bg-[#1E1B18] text-white rounded-[1.8rem] relative group overflow-hidden shadow-sm">
-                  <ShieldCheck className="w-7 h-7 text-[#E89D7A] relative z-10" />
+                  <ShieldCheck className="w-7 h-7 text-[#F2901C] relative z-10" />
                   <h3 className="text-sm font-bold uppercase tracking-widest relative z-10">The NEF Act</h3>
                   <p className="text-xs text-white/55 font-light leading-relaxed relative z-10">
                     Legislation designed to redress economic imbalances of the past.
                   </p>
                 </div>
-                <div className="space-y-4 p-8 border border-[#EFE6DA]/85 hover:border-[#E89D7A] rounded-[1.8rem] transition-colors bg-white shadow-sm">
+                <div className="space-y-4 p-8 border border-[#EFE6DA]/85 hover:border-[#F2901C] rounded-[1.8rem] transition-colors bg-white shadow-sm">
                   <Target className="w-7 h-7 text-[#E58E62]" />
                   <h3 className="text-sm font-bold uppercase tracking-widest text-[#1E1B18]">Thought Leadership</h3>
                   <p className="text-xs text-[#3A3530]/70 font-light leading-relaxed">
@@ -182,15 +182,15 @@ export default function MandateVisionMission() {
             <div className="space-y-12">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-[#E89D7A]"></div>
-                  <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em]">Our Vision</span>
+                  <div className="w-12 h-px bg-[#F2901C]"></div>
+                  <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em]">Our Vision</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-sans font-light tracking-tight leading-none uppercase">
                   LEADING <br />
                   <span className="font-serif italic text-[#E58E62]">THE WAY</span>
                 </h2>
               </div>
-              <p className="text-xl lg:text-2xl font-light leading-relaxed italic text-white/85 border-l-2 border-[#E89D7A] pl-6">
+              <p className="text-xl lg:text-2xl font-light leading-relaxed italic text-white/85 border-l-2 border-[#F2901C] pl-6">
                 "To become the leading provider of innovative and sustainable financial and non-financial solutions for black economic empowerment."
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function MandateVisionMission() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-[#E89D7A]/95 text-[#1E1B18] flex items-center justify-center rounded-2xl shadow-lg">
+              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-[#F2901C]/95 text-[#1E1B18] flex items-center justify-center rounded-2xl shadow-lg">
                 <Eye className="w-8 h-8" />
               </div>
             </div>
@@ -221,14 +221,14 @@ export default function MandateVisionMission() {
                 />
               </div>
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-white/5 backdrop-blur-sm flex items-center justify-center rounded-2xl border border-white/10">
-                <Target className="w-8 h-8 text-[#E89D7A]" />
+                <Target className="w-8 h-8 text-[#F2901C]" />
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-12">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-[#E89D7A]"></div>
-                  <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em]">Our Mission</span>
+                  <div className="w-12 h-px bg-[#F2901C]"></div>
+                  <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em]">Our Mission</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-sans font-light tracking-tight leading-none uppercase">
                   DRIVING <br />
@@ -266,7 +266,7 @@ export default function MandateVisionMission() {
             ].map((obj, i) => (
               <div
                 key={i}
-                className="bg-white p-10 rounded-[2rem] space-y-8 group relative overflow-hidden shadow-[0_12px_40px_rgba(42,38,34,0.03)] border border-[#EFE6DA]/40 hover:border-[#E89D7A]/30 transition-all duration-300"
+                className="bg-white p-10 rounded-[2rem] space-y-8 group relative overflow-hidden shadow-[0_12px_40px_rgba(42,38,34,0.03)] border border-[#EFE6DA]/40 hover:border-[#F2901C]/30 transition-all duration-300"
               >
                 {/* Portait Placeholder with Soft Peach Accent */}
                 <div className="relative w-16 h-16 bg-[#FAF8F5] rounded-2xl overflow-hidden mb-8 border border-[#EFE6DA]/50">
@@ -276,7 +276,7 @@ export default function MandateVisionMission() {
                     className="w-full h-full object-cover opacity-60"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute bottom-0 right-0 w-5 h-5 bg-[#E89D7A]"></div>
+                  <div className="absolute bottom-0 right-0 w-5 h-5 bg-[#F2901C]"></div>
                 </div>
 
                 <div className="space-y-4">
@@ -286,7 +286,7 @@ export default function MandateVisionMission() {
                   </p>
                 </div>
                 
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#E89D7A] scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#F2901C] scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
               </div>
             ))}
           </div>
@@ -294,7 +294,7 @@ export default function MandateVisionMission() {
       </section>
 
       {/* CTA Section - Sunset Peach Gradient */}
-      <section className="py-28 bg-gradient-to-br from-[#E89D7A] to-[#E58E62] text-center px-12 lg:px-24">
+      <section className="py-28 bg-gradient-to-br from-[#F2901C] to-[#E58E62] text-center px-12 lg:px-24">
         <div className="max-w-4xl mx-auto space-y-12">
           <h2 className="text-4xl lg:text-7xl font-sans font-light tracking-tight leading-none uppercase text-[#1E1B18]">
             got some <br />
@@ -324,10 +324,10 @@ export default function MandateVisionMission() {
             © 2026 NATIONAL EMPOWERMENT FUND. ALL RIGHTS RESERVED.
           </div>
           <div className="flex gap-8">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#E89D7A] transition-colors">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18]/45 cursor-pointer hover:text-[#F2901C] transition-colors">
               Twitter
             </span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#E89D7A] transition-colors">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18]/45 cursor-pointer hover:text-[#F2901C] transition-colors">
               LinkedIn
             </span>
           </div>

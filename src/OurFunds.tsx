@@ -89,7 +89,7 @@ export default function OurFunds() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white pb-32">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#F2901C] selection:text-white pb-32">
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-[#1E1B18]">
         <div className="absolute inset-0 z-0">
@@ -110,10 +110,10 @@ export default function OurFunds() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#E89D7A] block mb-4">NEF Portfolio</span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#F2901C] block mb-4">NEF Portfolio</span>
             <h1 className="text-5xl md:text-7xl font-sans font-light tracking-tight uppercase leading-none text-white mb-8">
               Our <br />
-              <span className="font-serif italic text-[#E89D7A]">Funds</span>
+              <span className="font-serif italic text-[#F2901C]">Funds</span>
             </h1>
             <p className="text-base md:text-lg text-white/50 max-w-2xl leading-relaxed font-light">
               We provide a diverse range of funding solutions tailored to the unique needs of black entrepreneurs 
@@ -135,12 +135,12 @@ export default function OurFunds() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14">
             <div className="max-w-3xl text-left">
               <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C79F6E] mb-3 flex items-center gap-2">
-                <SlidersHorizontal size={12} className="text-[#E89D7A]" />
+                <SlidersHorizontal size={12} className="text-[#F2901C]" />
                 Portfolio Finder
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-3xl font-sans font-black text-[#1E1B18] tracking-tighter uppercase leading-[0.95]">
                 We help you find the <br />
-                <span className="font-serif italic text-[#E89D7A] text-4xl md:text-5xl">fund that will be yours</span>
+                <span className="font-serif italic text-[#F2901C] text-4xl md:text-5xl">fund that will be yours</span>
               </h2>
             </div>
             <div className="text-left">
@@ -188,7 +188,7 @@ export default function OurFunds() {
                   <select
                     value={selectedSector}
                     onChange={(e) => setSelectedSector(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#E89D7A] cursor-pointer"
+                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#F2901C] cursor-pointer"
                   >
                     <option value="All">All Sectors</option>
                     <option value="Franchising">Franchising</option>
@@ -217,7 +217,7 @@ export default function OurFunds() {
                   <select
                     value={selectedFundingRange}
                     onChange={(e) => setSelectedFundingRange(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#E89D7A] cursor-pointer"
+                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#F2901C] cursor-pointer"
                   >
                     <option value="All">All ranges (R250k - R50M+)</option>
                     <option value="small">Up to R10 Million (iMbewu)</option>
@@ -236,7 +236,7 @@ export default function OurFunds() {
                   <select
                     value={selectedCriteria}
                     onChange={(e) => setSelectedCriteria(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#E89D7A] cursor-pointer"
+                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#F2901C] cursor-pointer"
                   >
                     <option value="All">All Criteria Settings</option>
                     <option value="black-owned">Majority Black Owned</option>
@@ -256,7 +256,7 @@ export default function OurFunds() {
                   <select
                     value={selectedObjective}
                     onChange={(e) => setSelectedObjective(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#E89D7A] cursor-pointer"
+                    className="w-full bg-[#FAF8F5] border border-[#EFE6DA] rounded-xl px-4 py-3 text-xs text-[#1E1B18] font-medium appearance-none focus:outline-none focus:ring-1 focus:ring-[#F2901C] cursor-pointer"
                   >
                     <option value="All">Any Strategic Objective</option>
                     <option value="entrepreneurship">Promote Startups & Tenders</option>
@@ -296,7 +296,7 @@ export default function OurFunds() {
 
                 <a
                   href="#funds-results-anchor"
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-[#161412] hover:bg-[#E89D7A] text-white hover:text-white rounded-xl text-[10px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-[#161412] hover:bg-[#F2901C] text-white hover:text-white rounded-xl text-[10px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
                 >
                   Show Funds ({filteredFundsFinder.length})
                 </a>
@@ -348,15 +348,15 @@ export default function OurFunds() {
                 onClick={() => setSelectedFund(fund)}
                 className={`p-10 md:p-12 bg-white border border-[#EFE6DA]/85 rounded-[2.2rem] group relative overflow-hidden min-h-[425px] flex flex-col justify-between text-left cursor-pointer transition-all duration-500 hover:shadow-[0_32px_80px_rgba(42,38,34,0.06)] transform hover:-translate-y-1 ${
                   comparisonList.find(f => f.id === fund.id) 
-                    ? "ring-2 ring-[#E89D7A] ring-inset shadow-xl scale-[0.99]" 
+                    ? "ring-2 ring-[#F2901C] ring-inset shadow-xl scale-[0.99]" 
                     : ""
                 }`}
               >
                 <div className="relative z-10 flex justify-between items-center">
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-mono font-black text-[#E89D7A] tracking-widest">{fund.id}</span>
+                    <span className="text-[10px] font-mono font-black text-[#F2901C] tracking-widest">{fund.id}</span>
                     {comparisonList.find(f => f.id === fund.id) && (
-                      <div className="bg-[#E89D7A] text-[#1E1B18] rounded-full p-0.5">
+                      <div className="bg-[#F2901C] text-[#1E1B18] rounded-full p-0.5">
                         <CheckCircle2 size={12} fill="currentColor" />
                       </div>
                     )}
@@ -390,7 +390,7 @@ export default function OurFunds() {
                 </div>
                 
                 <div className="relative z-10 flex items-center justify-between">
-                  <div className="w-11 h-11 rounded-full bg-[#1E1B18] flex items-center justify-center text-white group-hover:bg-[#E89D7A] group-hover:text-white transition-colors duration-300 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-[#1E1B18] flex items-center justify-center text-white group-hover:bg-[#F2901C] group-hover:text-white transition-colors duration-300 shadow-sm">
                     <fund.icon size={18} />
                   </div>
                   <div className="flex items-center gap-2 opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-1.5">
@@ -417,11 +417,11 @@ export default function OurFunds() {
 
       {/* Footer CTA */}
       <section className="py-24 px-6 bg-[#1E1B18] text-white overflow-hidden relative border-t border-white/5 shadow-xl">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E89D7A] opacity-5 -skew-x-12 translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F2901C] opacity-5 -skew-x-12 translate-x-1/4"></div>
         <div className="max-w-5xl mx-auto relative z-10 text-left">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-sans font-light uppercase tracking-tight mb-8 leading-none">
-              Start Your <span className="font-serif italic text-[#E89D7A]">Journey</span> Today
+              Start Your <span className="font-serif italic text-[#F2901C]">Journey</span> Today
             </h2>
             <p className="text-sm md:text-base text-white/50 mb-12 leading-relaxed font-light">
               Our investment team is ready to support your growth. If you meet our criteria, 
@@ -430,7 +430,7 @@ export default function OurFunds() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 to="/how-to-apply"
-                className="px-10 py-4 bg-[#E89D7A] text-white font-bold uppercase text-[10px] tracking-widest rounded-full hover:bg-white hover:text-[#1E1B18] transition-all duration-300 hover:scale-105 shadow-md"
+                className="px-10 py-4 bg-[#F2901C] text-white font-bold uppercase text-[10px] tracking-widest rounded-full hover:bg-white hover:text-[#1E1B18] transition-all duration-300 hover:scale-105 shadow-md"
               >
                 Apply Now
               </Link>
@@ -631,7 +631,7 @@ export default function OurFunds() {
                 className="w-full h-full object-cover grayscale"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-[#E89D7A] mix-blend-multiply opacity-40 animate-fade-in"></div>
+              <div className="absolute inset-0 bg-[#F2901C] mix-blend-multiply opacity-40 animate-fade-in"></div>
               <div className="absolute bottom-8 left-8">
                 <selectedFund.icon size={48} className="text-white" />
               </div>
@@ -644,7 +644,7 @@ export default function OurFunds() {
               <div className="space-y-12 text-left">
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#E89D7A]"></div>
+                    <div className="w-2 h-2 bg-[#F2901C]"></div>
                     Objective
                   </h4>
                   <p className="text-lg text-gray-600 leading-relaxed italic font-light">
@@ -655,7 +655,7 @@ export default function OurFunds() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-widest mb-6 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[#E89D7A]"></div>
+                      <div className="w-2 h-2 bg-[#F2901C]"></div>
                       Key Criteria
                     </h4>
                     <ul className="space-y-4">
@@ -670,7 +670,7 @@ export default function OurFunds() {
 
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-widest mb-6 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[#E89D7A]"></div>
+                      <div className="w-2 h-2 bg-[#F2901C]"></div>
                       Focus Sectors
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -686,7 +686,7 @@ export default function OurFunds() {
                 {selectedFund.products && selectedFund.products.length > 0 && (
                   <div className="pt-12 border-t border-gray-100">
                     <h4 className="text-xs font-bold uppercase tracking-widest mb-8 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[#E89D7A]"></div>
+                      <div className="w-2 h-2 bg-[#F2901C]"></div>
                       Available Products
                     </h4>
                     <div className="grid grid-cols-1 gap-6">
@@ -699,11 +699,11 @@ export default function OurFunds() {
                               navigate(product.href);
                             }
                           }}
-                          className={`p-6 bg-gray-50 border-l-4 border-[#E89D7A] group transition-all duration-300 hover:bg-black hover:text-white ${product.href ? 'cursor-pointer' : ''}`}
+                          className={`p-6 bg-gray-50 border-l-4 border-[#F2901C] group transition-all duration-300 hover:bg-black hover:text-white ${product.href ? 'cursor-pointer' : ''}`}
                         >
                           <div className="flex justify-between items-start">
                             <h5 className="font-bold uppercase tracking-tighter mb-2 group-hover:text-white transition-colors text-sm">{product.name}</h5>
-                            {product.href && <ArrowRight size={16} className="text-[#E89D7A] opacity-0 group-hover:opacity-100 transition-opacity" />}
+                            {product.href && <ArrowRight size={16} className="text-[#F2901C] opacity-0 group-hover:opacity-100 transition-opacity" />}
                           </div>
                           <p className="text-xs text-gray-500 group-hover:text-gray-400 transition-colors font-light">{product.description}</p>
                         </div>
@@ -718,7 +718,7 @@ export default function OurFunds() {
                       setSelectedFund(null);
                       navigate("/how-to-apply");
                     }}
-                    className="w-full py-4 bg-black text-white font-bold uppercase tracking-widest hover:bg-[#E89D7A] hover:text-[#1E1B18] transition-colors flex items-center justify-center gap-4 text-xs"
+                    className="w-full py-4 bg-black text-white font-bold uppercase tracking-widest hover:bg-[#F2901C] hover:text-[#1E1B18] transition-colors flex items-center justify-center gap-4 text-xs"
                   >
                     Apply Now <ArrowRight size={20} />
                   </button>

@@ -44,7 +44,7 @@ const STEPS = [
 
 export default function HowToApply() {
   return (
-    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#F2901C] selection:text-white">
       <div className="max-w-5xl mx-auto px-6 md:px-8 py-24">
         <Breadcrumbs />
         
@@ -79,19 +79,19 @@ export default function HowToApply() {
               className="relative pl-16 md:pl-24 group"
             >
               {/* Connector dot on the line */}
-              <div className="absolute left-[21px] md:left-[29px] top-6 w-2.5 h-2.5 bg-[#E89D7A] rounded-full z-20 border-2 border-[#FCFAF7] shadow-sm"></div>
+              <div className="absolute left-[21px] md:left-[29px] top-6 w-2.5 h-2.5 bg-[#F2901C] rounded-full z-20 border-2 border-[#FCFAF7] shadow-sm"></div>
 
               <div className="bg-white p-8 md:p-12 border border-[#EFE6DA]/70 rounded-[2.2rem] group-hover:bg-[#1E1B18] transition-all duration-500 shadow-sm hover:shadow-[0_32px_80px_rgba(42,38,34,0.06)]">
                 <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
                   {/* Step Day Pill Inspired by Design Reference "Day 1-3" etc */}
                   <div className="inline-flex items-center gap-3">
-                    <span className="px-5 py-2.5 rounded-full bg-[#FCFAF7] text-[#1E1B18] text-[9px] font-mono tracking-widest font-bold uppercase group-hover:bg-[#E89D7A] group-hover:text-white transition-all duration-500 shadow-sm border border-[#EFE6DA]/60 group-hover:border-[#E89D7A]">
+                    <span className="px-5 py-2.5 rounded-full bg-[#FCFAF7] text-[#1E1B18] text-[9px] font-mono tracking-widest font-bold uppercase group-hover:bg-[#F2901C] group-hover:text-white transition-all duration-500 shadow-sm border border-[#EFE6DA]/60 group-hover:border-[#F2901C]">
                       Phase {step.id}
                     </span>
                     <span className="h-px w-8 bg-[#EFE6DA] group-hover:bg-white/10 transition-all"></span>
                   </div>
                   <div className="w-11 h-11 rounded-full bg-[#FAF8F5] group-hover:bg-white/10 flex items-center justify-center transition-all duration-500 shadow-xs">
-                    <step.icon size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors duration-500" />
+                    <step.icon size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors duration-500" />
                   </div>
                 </div>
 
@@ -107,14 +107,14 @@ export default function HowToApply() {
         </div>
 
         <div className="mt-28 p-12 bg-[#1E1B18] text-white rounded-[2.2rem] relative overflow-hidden border border-white/5 shadow-xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E89D7A]/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#F2901C]/5 rounded-full blur-3xl pointer-events-none"></div>
           <div className="max-w-2xl relative z-10 text-left">
             <h2 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight mb-6">Ready to start your journey?</h2>
             <p className="text-white/50 mb-10 leading-relaxed font-light text-sm md:text-base">
               Ensure you have all your documentation ready, including your BEE certificate, business plan, 
               and financial statements for the last three years (if applicable).
             </p>
-            <button className="px-10 py-4 bg-[#E89D7A] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
+            <button className="px-10 py-4 bg-[#F2901C] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all duration-300 hover:scale-105 active:scale-95">
               Download Application Form
             </button>
           </div>

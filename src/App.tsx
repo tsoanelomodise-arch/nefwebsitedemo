@@ -220,7 +220,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white flex flex-col relative">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#F2901C] selection:text-white flex flex-col relative">
       <ScrollToTop />
       
       {/* Sticky Horizontal Navigation Bar */}
@@ -254,7 +254,7 @@ export default function App() {
                 onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
                 className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
                   activeMegaMenu === "about" || location.pathname.startsWith("/about/") || location.pathname === "/performance-report-2025"
-                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    ? "text-[#F2901C] border-[#F2901C]" 
                     : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
                 }`}
               >
@@ -272,7 +272,7 @@ export default function App() {
                 onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
                 className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
                   activeMegaMenu === "funding" || location.pathname === "/our-funds" || location.pathname === "/funding-criteria" || location.pathname === "/check-eligibility" || location.pathname === "/how-to-apply" || location.pathname === "/non-financial-support"
-                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    ? "text-[#F2901C] border-[#F2901C]" 
                     : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
                 }`}
               >
@@ -290,7 +290,7 @@ export default function App() {
                 onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
                 className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer h-full border-b-2 flex items-center gap-1.5 ${
                   activeMegaMenu === "contact" || (activeSection === "07" && !isSubPage) || location.pathname === "/faq"
-                    ? "text-[#E89D7A] border-[#E89D7A]" 
+                    ? "text-[#F2901C] border-[#F2901C]" 
                     : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
                 }`}
               >
@@ -321,7 +321,7 @@ export default function App() {
               </div>
               <div className="text-left leading-tight">
                 <div className="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">Have Questions?</div>
-                <div className="text-[10px] text-[#C79F6E] font-extrabold uppercase tracking-wide group-hover:text-[#E89D7A] transition-colors">Ask an Advisor.</div>
+                <div className="text-[10px] text-[#C79F6E] font-extrabold uppercase tracking-wide group-hover:text-[#F2901C] transition-colors">Ask an Advisor.</div>
               </div>
             </div>
 
@@ -329,7 +329,7 @@ export default function App() {
             <div className="flex flex-col items-center gap-1 shrink-0">
               <button
                 onClick={() => navigate("/check-eligibility")}
-                className="px-5 py-2 bg-[#1E1B18] text-[#FCFAF7] hover:bg-[#E89D7A] hover:text-white rounded-full text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95 cursor-pointer text-center"
+                className="px-5 py-2 bg-[#1E1B18] text-[#FCFAF7] hover:bg-[#F2901C] hover:text-white rounded-full text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95 cursor-pointer text-center"
               >
                 Check Eligibility
               </button>
@@ -340,7 +340,7 @@ export default function App() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   title="Twitter"
-                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
                 >
                   <Twitter size={11} />
                 </a>
@@ -349,7 +349,7 @@ export default function App() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   title="LinkedIn"
-                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
                 >
                   <Linkedin size={11} />
                 </a>
@@ -358,7 +358,7 @@ export default function App() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   title="Facebook"
-                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
                 >
                   <Facebook size={11} />
                 </a>
@@ -369,7 +369,7 @@ export default function App() {
           {/* Mobile menu trigger button */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-[#1E1B18] hover:text-[#E89D7A] transition-colors relative z-[120]"
+            className="md:hidden p-2 text-[#1E1B18] hover:text-[#F2901C] transition-colors relative z-[120]"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -403,8 +403,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Mandate, Vision & Mission</h5>
@@ -417,8 +417,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Leadership & Board</h5>
@@ -438,8 +438,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Performance Report 2025</h5>
@@ -452,8 +452,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">General FAQ & Criteria</h5>
@@ -467,7 +467,7 @@ export default function App() {
 
                     {/* Column 3: Featured Bento Card (Mockup Inspired) */}
                     <div className="col-span-4 bg-[#FCFAF7] p-6 rounded-3xl border border-[#EFE6DA]/70 flex flex-col justify-between min-h-[220px] relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2901C]/5 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
                       <div className="space-y-3 relative z-10">
                         <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] block">Milestone Impact</span>
                         <h4 className="text-lg font-sans font-light uppercase tracking-tight text-[#1E1B18]">Driving South Africa's Growth</h4>
@@ -480,7 +480,7 @@ export default function App() {
                           setActiveMegaMenu(null);
                           navigate("/performance-report-2025");
                         }}
-                        className="relative z-10 mt-6 px-5 py-2 bg-[#1E1B18] text-white hover:bg-[#E89D7A] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm cursor-pointer"
+                        className="relative z-10 mt-6 px-5 py-2 bg-[#1E1B18] text-white hover:bg-[#F2901C] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm cursor-pointer"
                       >
                         View Interactive Report
                       </button>
@@ -499,8 +499,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <SlidersHorizontal size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <SlidersHorizontal size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Portfolio Finder</h5>
@@ -513,8 +513,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Funding Criteria</h5>
@@ -527,8 +527,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Zap size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <Zap size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Check Your Eligibility</h5>
@@ -548,8 +548,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Non-Financial Support</h5>
@@ -562,8 +562,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Application Roadmap</h5>
@@ -583,8 +583,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
                           className="group p-2.5 rounded-xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-3"
                         >
-                          <div className="w-8 h-8 shrink-0 bg-neutral-100 rounded-lg flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <Users size={14} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-8 h-8 shrink-0 bg-neutral-100 rounded-lg flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <Users size={14} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">All Stories</h5>
@@ -598,7 +598,7 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/investee-stories/the-orchards", isExternal: true })}
                           className="group p-2.5 rounded-xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-3"
                         >
-                          <div className="w-8 h-8 shrink-0 bg-[#E89D7A]/10 text-[#E89D7A] rounded-lg flex items-center justify-center border border-[#E89D7A]/20 transition-colors">
+                          <div className="w-8 h-8 shrink-0 bg-[#F2901C]/10 text-[#F2901C] rounded-lg flex items-center justify-center border border-[#F2901C]/20 transition-colors">
                             <span className="text-[10px] font-mono font-black">01</span>
                           </div>
                           <div>
@@ -613,7 +613,7 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/investee-stories/busamed-healthcare", isExternal: true })}
                           className="group p-2.5 rounded-xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-3"
                         >
-                          <div className="w-8 h-8 shrink-0 bg-[#E89D7A]/10 text-[#E89D7A] rounded-lg flex items-center justify-center border border-[#E89D7A]/20 transition-colors">
+                          <div className="w-8 h-8 shrink-0 bg-[#F2901C]/10 text-[#F2901C] rounded-lg flex items-center justify-center border border-[#F2901C]/20 transition-colors">
                             <span className="text-[10px] font-mono font-black">02</span>
                           </div>
                           <div>
@@ -638,17 +638,17 @@ export default function App() {
                         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop')` }}
                       ></div>
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18] via-[#1E1B18]/70 to-transparent z-10"></div>
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/20 transition-all duration-500 z-10"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2901C]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F2901C]/20 transition-all duration-500 z-10"></div>
                       
                       <div className="space-y-3 relative z-20">
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Latest Success Story</span>
-                        <h4 className="text-lg font-sans font-black uppercase tracking-tight text-white group-hover:text-[#E89D7A] transition-colors">Mamelodi Square</h4>
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Latest Success Story</span>
+                        <h4 className="text-lg font-sans font-black uppercase tracking-tight text-white group-hover:text-[#F2901C] transition-colors">Mamelodi Square</h4>
                         <p className="text-white/60 text-[11px] font-light leading-relaxed">
                           How a landmark R50M retail development created 250+ community jobs and transformed local commerce infrastructure.
                         </p>
                       </div>
                       <div className="relative z-20 mt-6 flex justify-between items-center w-full">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
                           Read Story <span className="text-xs">→</span>
                         </span>
                         <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Urban Property</span>
@@ -668,8 +668,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <HelpCircle size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <HelpCircle size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Frequently Asked Questions</h5>
@@ -682,8 +682,8 @@ export default function App() {
                           onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
-                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#E89D7A]/15 group-hover:border-[#E89D7A]/30 transition-colors">
-                            <MessageSquare size={18} className="text-[#1E1B18] group-hover:text-[#E89D7A] transition-colors" />
+                          <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
+                            <MessageSquare size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Submit an Inquiry</h5>
@@ -706,11 +706,11 @@ export default function App() {
                         <div className="grid grid-cols-2 gap-4 pt-1">
                           <div className="space-y-0.5">
                             <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Telephone</span>
-                            <a href="tel:+27113058000" className="text-[12px] font-bold text-[#1E1B18] hover:text-[#E89D7A] transition-colors">+27 11 305 8000</a>
+                            <a href="tel:+27113058000" className="text-[12px] font-bold text-[#1E1B18] hover:text-[#F2901C] transition-colors">+27 11 305 8000</a>
                           </div>
                           <div className="space-y-0.5">
                             <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Email Support</span>
-                            <a href="mailto:applications@nefcorp.co.za" className="text-[11px] font-bold text-[#1E1B18] hover:text-[#E89D7A] transition-colors break-all">applications@nefcorp.co.za</a>
+                            <a href="mailto:applications@nefcorp.co.za" className="text-[11px] font-bold text-[#1E1B18] hover:text-[#F2901C] transition-colors break-all">applications@nefcorp.co.za</a>
                           </div>
                         </div>
                         <p className="text-[10px] text-neutral-400 italic">
@@ -721,9 +721,9 @@ export default function App() {
 
                     {/* Column 3: AI Advisor Assistant */}
                     <div className="col-span-4 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group animate-in fade-in slide-in-from-bottom-2 duration-300">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#E89D7A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#E89D7A]/15 transition-all duration-500"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2901C]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F2901C]/15 transition-all duration-500"></div>
                       <div className="space-y-3 relative z-10">
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Digital Engagement</span>
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Digital Engagement</span>
                         <h4 className="text-lg font-sans font-light uppercase tracking-tight">Speak with AI Advisor</h4>
                         <p className="text-white/50 text-[11px] font-light leading-relaxed">
                           Unsure which fund applies to your BEE structure, or have quick compliance questions? Get instant criteria matching.
@@ -735,7 +735,7 @@ export default function App() {
                           const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
                           if (chatbotBtn) chatbotBtn.click();
                         }}
-                        className="relative z-10 mt-6 px-5 py-2 bg-[#E89D7A] text-white hover:bg-white hover:text-[#1E1B18] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer"
+                        className="relative z-10 mt-6 px-5 py-2 bg-[#F2901C] text-white hover:bg-white hover:text-[#1E1B18] rounded-full self-start text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer"
                       >
                         Launch Interactive Chat
                       </button>
@@ -767,13 +767,13 @@ export default function App() {
                 <div className="pl-4 flex flex-col gap-2 border-l border-[#EFE6DA]/60">
                   <button
                     onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Mandate, Mission & Vision
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Performance Report 2025
                   </button>
@@ -784,31 +784,31 @@ export default function App() {
                 <div className="pl-4 flex flex-col gap-2 border-l border-[#EFE6DA]/60">
                   <button
                     onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Portfolio Finder
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Funding Criteria
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Check Eligibility
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Non-Financial Support
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     How to Apply
                   </button>
@@ -820,7 +820,7 @@ export default function App() {
                 <div className="text-[8px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E]">Case Studies</div>
                 <button
                   onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
-                  className="text-xl font-sans font-light text-left uppercase tracking-tight block w-full hover:text-[#E89D7A] transition-colors"
+                  className="text-xl font-sans font-light text-left uppercase tracking-tight block w-full hover:text-[#F2901C] transition-colors"
                 >
                   Investee Stories
                 </button>
@@ -832,13 +832,13 @@ export default function App() {
                 <div className="pl-4 flex flex-col gap-2.5 border-l border-[#EFE6DA]/60">
                   <button
                     onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
-                    className="text-sm font-sans font-medium text-left text-[#1E1B18] hover:text-[#E89D7A] transition-colors"
+                    className="text-sm font-sans font-medium text-left text-[#1E1B18] hover:text-[#F2901C] transition-colors"
                   >
                     Contact Info & Form
                   </button>
                   <button
                     onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
-                    className="text-sm font-sans font-normal text-left text-neutral-500 hover:text-[#E89D7A] transition-colors pl-4 border-l border-[#E89D7A]/40"
+                    className="text-sm font-sans font-normal text-left text-neutral-500 hover:text-[#F2901C] transition-colors pl-4 border-l border-[#F2901C]/40"
                   >
                     ↳ Frequently Asked Questions (FAQ)
                   </button>
@@ -980,7 +980,7 @@ export default function App() {
                               {/* Card Footer action indicators */}
                               <div className="mt-4 pt-2 flex items-center justify-between w-full border-t border-current/5">
                                 {isActive ? (
-                                  <span className="text-[8.5px] font-sans font-extrabold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1">
+                                  <span className="text-[8.5px] font-sans font-extrabold uppercase tracking-widest text-[#F2901C] flex items-center gap-1">
                                     Active <span className="text-[10px]">→</span>
                                   </span>
                                 ) : (
@@ -999,7 +999,7 @@ export default function App() {
                     <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-col gap-5 text-left md:pl-10">
                       <div>
                         {/* Slide Subtitle tracking label */}
-                        <span className="text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-[#E89D7A] block mb-2 font-mono">
+                        <span className="text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-[#F2901C] block mb-2 font-mono">
                           {HERO_SLIDES[currentSlide].subtitle}
                         </span>
 
@@ -1017,7 +1017,7 @@ export default function App() {
                         <div className="flex flex-wrap gap-3">
                           <button
                             onClick={() => navigate("/our-funds")}
-                            className="px-6 py-3 bg-white text-[#1E1B18] hover:bg-[#E89D7A] hover:text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
+                            className="px-6 py-3 bg-white text-[#1E1B18] hover:bg-[#F2901C] hover:text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
                           >
                             Explore Solutions
                           </button>
@@ -1060,9 +1060,9 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-7xl mx-auto relative z-10">
                   <div className="space-y-8">
                     <div className="flex items-center gap-4">
-                      <div className="h-px w-12 bg-[#E89D7A]"></div>
+                      <div className="h-px w-12 bg-[#F2901C]"></div>
                       <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C79F6E]">Our Legacy</span>
-                      <Zap size={14} className="text-[#E89D7A]" />
+                      <Zap size={14} className="text-[#F2901C]" />
                     </div>
                     <p className="text-[#3A3530] max-w-md leading-relaxed text-base md:text-lg font-light">
                       The NEF provides financial and non-financial support to black-owned businesses, ensuring sustainable growth and economic transformation.
@@ -1084,16 +1084,16 @@ export default function App() {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/40 to-transparent"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <button 
-                          className="w-16 h-16 bg-[#E89D7A] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 active:scale-95 transition-all duration-300 relative group"
+                          className="w-16 h-16 bg-[#F2901C] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 active:scale-95 transition-all duration-300 relative group"
                         >
-                          <span className="absolute inset-x-0 inset-y-0 rounded-full bg-[#E89D7A]/30 group-hover:animate-ping"></span>
+                          <span className="absolute inset-x-0 inset-y-0 rounded-full bg-[#F2901C]/30 group-hover:animate-ping"></span>
                           <Play fill="white" size={18} className="relative z-10 text-white translate-x-0.5" />
                         </button>
                       </div>
                     </div>
                     <div className="absolute -bottom-8 -left-8 bg-white border border-neutral-100 p-6 rounded-3xl shadow-[0_30px_60px_rgba(42,38,34,0.06)] max-w-xs hidden md:block group hover:-translate-y-1 transition-transform duration-500">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#E58E62] border border-neutral-100 group-hover:bg-[#E89D7A] group-hover:text-white transition-colors duration-300">
+                        <div className="w-10 h-10 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#E58E62] border border-neutral-100 group-hover:bg-[#F2901C] group-hover:text-white transition-colors duration-300">
                           <ArrowRight size={14} />
                         </div>
                         <button 
@@ -1116,15 +1116,15 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 max-w-7xl mx-auto">
                   <div className="space-y-12">
                     <div className="space-y-6">
-                      <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em] block">Latest Success Spotlight</span>
+                      <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em] block">Latest Success Spotlight</span>
                       <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight leading-none uppercase">
                         INVESTEE <br />
-                        <span className="font-serif italic text-[#E89D7A]">STORIES</span>
+                        <span className="font-serif italic text-[#F2901C]">STORIES</span>
                       </h2>
                     </div>
                     
                     <div className="space-y-4">
-                      <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#E89D7A]">
+                      <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#F2901C]">
                         {latestStory.title}
                       </h3>
                       <p className="text-white/50 text-sm md:text-base max-w-md font-light leading-relaxed">
@@ -1136,11 +1136,11 @@ export default function App() {
                       onClick={() => navigate("/investee-stories")}
                       className="group flex items-center gap-6 text-left"
                     >
-                      <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:border-[#E89D7A] group-hover:bg-[#E89D7A] hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+                      <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:border-[#F2901C] group-hover:bg-[#F2901C] hover:scale-105 transition-all duration-300 backdrop-blur-sm">
                         <ArrowRight className="w-5 h-5 text-white group-hover:text-black transition-colors" />
                       </div>
                       <div className="space-y-0.5">
-                        <span className="text-xs font-bold uppercase tracking-widest block text-[#C79F6E] group-hover:text-[#E89D7A] transition-colors">View All Stories</span>
+                        <span className="text-xs font-bold uppercase tracking-widest block text-[#C79F6E] group-hover:text-[#F2901C] transition-colors">View All Stories</span>
                         <span className="text-[9px] font-mono tracking-widest font-bold uppercase opacity-30 block">Real Impact. Real People.</span>
                       </div>
                     </button>
@@ -1163,17 +1163,17 @@ export default function App() {
                       />
                       {/* Centered Play Button Overlay */}
                       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#E89D7A]/95 text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#E89D7A]">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#F2901C]/95 text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#F2901C]">
                           <Play size={24} fill="#1E1B18" className="ml-1 md:ml-1.5" />
                         </div>
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent opacity-95"></div>
                       <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex items-end justify-between z-10 gap-4">
                         <div className="space-y-1 md:space-y-2 text-left">
-                          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#E89D7A] text-[#1E1B18] px-3 py-1 md:px-4 md:py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
+                          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#F2901C] text-[#1E1B18] px-3 py-1 md:px-4 md:py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
                           <h4 className="text-sm md:text-xl font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
                         </div>
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#E89D7A]/20 shrink-0">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#F2901C]/20 shrink-0">
                           <ArrowRight size={14} className="text-white md:w-4 md:h-4" />
                         </div>
                       </div>
@@ -1183,15 +1183,15 @@ export default function App() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                       <div 
                         onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#E89D7A]/20 transition-[border-color] duration-500"
+                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#F2901C]/20 transition-[border-color] duration-500"
                       >
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#E89D7A]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Testimonial</span>
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Testimonial</span>
                         <p className="text-white/80 text-[10px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-4">
                           "{latestStory.quote}"
                         </p>
                         <div className="flex justify-between items-center relative z-10">
-                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#E89D7A] transition-colors">{latestStory.author}</span>
+                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#F2901C] transition-colors">{latestStory.author}</span>
                           <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all">
                             <ArrowRight size={10} className="text-white" />
                           </div>
@@ -1200,12 +1200,12 @@ export default function App() {
 
                       <div 
                         onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#E89D7A]/20 transition-[border-color] duration-500"
+                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#F2901C]/20 transition-[border-color] duration-500"
                       >
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#E89D7A]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
                         <div className="space-y-4">
-                          <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Impact stats</span>
-                          <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#E89D7A] transition-colors">
+                          <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Impact stats</span>
+                          <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#F2901C] transition-colors">
                             {latestStory.title}
                           </h4>
                           <div className="space-y-2 pt-2 border-t border-white/5 font-serif italic text-gold-foil">
@@ -1218,7 +1218,7 @@ export default function App() {
                           </div>
                         </div>
                         <div className="flex justify-between items-center relative z-10 mt-4 border-t border-white/5 pt-4">
-                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
                             Read Full Story <span className="text-xs">→</span>
                           </span>
                           <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Interactive</span>
@@ -1231,7 +1231,7 @@ export default function App() {
 
               {/* Team/Impact Section */}
               <section className="bg-[#161412] py-28 px-8 md:px-24 text-white overflow-hidden border-t border-white/5 relative">
-                <div className="absolute top-0 right-10 w-44 h-44 bg-[#E89D7A]/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute top-0 right-10 w-44 h-44 bg-[#F2901C]/5 rounded-full blur-3xl pointer-events-none"></div>
                 <div className="absolute bottom-0 left-10 w-44 h-44 bg-[#C79F6E]/5 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div className="max-w-6xl mx-auto relative z-10">
@@ -1239,7 +1239,7 @@ export default function App() {
                     <span className="text-[#C79F6E] text-[10px] font-mono uppercase tracking-[0.4em] mb-4 block">A Legacy of Empowerment</span>
                     <h2 className="text-3xl md:text-5xl lg:text-3xl font-sans font-light tracking-tight mb-6 leading-none uppercase">
                       Annual Review <br />
-                      <span className="font-serif italic text-[#E89D7A] lowercase">performance highlights</span>
+                      <span className="font-serif italic text-[#F2901C] lowercase">performance highlights</span>
                     </h2>
                     <p className="text-neutral-400 text-xs md:text-sm max-w-2xl mx-auto font-light leading-relaxed">
                       A summary of our economic transformation, enterprise development, and job creation impact across South Africa during the latest review period.
@@ -1247,34 +1247,34 @@ export default function App() {
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
-                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">R7.4bn</div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#F2901C]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">R7.4bn</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Total Approvals</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
-                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">112k+</div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#F2901C]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">112k+</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Jobs Supported</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
-                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">1,240</div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#F2901C]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">1,240</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">SMMEs Funded</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#E89D7A]/20 transition-all duration-300 group">
-                      <div className="text-3xl md:text-4xl font-light text-[#E89D7A] mb-2 group-hover:scale-105 transition-transform">42%</div>
+                    <div className="text-center px-4 py-8 bg-white/5 rounded-[2rem] border border-white/5 backdrop-blur-sm shadow-xl hover:border-[#F2901C]/20 transition-all duration-300 group">
+                      <div className="text-3xl md:text-4xl font-light text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">42%</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest opacity-50">Black Women Owned</div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     <div className="flex gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-2xl items-center text-left">
-                      <div className="text-3xl font-light text-[#E89D7A]">85%</div>
+                      <div className="text-3xl font-light text-[#F2901C]">85%</div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-white">Black Ownership</h4>
                         <p className="text-[11px] text-neutral-400 font-light mt-1">Average black ownership maintained across our investment portfolio.</p>
                       </div>
                     </div>
                     <div className="flex gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-2xl items-center text-left">
-                      <div className="text-3xl font-light text-[#E89D7A]">R1.2bn</div>
+                      <div className="text-3xl font-light text-[#F2901C]">R1.2bn</div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-white">Rural Development</h4>
                         <p className="text-[11px] text-neutral-400 font-light mt-1">Dedicated funding deployed to support township and rural economies.</p>
@@ -1285,7 +1285,7 @@ export default function App() {
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => navigate('/performance-report-2025')}
-                      className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#E89D7A] hover:text-white transition-colors"
+                      className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F2901C] hover:text-white transition-colors"
                     >
                       View Full Performance Report 2025 <span className="text-xs">→</span>
                     </button>
@@ -1294,7 +1294,7 @@ export default function App() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="py-24 px-8 md:px-24 bg-gradient-to-br from-[#E89D7A] to-[#E58E62] relative overflow-hidden">
+              <section id="contact" className="py-24 px-8 md:px-24 bg-gradient-to-br from-[#F2901C] to-[#E58E62] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -1375,7 +1375,7 @@ export default function App() {
                         className="bg-white/30 backdrop-blur-md border border-white/20 p-8 rounded-[2rem] text-center space-y-4"
                       >
                         <div className="w-14 h-14 bg-[#1E1B18] text-white rounded-full flex items-center justify-center mx-auto shadow-md">
-                          <CheckCircle2 size={24} className="text-[#E89D7A]" />
+                          <CheckCircle2 size={24} className="text-[#F2901C]" />
                         </div>
                         <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#1E1B18]">Message Sent Successfully</h3>
                         <p className="text-xs text-[#1E1B18]/80 leading-relaxed font-light">
@@ -1405,10 +1405,21 @@ export default function App() {
               <footer className="bg-[#FAF8F5] pt-16 pb-12 px-8 md:px-24 border-t border-[#EFE6DA]/40 text-[#1E1B18]">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-[#EFE6DA]/40">
                   {/* Brand Column */}
-                  <div className="md:col-span-4 space-y-4">
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E]">National Empowerment Fund</span>
-                      <h3 className="text-lg font-sans font-light uppercase tracking-tight text-[#1E1B18]">Growing Black Participation</h3>
+                  <div className="md:col-span-4 space-y-4 text-left">
+                    <div className="inline-flex items-center gap-3 bg-[#113f36] text-white py-2.5 px-4 rounded-2xl border border-green-800 shadow-xs max-w-full">
+                      <div className="relative w-7 h-7 flex-shrink-0 text-white leading-none">
+                        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" stroke="currentColor">
+                          <path d="M25,15 C10,35 10,65 25,85" strokeWidth="8" strokeLinecap="round" opacity="0.65" />
+                          <path d="M40,15 C25,35 25,65 40,85" strokeWidth="8" strokeLinecap="round" opacity="0.85" />
+                          <path d="M55,15 C40,35 40,65 55,85" strokeWidth="8" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      <div className="flex flex-col leading-[1.05] text-left">
+                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">National</span>
+                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">Empowerment</span>
+                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">Fund</span>
+                        <span className="text-[4.5px] font-sans font-light tracking-wide opacity-80 uppercase mt-0.5">Growing Black Economic Participation</span>
+                      </div>
                     </div>
                     <p className="text-neutral-500 text-xs font-light leading-relaxed max-w-sm">
                       A catalyst for Broad-Based Black Economic Empowerment, accelerating business development, asset transformation, and operational sustainability across South Africa.
@@ -1422,7 +1433,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Portfolio Finder
                         </button>
@@ -1430,7 +1441,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Funding Criteria
                         </button>
@@ -1438,7 +1449,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Eligibility Checklist
                         </button>
@@ -1446,7 +1457,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Non-Financial Support
                         </button>
@@ -1454,7 +1465,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           How to Apply
                         </button>
@@ -1469,7 +1480,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Mandate, Vision & Mission
                         </button>
@@ -1477,7 +1488,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Performance Report 2025
                         </button>
@@ -1485,7 +1496,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Investee Success Stories
                         </button>
@@ -1500,7 +1511,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Frequently Asked Questions
                         </button>
@@ -1508,7 +1519,7 @@ export default function App() {
                       <li>
                         <button
                           onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
-                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Contact & General Inquiries
                         </button>
@@ -1519,7 +1530,7 @@ export default function App() {
                             const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
                             if (chatbotBtn) chatbotBtn.click();
                           }}
-                          className="text-xs text-[#E89D7A] hover:underline transition-all font-semibold tracking-wide text-left flex items-center gap-1.5 shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                          className="text-xs text-[#F2901C] hover:underline transition-all font-semibold tracking-wide text-left flex items-center gap-1.5 shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Speak with AI Advisor 💬
                         </button>
@@ -1536,7 +1547,7 @@ export default function App() {
                   <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
                     <a 
                       href="#" 
-                      className="transition-colors hover:text-[#E89D7A]"
+                      className="transition-colors hover:text-[#F2901C]"
                     >
                       Instagram
                     </a>
@@ -1544,7 +1555,7 @@ export default function App() {
                       href="https://www.linkedin.com/company/national-empowerment-fund" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-colors hover:text-[#E89D7A]"
+                      className="transition-colors hover:text-[#F2901C]"
                     >
                       LinkedIn
                     </a>
@@ -1552,7 +1563,7 @@ export default function App() {
                       href="https://twitter.com/nefcorp" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-colors hover:text-[#E89D7A]"
+                      className="transition-colors hover:text-[#F2901C]"
                     >
                       Twitter
                     </a>
@@ -1589,7 +1600,7 @@ export default function App() {
               {/* Close Button */}
               <button
                 onClick={() => setPlayingHomeVideo(false)}
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#E89D7A] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#F2901C] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
               >
                 <X size={20} />
               </button>

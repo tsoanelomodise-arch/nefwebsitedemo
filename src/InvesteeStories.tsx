@@ -42,7 +42,7 @@ export default function InvesteeStories() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white font-sans">
+    <div className="min-h-screen bg-[#FCFAF7] text-[#1E1B18] selection:bg-[#F2901C] selection:text-white font-sans">
       {/* Header */}
       <header className="relative min-h-[45vh] md:min-h-[50vh] pt-36 md:pt-48 pb-16 flex items-center justify-center overflow-hidden bg-[#1E1B18]">
         <motion.div 
@@ -71,10 +71,10 @@ export default function InvesteeStories() {
             transition={{ delay: 0.5 }}
             className="space-y-6"
           >
-            <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em] block">Success Stories</span>
+            <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em] block">Success Stories</span>
             <h1 className="text-4xl md:text-6xl font-sans font-light text-white tracking-tight leading-none uppercase">
               INVESTEE <br />
-              <span className="font-serif italic text-[#E89D7A]">STORIES</span>
+              <span className="font-serif italic text-[#F2901C]">STORIES</span>
             </h1>
             <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
               Real stories of transformation, resilience, and economic empowerment across South Africa.
@@ -89,10 +89,8 @@ export default function InvesteeStories() {
           onClick={() => navigate("/")}
           className="absolute top-24 left-6 md:top-28 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-white transition-colors"
         >
-          <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#E89D7A] transition-colors bg-[#1E1B18]/30 backdrop-blur-md">
-            <ArrowLeft className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-[9px] font-bold uppercase tracking-widest text-[#E89D7A]">Back to Home</span>
+          <div className="w-9 h-px bg-white/20"></div>
+          <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C]">Back to Home</span>
         </motion.button>
       </header>
 
@@ -100,7 +98,7 @@ export default function InvesteeStories() {
       <section className="pt-24 px-6 max-w-7xl mx-auto text-left">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 border-b border-[#EFE6DA]/40 pb-12">
           <div className="flex items-center gap-4 shrink-0">
-            <div className="w-9 h-9 rounded-full bg-[#1E1B18] flex items-center justify-center text-[#E89D7A] shadow-xs">
+            <div className="w-9 h-9 rounded-full bg-[#1E1B18] flex items-center justify-center text-[#F2901C] shadow-xs">
               <Filter className="w-3.5 h-3.5" />
             </div>
             <div className="flex flex-col">
@@ -164,15 +162,15 @@ export default function InvesteeStories() {
                       />
                       {/* Interactive Play Button in list */}
                       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                        <div className="w-14 h-14 rounded-full bg-[#EECFBA]/90 text-[#1E1B18] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#E89D7A] group-hover:text-white">
+                        <div className="w-14 h-14 rounded-full bg-[#EECFBA]/90 text-[#1E1B18] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#F2901C] group-hover:text-white">
                           <Play size={18} fill="currentColor" className="ml-0.5 text-inherit" />
                         </div>
                       </div>
-                      <div className="absolute top-6 left-6 bg-[#E89D7A] text-white px-4 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-widest shadow-md z-10">
+                      <div className="absolute top-6 left-6 bg-[#F2901C] text-white px-4 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-widest shadow-md z-10">
                         {story.category}
                       </div>
                       <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between z-10">
-                        <span className="text-[8px] font-bold uppercase tracking-widest bg-[#1E1B18]/70 text-[#E89D7A] px-3 py-1 rounded-full shadow-md backdrop-blur-xs">Success Video available</span>
+                        <span className="text-[8px] font-bold uppercase tracking-widest bg-[#1E1B18]/70 text-[#F2901C] px-3 py-1 rounded-full shadow-md backdrop-blur-xs">Success Video available</span>
                       </div>
                     </div>
                   </div>
@@ -185,7 +183,7 @@ export default function InvesteeStories() {
                         const Icon = stat.icon ? IconMap[stat.icon] : null;
                         return (
                           <div key={i} className="flex items-center gap-4">
-                            <div className="w-9 h-9 rounded-full bg-[#E89D7A]/10 flex items-center justify-center text-[#E89D7A] shrink-0 border border-[#E89D7A]/5">
+                            <div className="w-9 h-9 rounded-full bg-[#F2901C]/10 flex items-center justify-center text-[#F2901C] shrink-0 border border-[#F2901C]/5">
                               {Icon && <Icon className="w-4 h-4" />}
                             </div>
                             <div>
@@ -203,13 +201,13 @@ export default function InvesteeStories() {
                 <div className="w-full md:w-1/2 space-y-12">
                   <div className="space-y-6">
                     <div className="flex items-center gap-6 text-[8px] font-bold uppercase tracking-widest text-neutral-400">
-                      <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5 text-[#E89D7A]" /> {story.date}</span>
-                      <span className="flex items-center gap-2"><User className="w-3.5 h-3.5 text-[#E89D7A]" /> {story.author}</span>
+                      <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5 text-[#F2901C]" /> {story.date}</span>
+                      <span className="flex items-center gap-2"><User className="w-3.5 h-3.5 text-[#F2901C]" /> {story.author}</span>
                     </div>
                     <h2 className="text-2xl md:text-4xl font-sans font-light tracking-tight leading-tight text-[#1E1B18] uppercase">
                       {story.title}
                     </h2>
-                    <p className="text-base md:text-lg text-neutral-500 font-light leading-relaxed italic border-l-2 border-[#E89D7A] pl-5">
+                    <p className="text-base md:text-lg text-neutral-500 font-light leading-relaxed italic border-l-2 border-[#F2901C] pl-5">
                       "{story.summary}"
                     </p>
                   </div>
@@ -221,7 +219,7 @@ export default function InvesteeStories() {
                   </div>
 
                   <div className="relative p-10 bg-white border border-[#EFE6DA]/75 rounded-[2rem] shadow-2xs">
-                    <Quote className="absolute top-6 right-6 w-10 h-10 text-[#E89D7A]/20" />
+                    <Quote className="absolute top-6 right-6 w-10 h-10 text-[#F2901C]/20" />
                     <p className="text-base md:text-lg font-light text-[#1E1B18] leading-relaxed relative z-10 italic">
                       {story.quote}
                     </p>
@@ -231,10 +229,10 @@ export default function InvesteeStories() {
                     whileHover={{ x: 3 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => navigate(`/investee-stories/${story.id}`)}
-                    className="group flex items-center gap-4 text-[#1E1B18] hover:text-[#E89D7A] transition-colors"
+                    className="group flex items-center gap-4 text-[#1E1B18] hover:text-[#F2901C] transition-colors"
                   >
                     <span className="text-[10px] font-bold uppercase tracking-widest">Read Full Case Study</span>
-                    <div className="w-8 h-8 rounded-full border border-[#1E1B18]/10 flex items-center justify-center group-hover:border-[#E89D7A] group-hover:bg-[#E89D7A] group-hover:text-white transition-all shadow-2xs bg-white">
+                    <div className="w-8 h-8 rounded-full border border-[#1E1B18]/10 flex items-center justify-center group-hover:border-[#F2901C] group-hover:bg-[#F2901C] group-hover:text-white transition-all shadow-2xs bg-white">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </motion.button>
@@ -257,9 +255,9 @@ export default function InvesteeStories() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => handlePageChange(currentPage - 1)}
-                className="group flex items-center gap-4 text-[#1E1B18] disabled:opacity-20 disabled:cursor-not-allowed hover:text-[#E89D7A] transition-colors"
+                className="group flex items-center gap-4 text-[#1E1B18] disabled:opacity-20 disabled:cursor-not-allowed hover:text-[#F2901C] transition-colors"
               >
-                <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#E89D7A] transition-colors bg-white">
+                <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#F2901C] transition-colors bg-white">
                   <ArrowLeft className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-widest">Previous</span>
@@ -284,10 +282,10 @@ export default function InvesteeStories() {
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => handlePageChange(currentPage + 1)}
-                className="group flex items-center gap-4 text-[#1E1B18] disabled:opacity-20 disabled:cursor-not-allowed hover:text-[#E89D7A] transition-colors"
+                className="group flex items-center gap-4 text-[#1E1B18] disabled:opacity-20 disabled:cursor-not-allowed hover:text-[#F2901C] transition-colors"
               >
                 <span className="text-[9px] font-bold uppercase tracking-widest">Next</span>
-                <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#E89D7A] transition-colors bg-white">
+                <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#F2901C] transition-colors bg-white">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </button>
@@ -298,12 +296,12 @@ export default function InvesteeStories() {
 
       {/* CTA Section */}
       <section className="bg-[#1E1B18] py-32 px-6 text-center shadow-xl border-t border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#E89D7A]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#F2901C]/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="max-w-3xl mx-auto space-y-12 relative z-10">
-          <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em] block">Your Story Starts Here</span>
+          <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em] block">Your Story Starts Here</span>
           <h2 className="text-3xl md:text-5xl font-sans font-light text-white tracking-tight leading-none uppercase">
             READY TO BUILD YOUR <br />
-            <span className="font-serif italic text-[#E89D7A]">LEGACY?</span>
+            <span className="font-serif italic text-[#F2901C]">LEGACY?</span>
           </h2>
           <p className="text-white/50 text-sm md:text-base font-light max-w-xl mx-auto lead-relaxed">
             Join the hundreds of black entrepreneurs who have transformed their visions into reality with the NEF.
@@ -311,7 +309,7 @@ export default function InvesteeStories() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 pt-8 max-w-md mx-auto">
             <button 
               onClick={() => navigate("/how-to-apply")}
-              className="bg-[#E89D7A] text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-[#1E1B18] transition-all w-full md:w-auto rounded-full shadow-md hover:scale-105"
+              className="bg-[#F2901C] text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-[#1E1B18] transition-all w-full md:w-auto rounded-full shadow-md hover:scale-105"
             >
               Apply for Funding
             </button>
@@ -333,10 +331,10 @@ export default function InvesteeStories() {
             © 2026 NEF CORP. ALL RIGHTS RESERVED.
           </div>
           <div className="flex gap-8">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#E89D7A] transition-colors">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#F2901C] transition-colors">
               Twitter
             </span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#E89D7A] transition-colors">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 cursor-pointer hover:text-[#F2901C] transition-colors">
               LinkedIn
             </span>
           </div>
@@ -364,7 +362,7 @@ export default function InvesteeStories() {
               {/* Close Button */}
               <button
                 onClick={() => setPlayingVideoId(null)}
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#E89D7A] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#F2901C] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
               >
                 <X size={20} />
               </button>

@@ -45,7 +45,7 @@ export default function FundingCriteria() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white">
+    <div className="min-h-screen bg-[#FCFAF7] font-sans text-[#1E1B18] selection:bg-[#F2901C] selection:text-white">
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-[#1E1B18]">
         <div className="absolute inset-0 z-0">
@@ -66,10 +66,10 @@ export default function FundingCriteria() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#E89D7A] block mb-4">NEF Mandate</span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#F2901C] block mb-4">NEF Mandate</span>
             <h1 className="text-5xl md:text-7xl font-sans font-light tracking-tight uppercase leading-none text-white mb-8">
               Funding <br />
-              <span className="font-serif italic text-[#E89D7A]">Criteria</span>
+              <span className="font-serif italic text-[#F2901C]">Criteria</span>
             </h1>
             <p className="text-base md:text-lg text-white/50 max-w-2xl leading-relaxed">
               The National Empowerment Fund (NEF) supports black-owned businesses that are viable, 
@@ -79,7 +79,7 @@ export default function FundingCriteria() {
             <div className="mt-12 flex flex-wrap gap-4">
               <button 
                 onClick={() => navigate("/check-eligibility")}
-                className="px-8 py-4 bg-[#E89D7A] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all"
+                className="px-8 py-4 bg-[#F2901C] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all"
               >
                 Check Eligibility
               </button>
@@ -101,15 +101,15 @@ export default function FundingCriteria() {
             className="space-y-8"
           >
             <h2 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight flex items-center gap-4">
-              <div className="w-8 h-px bg-[#E89D7A]"></div>
+              <div className="w-8 h-px bg-[#F2901C]"></div>
               Understanding Our Process
             </h2>
             <p className="text-neutral-500 leading-relaxed font-light text-sm md:text-base">
               Watch our short guide on what we look for in a funding application and how we evaluate 
               business viability and transformation impact.
             </p>
-            <div className="flex items-center gap-4 p-6 bg-white border-l-2 border-[#E89D7A] rounded-r-3xl shadow-sm border-y border-r border-[#EFE6DA]/40">
-              <Info className="text-[#E89D7A] shrink-0" size={18} />
+            <div className="flex items-center gap-4 p-6 bg-white border-l-2 border-[#F2901C] rounded-r-3xl shadow-sm border-y border-r border-[#EFE6DA]/40">
+              <Info className="text-[#F2901C] shrink-0" size={18} />
               <p className="text-xs text-neutral-500 italic font-light">
                 "Our goal is to ensure that every funded project has the best chance of long-term success."
               </p>
@@ -129,7 +129,7 @@ export default function FundingCriteria() {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-14 h-14 bg-[#E89D7A] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
+              <button className="w-14 h-14 bg-[#F2901C] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
                 <Play fill="white" size={18} className="translate-x-0.5" />
               </button>
             </div>
@@ -159,7 +159,7 @@ export default function FundingCriteria() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {section.items.map((item, i) => (
                     <div key={i} className="flex items-start gap-4 p-8 bg-white border border-[#EFE6DA]/80 hover:bg-[#1E1B18] group transition-all duration-300 rounded-[2rem] shadow-2xs hover:shadow-lg">
-                      <CheckCircle2 size={18} className="text-[#E89D7A] shrink-0 mt-0.5 group-hover:text-white" />
+                      <CheckCircle2 size={18} className="text-[#F2901C] shrink-0 mt-0.5 group-hover:text-white" />
                       <p className="text-neutral-500 group-hover:text-white/80 transition-colors leading-relaxed font-light text-sm md:text-base">
                         {item}
                       </p>
@@ -174,11 +174,11 @@ export default function FundingCriteria() {
 
       {/* Footer CTA */}
       <section className="py-24 px-8 bg-[#1E1B18] text-white overflow-hidden relative shadow-xl border-t border-white/5">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E89D7A] opacity-5 -skew-x-12 translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F2901C] opacity-5 -skew-x-12 translate-x-1/4"></div>
         <div className="max-w-5xl mx-auto relative z-10 text-left">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-sans font-light uppercase tracking-tight mb-8 leading-none">
-              Ready to <span className="font-serif italic text-[#E89D7A]">Transform</span> Your Business?
+              Ready to <span className="font-serif italic text-[#F2901C]">Transform</span> Your Business?
             </h2>
             <p className="text-sm md:text-base text-white/50 mb-12 leading-relaxed font-light">
               If you meet our criteria, we invite you to start the application process today. 
@@ -187,7 +187,7 @@ export default function FundingCriteria() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 to="/how-to-apply"
-                className="px-10 py-4 bg-[#E89D7A] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all duration-300 hover:scale-105"
+                className="px-10 py-4 bg-[#F2901C] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#1E1B18] rounded-full shadow-md transition-all duration-300 hover:scale-105"
               >
                 Apply Now
               </Link>
