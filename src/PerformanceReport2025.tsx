@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Download, TrendingUp, Users, Briefcase, Globe, Award, BarChart3, PieChart, Activity, CheckCircle, FileText, Share2, Sparkles } from 'lucide-react';
+import { ArrowLeft, Download, TrendingUp, Users, Briefcase, Globe, Award, BarChart3, PieChart, Activity, CheckCircle, FileText, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Custom high-fidelity NEF Logo Component from the Cover Page
@@ -64,10 +64,10 @@ export default function PerformanceReport2025() {
   const [activeYearIndex, setActiveYearIndex] = useState(4); // Default to latest (2025)
 
   const stats = [
-    { label: "Total Approvals", value: "R7.4bn", description: "All-time high strategic funding approvals", icon: Award, color: "bg-[#ea9e3d]", textColor: "text-white" },
-    { label: "Jobs Supported", value: "112,000+", description: "Decent opportunities created & sustained", icon: Users, color: "bg-[#113f36]", textColor: "text-white" },
-    { label: "SMMEs Funded", value: "1,240+", description: "Black-owned small and medium enterprises", icon: Briefcase, color: "bg-[#ea9e3d]", textColor: "text-white" },
-    { label: "Black Women Owned", value: "42%", description: "Direct ownership by black female industrialists", icon: Globe, color: "bg-[#113f36]", textColor: "text-white" },
+    { label: "Total Approvals", value: "R7.4bn", description: "All-time high strategic funding approvals", icon: Award, color: "bg-[#F2901C]", textColor: "text-white" },
+    { label: "Jobs Supported", value: "112,000+", description: "Decent opportunities created & sustained", icon: Users, color: "bg-[#C79F6E]", textColor: "text-white" },
+    { label: "SMMEs Funded", value: "1,240+", description: "Black-owned small and medium enterprises", icon: Briefcase, color: "bg-[#F2901C]", textColor: "text-white" },
+    { label: "Black Women Owned", value: "42%", description: "Direct ownership by black female industrialists", icon: Globe, color: "bg-[#C79F6E]", textColor: "text-white" },
   ];
 
   const highlights = [
@@ -127,13 +127,18 @@ export default function PerformanceReport2025() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCFB] text-[#1E1B18] font-sans selection:bg-[#ea9e3d] selection:text-white">
+    <div className="min-h-screen bg-[#161412] text-white font-sans selection:bg-[#F2901C] selection:text-[#1E1B18] relative overflow-x-hidden">
       
-      {/* Premium Branded Utility Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#FDFCFB]/90 backdrop-blur-md border-b border-[#113f36]/10 px-6 md:px-12 py-4 flex justify-between items-center transition-all duration-300">
+      {/* Glow Backdrops */}
+      <div className="absolute top-0 right-1/4 w-128 h-128 bg-[#F2901C]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C79F6E]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
+      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-[#F2901C]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
+
+      {/* Premium Branded Navigation - Glass Dark Theme */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#161412]/80 backdrop-blur-md border-b border-white/5 px-6 md:px-12 py-4 flex justify-between items-center transition-all duration-300">
         <button 
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#113f36] hover:text-[#ea9e3d] transition-colors group"
+          className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C79F6E] hover:text-[#F2901C] transition-colors group"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           Back to Home
@@ -141,14 +146,14 @@ export default function PerformanceReport2025() {
 
         {/* Small center logo */}
         <div className="hidden lg:flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
-          <NefLogo className="text-[#113f36]" />
+          <NefLogo className="text-white" />
         </div>
 
         <div className="flex items-center gap-3">
           <button 
             onClick={handleDownload}
             disabled={downloading}
-            className="px-5 py-2.5 bg-[#113f36] text-white text-[10px] font-bold uppercase tracking-widest hover:bg-[#ea9e3d] transition-all flex items-center gap-2 shadow-sm rounded-lg hover:-translate-y-0.5 active:translate-y-0"
+            className="px-5 py-2.5 bg-[#F2901C] text-white text-[9px] font-sans font-extrabold uppercase tracking-widest hover:bg-white hover:text-[#1E1B18] transition-all flex items-center gap-2 shadow-md rounded-full hover:-translate-y-0.5 active:translate-y-0"
           >
             {downloading ? (
               <>
@@ -165,9 +170,9 @@ export default function PerformanceReport2025() {
         </div>
       </nav>
 
-      {/* Hero Book-Cover Section Styled Exactly After the Attached Cover */}
-      <header className="pt-16 pb-12 px-4 md:px-12 max-w-7xl mx-auto">
-        <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#FAF8F5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-xl flex flex-col justify-between p-8 md:p-16 border border-[#EFE6DA]/50">
+      {/* Hero Book-Cover Section - Refitted as Dark Cinematic Marvel */}
+      <header className="pt-24 pb-12 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#1E1B18] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl flex flex-col justify-between p-8 md:p-16 border border-white/5">
           
           {/* Background Video Layer playing looping cinematic NEF support footage */}
           <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] h-full pointer-events-none overflow-hidden">
@@ -177,31 +182,28 @@ export default function PerformanceReport2025() {
               loop 
               muted 
               playsInline 
-              className="w-full h-full object-cover object-left select-none scale-x-[-1]"
+              className="w-full h-full object-cover object-left select-none scale-x-[-1] opacity-75"
             />
-            {/* Smooth linear fade to pure off-white on the left side to blend into the text zone */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/85 to-transparent lg:block hidden"></div>
+            {/* Smooth linear fade to pure dark brown on the left side to blend into the text zone */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1E1B18] via-[#1E1B18]/90 to-transparent lg:block hidden"></div>
             {/* Vertically faded back-cover mask for smaller screens */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent lg:hidden block"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18] via-[#1E1B18]/50 to-transparent lg:hidden block"></div>
           </div>
 
-          {/* Golden Orange Geometric Accent Stripe mimicking the logo's curved branding on the right of the cover */}
-          <div className="absolute right-0 top-0 w-full lg:w-[60%] h-full pointer-events-none z-10 overflow-hidden mix-blend-multiply opacity-80">
+          {/* Golden Orange Geometric Accent Stripe mimicking the logo's curved branding */}
+          <div className="absolute right-0 top-0 w-full lg:w-[60%] h-full pointer-events-none z-10 overflow-hidden opacity-50">
             {/* Stripe 1 */}
-            <div className="absolute right-[5%] top-[-30%] w-12 md:w-16 h-[160%] bg-gradient-to-b from-[#ea9e3d]/0 via-[#ea9e3d]/10 to-[#ea9e3d]/30 rotate-[35deg] rounded-full transform origin-top-right"></div>
-            {/* Stripe 2 (Solid White swoosh layer) */}
-            <div className="absolute right-[15%] top-[-25%] w-16 md:w-20 h-[155%] bg-gradient-to-b from-white/0 via-white/40 to-white/95 rotate-[35deg] rounded-full transform origin-top-right"></div>
+            <div className="absolute right-[5%] top-[-30%] w-12 md:w-16 h-[160%] bg-gradient-to-b from-[#F2901C]/0 via-[#F2901C]/10 to-[#F2901C]/30 rotate-[35deg] rounded-full transform origin-top-right"></div>
+            {/* Stripe 2 */}
+            <div className="absolute right-[15%] top-[-25%] w-16 md:w-20 h-[155%] bg-gradient-to-b from-transparent via-[#C79F6E]/15 to-[#C79F6E]/50 rotate-[35deg] rounded-full transform origin-top-right"></div>
             {/* Stripe 3 - The vibrant gold diagonal stripe from NEF emblem */}
-            <div className="absolute right-[25%] top-[-40%] w-20 md:w-32 h-[180%] bg-gradient-to-b from-[#ea9e3d]/20 via-[#ea9e3d]/40 to-[#ea9e3d]/10 rotate-[35deg] rounded-full transform origin-top-right"></div>
+            <div className="absolute right-[25%] top-[-40%] w-20 md:w-32 h-[180%] bg-gradient-to-b from-[#F2901C]/10 via-[#F2901C]/30 to-[#F2901C]/5 rotate-[35deg] rounded-full transform origin-top-right"></div>
           </div>
 
-          {/* Ambient subtle light glow */}
-          <div className="absolute -top-32 -left-32 w-128 h-128 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
-
-          {/* Spacer to preserve bottom layout alignment of the content zone */}
+          {/* Central content Spacer */}
           <div className="relative z-10 w-full mb-8"></div>
 
-          {/* Core Content Zone placed directly over the high-contrast left fade zone */}
+          {/* Core Content Zone */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-20 w-full mt-auto">
             
             <motion.div 
@@ -210,20 +212,20 @@ export default function PerformanceReport2025() {
               transition={{ duration: 0.8, type: "spring" }}
               className="col-span-1 lg:col-span-7 text-left p-2 md:p-6"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#113f36]/5 border border-[#113f36]/10 rounded-full mb-6">
-                <span className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-[#113f36] font-bold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/5 border border-white/10 text-[#C79F6E] rounded-full mb-6">
+                <span className="text-[10px] md:text-xs font-mono uppercase tracking-wider font-bold">
                   Promotion of Access to Economic Equality
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight leading-[1.05] uppercase text-[#113f36]">
+              <h1 className="text-4xl md:text-6xl font-sans font-black tracking-tight leading-[1.05] uppercase text-white">
                 Performance <br />
-                Manual 2025
+                <span className="font-serif italic text-[#F2901C] lowercase">manual 2025</span>
               </h1>
 
-              <div className="h-1.5 w-24 bg-[#ea9e3d] my-6 rounded-full"></div>
+              <div className="h-1.5 w-24 bg-[#F2901C] my-6 rounded-full"></div>
 
-              <p className="text-sm md:text-base text-[#1E1B18]/90 leading-relaxed max-w-xl font-light">
+              <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-xl font-light">
                 In terms of the National Empowerment Fund Act, No 105 of 1998, 
                 this document showcases key performance indicators (KPIs), operational 
                 disbursements, enterprise funding frameworks, and social transformation 
@@ -231,7 +233,7 @@ export default function PerformanceReport2025() {
               </p>
             </motion.div>
 
-            {/* Right spacer zone to keep the woman's face and laptop clear of overlaying text */}
+            {/* Right spacer zone */}
             <div className="hidden lg:block lg:col-span-5 h-1"></div>
           </div>
 
@@ -241,25 +243,25 @@ export default function PerformanceReport2025() {
       {/* Secondary Quick Download Notification Banner */}
       <AnimatePresence>
         {downloadSuccess && (
-          <div className="max-w-7xl mx-auto px-4 md:px-12 mb-8">
+          <div className="max-w-7xl mx-auto px-4 md:px-12 mb-8 relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="p-4 bg-[#113f36]/5 border border-[#113f36]/20 rounded-2xl flex items-center justify-between text-left gap-4"
+              className="p-4 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-between text-left gap-4 backdrop-blur-md"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#113f36] text-white flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#F2901C] text-white flex items-center justify-center">
                   <CheckCircle size={18} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#113f36]">Performance Report Compiled</h4>
-                  <p className="text-[11px] text-gray-500 font-light mt-0.5">Your official offline copy reference file has successfully downloaded to your computer.</p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#F2901C]">Performance Report Compiled</h4>
+                  <p className="text-[11px] text-neutral-400 font-light mt-0.5">Your official offline copy reference file has successfully downloaded to your computer.</p>
                 </div>
               </div>
               <button 
                 onClick={() => setDownloadSuccess(false)}
-                className="text-xs font-bold text-gray-400 hover:text-black uppercase px-3"
+                className="text-xs font-bold text-neutral-400 hover:text-white uppercase px-3"
               >
                 Dismiss
               </button>
@@ -268,40 +270,44 @@ export default function PerformanceReport2025() {
         )}
       </AnimatePresence>
 
-      <main className="pb-32 px-4 md:px-12 max-w-7xl mx-auto">
+      <main className="pb-32 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
         
-        {/* Core Financial Indicators (Styled in Gold & Green Grid) */}
+        {/* Core Financial Indicators */}
         <section className="mb-28">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 border-b border-[#113f36]/10 pb-8 text-left">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 border-b border-white/5 pb-8 text-left">
             <div>
-              <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#ea9e3d] font-black">Empowerment Dimensions</span>
-              <h2 className="text-3xl font-black uppercase tracking-tight text-[#113f36] mt-1">Core Performance Highlights</h2>
+              <span className="text-[#C79F6E] text-[10px] font-mono uppercase tracking-[0.4em] mb-2 block">Empowerment Dimensions</span>
+              <h2 className="text-3xl md:text-4xl font-sans font-light tracking-tight uppercase leading-none text-white">
+                Core <span className="font-serif italic text-[#F2901C] lowercase">performance highlights</span>
+              </h2>
             </div>
-            <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-xl">
+            
+            <div className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/5 backdrop-blur-md">
               <button 
                 onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'all' ? 'bg-[#113f36] text-white shadow-xs' : 'text-gray-500 hover:text-black'}`}
+                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'all' ? 'bg-[#F2901C] text-white shadow-md' : 'text-neutral-400 hover:text-white'}`}
               >
                 Comprehensive
               </button>
               <button 
                 onClick={() => setActiveTab('financial')}
-                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'financial' ? 'bg-[#113f36] text-white shadow-xs' : 'text-gray-500 hover:text-black'}`}
+                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'financial' ? 'bg-[#F2901C] text-white shadow-md' : 'text-neutral-400 hover:text-white'}`}
               >
                 Financial KPIs
               </button>
               <button 
                 onClick={() => setActiveTab('social')}
-                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'social' ? 'bg-[#113f36] text-white shadow-xs' : 'text-gray-500 hover:text-black'}`}
+                className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg transition-all ${activeTab === 'social' ? 'bg-[#F2901C] text-white shadow-md' : 'text-neutral-400 hover:text-white'}`}
               >
                 Transformation
               </button>
             </div>
           </div>
 
+          {/* Core Stats Grid (Matched to Annual Review style) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => {
-              // Simple filter logic
+              // Filtering logic
               if (activeTab === 'financial' && (index === 1 || index === 3)) return null;
               if (activeTab === 'social' && (index === 0 || index === 2)) return null;
 
@@ -311,22 +317,25 @@ export default function PerformanceReport2025() {
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white border border-gray-100 rounded-3xl p-8 hover:border-[#ea9e3d] transition-all group hover:shadow-xl relative overflow-hidden text-left"
+                  className="bg-white/5 border border-white/5 rounded-[2rem] p-8 hover:border-[#F2901C]/20 transition-all duration-300 group shadow-xl relative overflow-hidden text-left backdrop-blur-sm"
                 >
-                  {/* Accent border bar */}
-                  <div className={`absolute top-0 inset-x-0 h-1.5 ${stat.color}`}></div>
+                  {/* Neon Spotlight Glow */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+                  
+                  {/* Top neon accent bar */}
+                  <div className={`absolute top-0 inset-x-0 h-1 ${stat.color}`}></div>
 
                   <div className="flex justify-between items-start mb-6">
-                    <div className={`w-12 h-12 rounded-2xl ${stat.color} flex items-center justify-center text-white scale-100 group-hover:scale-110 transition-transform shadow-md shadow-[#ea9e3d]/10`}>
+                    <div className={`w-12 h-12 rounded-2xl ${stat.color} flex items-center justify-center text-[#1E1B18] scale-100 group-hover:scale-110 transition-transform shadow-md shadow-[#F2901C]/10`}>
                       <stat.icon size={22} />
                     </div>
-                    <span className="text-[9px] font-mono uppercase tracking-widest text-[#113f36] font-bold bg-[#113f36]/5 px-2.5 py-1 rounded-full">Approved</span>
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-[#F2901C] font-bold bg-[#F2901C]/10 px-2.5 py-1 rounded-full">Approved</span>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="text-4xl md:text-5xl font-black tracking-tight text-[#113f36] group-hover:text-[#ea9e3d] transition-colors">{stat.value}</div>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-800">{stat.label}</h3>
-                    <p className="text-[11px] text-gray-500 font-light leading-relaxed">{stat.description}</p>
+                    <div className="text-4xl md:text-5xl font-black tracking-tight text-white group-hover:text-[#F2901C] transition-colors">{stat.value}</div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#C79F6E]">{stat.label}</h3>
+                    <p className="text-[11px] text-neutral-400 font-light leading-relaxed">{stat.description}</p>
                   </div>
                 </motion.div>
               );
@@ -334,25 +343,25 @@ export default function PerformanceReport2025() {
           </div>
         </section>
 
-        {/* Detailed Insights & Structural Pillars */}
+        {/* Detailed Insights & Pillars */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-28">
           
           <div className="lg:col-span-5 text-left space-y-6">
-            <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#ea9e3d] font-black">Strategic Intent</span>
-            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#113f36] leading-none">
-              Transformational <br />Pillars of SA
+            <span className="text-[#C79F6E] text-[9px] font-mono uppercase tracking-[0.4em] mb-2 block">Strategic Intent</span>
+            <h2 className="text-3xl md:text-4xl font-sans font-light tracking-tight text-white uppercase leading-none">
+              Transformational <br /><span className="font-serif italic text-[#F2901C] lowercase">pillars of SA</span>
             </h2>
-            <div className="h-1.5 w-16 bg-[#ea9e3d] rounded-full"></div>
+            <div className="h-1.5 w-16 bg-[#F2901C] rounded-full"></div>
             
-            <p className="text-sm text-gray-600 leading-relaxed font-light">
+            <p className="text-sm text-neutral-300 leading-relaxed font-light">
               We leverage deliberate, commercial, and structural capital tools to catalyze significant 
               and permanent economic integration of historically disadvantaged business operators 
               across key national economic segments.
             </p>
 
-            <div className="bg-[#113f36]/5 p-6 rounded-2xl space-y-3 border-l-4 border-[#113f36]">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#113f36]">Empowerment Charter Compliance</h4>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
+            <div className="bg-white/5 border border-white/5 backdrop-blur-md p-6 rounded-2xl space-y-3 border-l-4 border-l-[#F2901C]">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#C79F6E]">Empowerment Charter Compliance</h4>
+              <p className="text-xs text-neutral-400 font-light leading-relaxed">
                 Our active transaction verification models score above average on strategic industrial codes, ensuring absolute trust and maximum national impact.
               </p>
             </div>
@@ -362,19 +371,22 @@ export default function PerformanceReport2025() {
             {highlights.map((item, index) => (
               <div 
                 key={index} 
-                className="p-8 bg-white border border-gray-150 rounded-3xl relative overflow-hidden group hover:border-[#ea9e3d] transition-all duration-350 shadow-xs hover:shadow-lg flex flex-col justify-between"
+                className="p-8 bg-white/5 border border-white/5 rounded-3xl relative overflow-hidden group hover:border-[#F2901C]/20 transition-all duration-350 shadow-xl flex flex-col justify-between"
               >
+                {/* Spotlights */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-[#ea9e3d]/10 text-[#ea9e3d] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-[#F2901C]/10 text-[#F2901C] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                     <item.icon size={20} />
                   </div>
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-[#113f36] mb-3">{item.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed font-light mb-6">{item.description}</p>
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-3 group-hover:text-[#F2901C] transition-colors">{item.title}</h3>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-light mb-6">{item.description}</p>
                 </div>
                 
-                <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
-                  <div className="w-2 h-2 rounded-full bg-[#ea9e3d]"></div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#ea9e3d] font-bold">{item.trend}</span>
+                <div className="flex items-center gap-2 pt-4 border-t border-white/5">
+                  <div className="w-2 h-2 rounded-full bg-[#F2901C]"></div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#F2901C] font-bold">{item.trend}</span>
                 </div>
               </div>
             ))}
@@ -385,12 +397,14 @@ export default function PerformanceReport2025() {
         <section className="mb-28 space-y-12">
           
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[#113f36]/10 pb-8 text-left">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-white/5 pb-8 text-left">
             <div>
-              <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#ea9e3d] font-black">Empowerment Informatics</span>
-              <h2 className="text-3xl font-black uppercase tracking-tight text-[#113f36] mt-1">Interactive Allocation & Dynamics</h2>
+              <span className="text-[#C79F6E] text-[10px] font-mono uppercase tracking-[0.4em] mb-2 block">Empowerment Informatics</span>
+              <h2 className="text-3xl md:text-4xl font-sans font-light uppercase tracking-tight text-white">
+                Interactive <span className="font-serif italic text-[#F2901C] lowercase">allocation & dynamics</span>
+              </h2>
             </div>
-            <p className="text-xs text-gray-500 max-w-sm font-light text-left md:text-right">
+            <p className="text-xs text-neutral-400 max-w-sm font-light text-left md:text-right">
               Explore dynamic capital distribution sector weightings, regional investment metrics, and the 5-year transformation trajectory.
             </p>
           </div>
@@ -398,10 +412,10 @@ export default function PerformanceReport2025() {
           {/* Grid Layout for Infographics */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            {/* 1. Sector Allocation Infographic Card (7 Cols) */}
-            <div className="col-span-1 lg:col-span-7 bg-white border border-gray-100 rounded-3xl p-8 relative overflow-hidden shadow-xs hover:border-l-4 hover:border-l-[#ea9e3d] transition-all text-left">
-              <span className="text-[9px] font-mono text-[#ea9e3d] uppercase tracking-[0.3em] font-black block mb-4">Capital Distribution</span>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-[#113f36] mb-6">Strategic Sector Allocation Portfolio</h3>
+            {/* 1. Sector Allocation Infographic Card */}
+            <div className="col-span-1 lg:col-span-7 bg-white/5 border border-white/5 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-l-4 hover:border-l-[#F2901C] transition-all text-left backdrop-blur-sm animate-in fade-in duration-500">
+              <span className="text-[9px] font-mono text-[#F2901C] uppercase tracking-[0.3em] font-black block mb-4">Capital Distribution</span>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-6">Strategic Sector Allocation Portfolio</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                 
@@ -409,8 +423,8 @@ export default function PerformanceReport2025() {
                 <div className="md:col-span-5 flex justify-center relative">
                   <div className="relative w-44 h-44">
                     <svg className="w-full h-full transform -rotate-90 select-none" viewBox="0 0 100 100">
-                      {/* Gray track background */}
-                      <circle cx="50" cy="50" r="38" fill="transparent" stroke="#F1EFEF" strokeWidth="5" />
+                      {/* Dark frame track background */}
+                      <circle cx="50" cy="50" r="38" fill="transparent" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="5" />
                       
                       {/* Segmented pieces of the portfolio */}
                       {SECTOR_DATA.map((sec, idx) => {
@@ -428,7 +442,7 @@ export default function PerformanceReport2025() {
                             r="38"
                             fill="transparent"
                             className="cursor-pointer transition-all duration-300"
-                            stroke={isSelected ? (idx % 2 === 0 ? "#ea9e3d" : "#113f36") : (idx % 2 === 0 ? "#ea9e3db0" : "#113f3680")}
+                            stroke={isSelected ? (idx % 2 === 0 ? "#F2901C" : "#C79F6E") : (idx % 2 === 0 ? "#F2901C80" : "#C79F6E60")}
                             strokeWidth={isSelected ? 10 : 6}
                             strokeDasharray={238.7 * (sec.share / 100)}
                             strokeDashoffset={-238.7 * (cumulativeOffset / 100)}
@@ -446,11 +460,11 @@ export default function PerformanceReport2025() {
                         key={activeSector}
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="text-4xl font-black text-[#113f36]"
+                        className="text-4xl font-black text-white"
                       >
                         {SECTOR_DATA[activeSector].share}%
                       </motion.span>
-                      <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest mt-0.5">Share Allocation</span>
+                      <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest mt-0.5">Share Allocation</span>
                     </div>
                   </div>
                 </div>
@@ -465,15 +479,15 @@ export default function PerformanceReport2025() {
                         onClick={() => setActiveSector(idx)}
                         className={`w-full p-3 rounded-2xl border text-left transition-all flex items-center justify-between group cursor-pointer ${
                           isSelected 
-                            ? 'bg-[#113f36]/5 border-[#113f36]/20 shadow-xs' 
-                            : 'bg-white border-gray-100 hover:bg-gray-50'
+                            ? 'bg-white/10 border-white/20 shadow-md' 
+                            : 'bg-white/5 border-white/5 hover:bg-white/10'
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`w-2.5 h-2.5 rounded-full ${idx % 2 === 0 ? 'bg-[#ea9e3d]' : 'bg-[#113f36]'}`}></div>
-                          <span className="text-[11px] font-extrabold uppercase tracking-tight text-gray-800">{sector.name}</span>
+                          <div className={`w-2.5 h-2.5 rounded-full ${idx % 2 === 0 ? 'bg-[#F2901C]' : 'bg-[#C79F6E]'}`}></div>
+                          <span className="text-[11px] font-extrabold uppercase tracking-tight text-white/90">{sector.name}</span>
                         </div>
-                        <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-[#ea9e3d]' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                        <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-[#F2901C]' : 'text-neutral-400 group-hover:text-white'}`}>
                           {sector.share}%
                         </span>
                       </button>
@@ -488,29 +502,29 @@ export default function PerformanceReport2025() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mt-6 p-6 bg-gradient-to-r from-gray-50 to-white/70 rounded-2xl border border-gray-100 flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center"
+                className="mt-6 p-6 bg-gradient-to-r from-white/[0.04] to-white/[0.01] rounded-2xl border border-white/5 flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center"
               >
                 <div className="space-y-1">
-                  <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest">Selected Strategic Project</span>
-                  <h4 className="text-sm font-bold text-[#113f36] uppercase">{SECTOR_DATA[activeSector].keyProj}</h4>
-                  <p className="text-[11px] text-gray-500 font-light">Typical transaction size range is <span className="font-semibold text-gray-700">{SECTOR_DATA[activeSector].ticket}</span> per project.</p>
+                  <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest">Selected Strategic Project</span>
+                  <h4 className="text-sm font-bold text-[#F2901C] uppercase">{SECTOR_DATA[activeSector].keyProj}</h4>
+                  <p className="text-[11px] text-neutral-350 font-light">Typical transaction size range is <span className="font-semibold text-white">{SECTOR_DATA[activeSector].ticket}</span> per project.</p>
                 </div>
-                <div className="shrink-0 bg-white border border-gray-150 p-3 rounded-xl shadow-2xs text-center min-w-[120px]">
-                  <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest block">Jobs Catalyzed</span>
-                  <span className="text-lg font-black text-[#ea9e3d] block leading-none mt-1">{SECTOR_DATA[activeSector].jobs}</span>
+                <div className="shrink-0 bg-white/5 border border-white/5 p-3 rounded-xl shadow-2xs text-center min-w-[120px]">
+                  <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest block">Jobs Catalyzed</span>
+                  <span className="text-lg font-black text-[#F2901C] block leading-none mt-1">{SECTOR_DATA[activeSector].jobs}</span>
                 </div>
               </motion.div>
             </div>
 
-            {/* 2. Provincial capital Flow Infographic Card (5 Cols) */}
-            <div className="col-span-1 lg:col-span-5 bg-white border border-gray-100 rounded-3xl p-8 relative overflow-hidden shadow-xs hover:border-l-4 hover:border-l-[#113f36] transition-all text-left flex flex-col justify-between">
+            {/* 2. Provincial Contribution Infographic Card */}
+            <div className="col-span-1 lg:col-span-5 bg-white/5 border border-white/5 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-l-4 hover:border-l-[#C79F6E] transition-all text-left flex flex-col justify-between backdrop-blur-sm animate-in fade-in duration-500">
               <div>
-                <span className="text-[9px] font-mono text-[#ea9e3d] uppercase tracking-[0.3em] font-black block mb-4">Regional Footprint</span>
-                <h3 className="text-xl font-bold uppercase tracking-tight text-[#113f36] mb-4">Provincial Contribution</h3>
-                <p className="text-[11px] text-gray-500 font-light mb-6">Select a province to preview local sector focuses and capital allocation metrics.</p>
+                <span className="text-[9px] font-mono text-[#F2901C] uppercase tracking-[0.3em] font-black block mb-4">Regional Footprint</span>
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-4">Provincial Contribution</h3>
+                <p className="text-[11px] text-neutral-400 font-light mb-6">Select a province to preview local sector focuses and capital allocation metrics.</p>
                 
-                {/* Interactive bar list with scroll helper */}
-                <div className="space-y-2.5 max-h-[290px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-200">
+                {/* Interactive bar list with custom dark styling */}
+                <div className="space-y-2.5 max-h-[290px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/10">
                   {PROVINCIAL_DATA.map((prov) => {
                     const isSelected = activeProvince === prov.code;
                     const barWidth = prov.share;
@@ -520,28 +534,28 @@ export default function PerformanceReport2025() {
                         onClick={() => setActiveProvince(isSelected ? null : prov.code)}
                         className={`p-3 rounded-2xl border cursor-pointer transition-all ${
                           isSelected 
-                            ? 'bg-[#ea9e3d]/5 border-[#ea9e3d]/30 shadow-2xs' 
-                            : 'border-gray-50 hover:bg-gray-50/70 hover:border-gray-150'
+                            ? 'bg-[#F2901C]/10 border-[#F2901C]/30 shadow-md' 
+                            : 'border-white/5 hover:bg-white/10'
                         }`}
                       >
                         <div className="flex justify-between items-center mb-2">
                           <div className="flex items-center gap-2">
-                            <span className="text-[8px] font-mono font-bold bg-[#113f36] text-white px-1.5 py-0.5 rounded-sm">{prov.code}</span>
-                            <span className="text-[10px] font-extrabold text-gray-800 uppercase tracking-tight">{prov.name}</span>
+                            <span className="text-[8px] font-mono font-bold bg-[#F2901C] text-white px-1.5 py-0.5 rounded-sm">{prov.code}</span>
+                            <span className="text-[10px] font-extrabold text-[#C79F6E] uppercase tracking-tight">{prov.name}</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[11px] font-mono font-bold text-[#113f36]">{prov.capital}</span>
-                            <span className="text-[9px] font-mono text-gray-400">({prov.share})</span>
+                            <span className="text-[11px] font-mono font-bold text-white">{prov.capital}</span>
+                            <span className="text-[9px] font-mono text-neutral-400">({prov.share})</span>
                           </div>
                         </div>
 
                         {/* Interactive progress track */}
-                        <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: barWidth }}
                             transition={{ duration: 0.8 }}
-                            className={`h-full rounded-full ${isSelected ? 'bg-[#ea9e3d]' : 'bg-[#113f36]'}`}
+                            className={`h-full rounded-full ${isSelected ? 'bg-[#F2901C]' : 'bg-[#C79F6E]'}`}
                           ></motion.div>
                         </div>
 
@@ -554,7 +568,7 @@ export default function PerformanceReport2025() {
                               exit={{ height: 0, opacity: 0, marginTop: 0 }}
                               className="overflow-hidden"
                             >
-                              <p className="text-[10px] text-gray-500 font-light leading-relaxed pt-2 border-t border-gray-100">
+                              <p className="text-[10px] text-neutral-400 font-light leading-relaxed pt-2 border-t border-white/5">
                                 {prov.description}
                               </p>
                             </motion.div>
@@ -567,17 +581,17 @@ export default function PerformanceReport2025() {
               </div>
 
               {/* Spread index benchmark block */}
-              <div className="pt-4 border-t border-gray-100 text-[10px] text-gray-400 font-mono flex items-center justify-between mt-4">
+              <div className="pt-4 border-t border-white/5 text-[10px] text-neutral-400 font-mono flex items-center justify-between mt-4">
                 <span>Total National Coverage</span>
-                <span className="font-bold text-[#113f36]">9 / 9 Provinces Handled</span>
+                <span className="font-bold text-[#F2901C]">9 / 9 Provinces Handled</span>
               </div>
             </div>
           </div>
 
-          {/* 3. The 5-Year Trajectory Line/Area Infographic (12 Cols) */}
-          <div className="bg-white border border-gray-100 rounded-3xl p-8 relative overflow-hidden shadow-xs hover:border-l-4 hover:border-l-[#ea9e3d] transition-all text-left">
-            <span className="text-[9px] font-mono text-[#ea9e3d] uppercase tracking-[0.3em] font-black block mb-4">Growth Curve</span>
-            <h3 className="text-xl font-bold uppercase tracking-tight text-[#113f36] mb-8">5-Year Empowerment Capital Trajectory</h3>
+          {/* 3. The 5-Year Trajectory Line/Area Infographic */}
+          <div className="bg-white/5 border border-white/5 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-l-4 hover:border-l-[#F2901C] transition-all text-left backdrop-blur-sm animate-in fade-in duration-500">
+            <span className="text-[9px] font-mono text-[#F2901C] uppercase tracking-[0.3em] font-black block mb-4">Growth Curve</span>
+            <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-8">5-Year Empowerment Capital Trajectory</h3>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
               
@@ -589,8 +603,8 @@ export default function PerformanceReport2025() {
                   <svg className="w-full h-full" viewBox="0 0 500 100" preserveAspectRatio="none">
                     <defs>
                       <linearGradient id="areaGradientLine" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#ea9e3d" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="#ea9e3d" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#F2901C" stopOpacity="0.25" />
+                        <stop offset="100%" stopColor="#F2901C" stopOpacity="0" />
                       </linearGradient>
                     </defs>
 
@@ -605,14 +619,14 @@ export default function PerformanceReport2025() {
                     <path 
                       d="M 20,85 C 120,78 120,78 135,76 C 235,63 235,63 250,62 C 350,45 350,45 365,44 C 465,30 465,30 480,28" 
                       fill="none" 
-                      stroke="#113f36" 
+                      stroke="#F2901C" 
                       strokeWidth="2.5" 
                     />
 
-                    {/* Horizontal Guideline Grids simulating professional enterprise tooling */}
-                    <line x1="20" y1="28" x2="480" y2="28" stroke="#EFE6DA" strokeWidth="0.5" strokeDasharray="3 3" />
-                    <line x1="20" y1="62" x2="480" y2="62" stroke="#EFE6DA" strokeWidth="0.5" strokeDasharray="3 3" />
-                    <line x1="20" y1="85" x2="480" y2="85" stroke="#EFE6DA" strokeWidth="0.5" strokeDasharray="3 3" />
+                    {/* Horizontal Guideline Grids */}
+                    <line x1="20" y1="28" x2="480" y2="28" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="0.5" strokeDasharray="3 3" />
+                    <line x1="20" y1="62" x2="480" y2="62" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="0.5" strokeDasharray="3 3" />
+                    <line x1="20" y1="85" x2="480" y2="85" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="0.5" strokeDasharray="3 3" />
                   </svg>
 
                   {/* Absolute Timeline interactive Node Buttons */}
@@ -632,16 +646,16 @@ export default function PerformanceReport2025() {
                             whileHover={{ scale: 1.25 }}
                             className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors shadow-sm select-none ${
                               isSelected 
-                                ? 'bg-[#ea9e3d] border-white text-white z-20 font-black' 
-                                : 'bg-white border-[#113f36] text-[#113f36] group-hover:bg-neutral-50 font-extrabold'
+                                ? 'bg-[#F2901C] border-[#161412] text-[#161412] z-20 font-black' 
+                                : 'bg-[#1E1B18] border-[#C79F6E] text-[#C79F6E] group-hover:bg-white/10 font-extrabold'
                             }`}
                           >
                             <span className="text-[9.5px] font-mono">{item.year}</span>
                           </motion.div>
                           
                           {/* Floating Micro-Badge */}
-                          <div className={`absolute -top-11 bg-[#113f36] text-white text-[8.5px] font-mono px-2 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-all transform translate-y-1 group-hover:translate-y-0 whitespace-nowrap shadow-md pointer-events-none ${
-                            isSelected ? 'opacity-100 bg-[#ea9e3d] translate-y-0 z-20 scale-105' : ''
+                          <div className={`absolute -top-11 bg-white text-[#1E1B18] text-[8.5px] font-mono px-2 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-all transform translate-y-1 group-hover:translate-y-0 whitespace-nowrap shadow-md pointer-events-none ${
+                            isSelected ? 'opacity-100 bg-[#F2901C] text-white z-20 scale-105' : ''
                           }`}>
                             {item.approvals} Approved
                           </div>
@@ -651,56 +665,61 @@ export default function PerformanceReport2025() {
                   </div>
                 </div>
 
-                <div className="flex justify-between px-2 pt-4 border-t border-gray-100 text-[9px] text-gray-400 font-mono uppercase tracking-widest">
+                <div className="flex justify-between px-2 pt-4 border-t border-white/5 text-[9px] text-neutral-400 font-mono uppercase tracking-widest">
                   <span>Audit Base (2021)</span>
                   <span>Record High Execution (2025)</span>
                 </div>
               </div>
 
-              {/* Dynamic Summary Card inside 4 columns */}
-              <div className="lg:col-span-4 bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col justify-between text-left">
+              {/* Dynamic Summary Card */}
+              <div className="lg:col-span-4 bg-white/5 border border-white/5 rounded-2xl p-6 flex flex-col justify-between text-left">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-[#ea9e3d] font-mono">FY {TRANS_TRAJECTORY[activeYearIndex].year} Performance</span>
-                    <span className="text-[8px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-100 px-20 py-0.5 rounded-full font-bold">Audited</span>
+                    <span className="text-xs font-black text-[#F2901C] font-mono">FY {TRANS_TRAJECTORY[activeYearIndex].year} Performance</span>
+                    <span className="text-[8px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">Audited</span>
                   </div>
                   
                   <div className="space-y-1.5">
-                    <h4 className="text-sm font-extrabold text-[#113f36] uppercase leading-tight">Key Strategic Milestone</h4>
-                    <p className="text-xs text-gray-500 font-light leading-relaxed">{TRANS_TRAJECTORY[activeYearIndex].highlight}</p>
+                    <h4 className="text-sm font-extrabold text-white uppercase leading-tight">Key Strategic Milestone</h4>
+                    <p className="text-xs text-neutral-400 font-light leading-relaxed">{TRANS_TRAJECTORY[activeYearIndex].highlight}</p>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-gray-150 grid grid-cols-2 gap-4 mt-8">
+                <div className="pt-6 border-t border-white/5 grid grid-cols-2 gap-4 mt-8">
                   <div>
-                    <span className="text-[8px] font-mono text-gray-405 uppercase tracking-wider block">Jobs Impacted</span>
-                    <span className="text-xl font-black text-[#113f36] leading-none block mt-1">{TRANS_TRAJECTORY[activeYearIndex].jobs}</span>
+                    <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Jobs Impacted</span>
+                    <span className="text-xl font-black text-white leading-none block mt-1">{TRANS_TRAJECTORY[activeYearIndex].jobs}</span>
                   </div>
                   <div>
-                    <span className="text-[8px] font-mono text-gray-405 uppercase tracking-wider block">Capital Disbursed</span>
-                    <span className="text-xl font-black text-[#ea9e3d] leading-none block mt-1">{TRANS_TRAJECTORY[activeYearIndex].disbursed}</span>
+                    <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-wider block">Capital Disbursed</span>
+                    <span className="text-xl font-black text-[#F2901C] leading-none block mt-1">{TRANS_TRAJECTORY[activeYearIndex].disbursed}</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Transformation Milestone Spotlight Section */}
         <section className="mb-28">
-          <div className="bg-[#113f36] text-white rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+          <div className="bg-[#1E1B18] text-white border border-white/5 rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
             
+            {/* Spotlocks / radial glows inside the card */}
+            <div className="absolute top-0 right-10 w-96 h-96 bg-[#F2901C]/5 rounded-full blur-[7rem] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#C79F6E]/5 rounded-full blur-[7rem] pointer-events-none"></div>
+
             {/* Elegant Background Stripes */}
-            <div className="absolute inset-x-0 inset-y-0 overflow-hidden pointer-events-none opacity-20">
+            <div className="absolute inset-x-0 inset-y-0 overflow-hidden pointer-events-none opacity-10">
               <div className="absolute left-[20%] -bottom-[10%] w-12 h-[120%] bg-white rotate-[35deg] rounded-full transform origin-bottom-left block"></div>
               <div className="absolute left-[30%] -bottom-[20%] w-12 h-[130%] bg-white rotate-[35deg] rounded-full transform origin-bottom-left block"></div>
-              <div className="absolute left-[40%] -bottom-[30%] w-12 h-[140%] bg-white rotate-[35deg] rounded-full transform origin-bottom-left block"></div>
             </div>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 text-left">
               <div className="lg:col-span-5 space-y-6">
-                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#ea9e3d] font-black">Industrial Blueprint</span>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase leading-none">
+                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-[#C79F6E] font-black">Industrial Blueprint</span>
+                <h2 className="text-3xl md:text-5xl font-sans font-light tracking-tight uppercase leading-none text-white">
                   Transformation <br />
-                  <span className="text-[#ea9e3d]">By The Numbers</span>
+                  <span className="font-serif italic text-[#F2901C] lowercase">by the numbers</span>
                 </h2>
                 <p className="text-xs md:text-sm text-neutral-300 font-light leading-relaxed">
                   Through active monitoring of transformation milestones, we guarantee that disbursed funds directly advance the black industrial class.
@@ -708,7 +727,7 @@ export default function PerformanceReport2025() {
                 <div className="pt-4">
                   <button 
                     onClick={handleDownload}
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-[#ea9e3d] hover:bg-white hover:text-[#113f36] text-white font-bold text-[10px] uppercase tracking-widest transition-all rounded-xl shadow-md cursor-pointer"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-[#F2901C] hover:bg-white hover:text-[#1E1B18] text-white font-sans font-extrabold uppercase text-[9px] tracking-widest transition-all rounded-full shadow-md cursor-pointer"
                   >
                     <Download size={14} />
                     Extract Raw Dataset
@@ -720,11 +739,11 @@ export default function PerformanceReport2025() {
                 {socialImpactMetrics.map((tech, i) => (
                   <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col justify-between">
                     <div>
-                      <span className="text-[9px] font-mono text-[#ea9e3d] uppercase tracking-widest block mb-2">Milestone 0{i + 1}</span>
+                      <span className="text-[9px] font-mono text-[#C79F6E] uppercase tracking-widest block mb-2">Milestone 0{i + 1}</span>
                       <h4 className="text-3xl font-black tracking-tight text-white">{tech.value}</h4>
                     </div>
                     <div className="pt-4 border-t border-white/5 mt-4">
-                      <p className="text-[11px] font-bold text-neutral-300 uppercase tracking-wider">{tech.label}</p>
+                      <p className="text-[11px] font-bold text-neutral-350 uppercase tracking-wider">{tech.label}</p>
                       <p className="text-[10px] text-neutral-400 font-light mt-0.5">{tech.target}</p>
                     </div>
                   </div>
@@ -735,24 +754,26 @@ export default function PerformanceReport2025() {
         </section>
 
         {/* Enhanced Interactive Action Block */}
-        <section className="text-center py-20 border-t border-gray-100 max-w-4xl mx-auto space-y-8">
-          <span className="text-[10px] font-mono uppercase tracking-[0.45em] text-[#ea9e3d] font-black block">Take Action</span>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase text-[#113f36]">Ready to pioneer change?</h2>
+        <section className="text-center py-20 border-t border-white/5 max-w-4xl mx-auto space-y-8">
+          <span className="text-[10px] font-mono uppercase tracking-[0.45em] text-[#C79F6E] font-black block">Take Action</span>
+          <h2 className="text-3xl md:text-5xl font-sans font-light tracking-tight uppercase text-white">
+            Ready to <span className="font-serif italic text-[#F2901C] lowercase">pioneer change?</span>
+          </h2>
           
-          <p className="text-sm text-gray-500 max-w-lg mx-auto font-light leading-relaxed">
+          <p className="text-sm text-neutral-400 max-w-lg mx-auto font-light leading-relaxed">
             Verify whether your business model conforms with the regulatory mandates and criteria for NEF funding participation.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <button 
               onClick={() => navigate('/check-eligibility')}
-              className="px-10 py-4 bg-[#113f36] text-white text-[11px] font-black uppercase tracking-widest hover:bg-[#ea9e3d] transition-all rounded-xl shadow-lg hover:-translate-y-0.5"
+              className="px-10 py-4 bg-[#F2901C] hover:bg-white hover:text-[#1E1B18] text-white text-[10px] font-sans font-extrabold uppercase tracking-widest transition-all rounded-full shadow-lg hover:-translate-y-0.5"
             >
               Check Your Eligibility
             </button>
             <button 
               onClick={handleDownload}
-              className="px-10 py-4 border border-[#113f36]/20 bg-white text-[#113f36] text-[11px] font-black uppercase tracking-widest hover:border-[#113f36] transition-all rounded-xl"
+              className="px-10 py-4 border border-white/25 bg-transparent text-white text-[10px] font-sans font-extrabold uppercase tracking-widest hover:border-white transition-all rounded-full"
             >
               Download Full Guidelines
             </button>
@@ -761,21 +782,21 @@ export default function PerformanceReport2025() {
       </main>
 
       {/* Styled Branded Footer */}
-      <footer className="bg-[#113f36] text-white py-16 px-6 md:px-12 border-t border-white/10">
+      <footer className="bg-[#161412] text-white py-16 px-6 md:px-12 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           
-          {/* Logo and Tagline matching the back cover style */}
+          {/* Logo and Tagline */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
             <NefLogo className="text-white" />
-            <p className="text-[9px] font-mono tracking-widest uppercase opacity-40 max-w-xs leading-relaxed mt-2">
+            <p className="text-[9px] font-mono tracking-widest uppercase opacity-40 max-w-xs leading-relaxed mt-2 animate-pulse">
               National Empowerment Fund Corp. © {new Date().getFullYear()} All rights reserved.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 text-[10px] font-black uppercase tracking-widest opacity-80">
-            <a href="#" className="hover:text-[#ea9e3d] transition-colors">Privacy Policy Reference</a>
-            <a href="#" className="hover:text-[#ea9e3d] transition-colors">Information Manual Access</a>
-            <a href="#" className="hover:text-[#ea9e3d] transition-colors">Empowerment Guidelines</a>
+          <div className="flex flex-wrap justify-center gap-8 text-[11px] font-extrabold uppercase tracking-widest opacity-80">
+            <a href="#" className="hover:text-[#F2901C] transition-colors">Privacy Policy Reference</a>
+            <a href="#" className="hover:text-[#F2901C] transition-colors">Information Manual Access</a>
+            <a href="#" className="hover:text-[#F2901C] transition-colors">Empowerment Guidelines</a>
           </div>
         </div>
       </footer>
