@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  ArrowLeft, ArrowRight, Quote, Calendar, User, Filter,
+  ArrowLeft, ArrowRight, Quote, Calendar, User, Filter, Play, X,
   TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { STORIES } from "./data/stories";
+import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
 
 const IconMap: Record<string, any> = {
   TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
@@ -15,6 +15,8 @@ export default function InvesteeStories() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
+  const playingStory = useMemo(() => STORIES.find((s) => s.id === playingVideoId), [playingVideoId]);
   const ITEMS_PER_PAGE = 10;
 
   const categories = useMemo(() => {
@@ -42,23 +44,23 @@ export default function InvesteeStories() {
   return (
     <div className="min-h-screen bg-[#FCFAF7] text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white font-sans">
       {/* Header */}
-      <header className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#1E1B18]">
+      <header className="relative min-h-[45vh] md:min-h-[50vh] pt-28 pb-16 flex items-center justify-center overflow-hidden bg-[#1E1B18]">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.15 }}
+          animate={{ scale: 1, opacity: 0.25 }}
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
           <img 
             src="https://images.unsplash.com/photo-1517245327032-96a1c4a161a7?q=80&w=2000&auto=format&fit=crop" 
             alt="Success Stories"
-            className="w-full h-full object-cover grayscale"
+            className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1E1B18]/60 via-transparent to-[#1E1B18]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1E1B18]/80 via-transparent to-[#1E1B18]"></div>
         </motion.div>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-4xl pt-8 md:pt-12">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -70,7 +72,7 @@ export default function InvesteeStories() {
               INVESTEE <br />
               <span className="font-serif italic text-[#E89D7A]">STORIES</span>
             </h1>
-            <p className="text-white/50 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
               Real stories of transformation, resilience, and economic empowerment across South Africa.
             </p>
           </motion.div>
@@ -81,7 +83,7 @@ export default function InvesteeStories() {
           whileHover={{ x: -2 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => navigate("/")}
-          className="absolute top-12 left-12 z-20 group flex items-center gap-4 text-white/40 hover:text-white transition-colors"
+          className="absolute top-6 left-6 md:top-8 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-white transition-colors"
         >
           <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#E89D7A] transition-colors bg-[#1E1B18]/30 backdrop-blur-md">
             <ArrowLeft className="w-4 h-4 text-white" />
@@ -142,14 +144,28 @@ export default function InvesteeStories() {
                 {/* Image Side */}
                 <div className="w-full md:w-1/2 space-y-8">
                   <div className="relative aspect-[4/5] overflow-hidden group rounded-[2.2rem] border border-[#EFE6DA]/60 shadow-md bg-white">
-                    <img 
-                      src={story.image} 
-                      alt={story.title}
-                      className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-1000 ease-out group-hover:scale-102"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-6 left-6 bg-[#E89D7A] text-white px-4 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-widest shadow-md">
-                      {story.category}
+                    <div 
+                      onClick={() => setPlayingVideoId(story.id)}
+                      className="w-full h-full relative cursor-pointer"
+                    >
+                      <img 
+                        src={story.image} 
+                        alt={story.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                      {/* Interactive Play Button in list */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                        <div className="w-14 h-14 rounded-full bg-[#EECFBA]/90 text-[#1E1B18] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#E89D7A] group-hover:text-white">
+                          <Play size={18} fill="currentColor" className="ml-0.5 text-inherit" />
+                        </div>
+                      </div>
+                      <div className="absolute top-6 left-6 bg-[#E89D7A] text-white px-4 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-widest shadow-md z-10">
+                        {story.category}
+                      </div>
+                      <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between z-10">
+                        <span className="text-[8px] font-bold uppercase tracking-widest bg-[#1E1B18]/70 text-[#E89D7A] px-3 py-1 rounded-full shadow-md backdrop-blur-xs">Success Video available</span>
+                      </div>
                     </div>
                   </div>
                   
@@ -318,6 +334,45 @@ export default function InvesteeStories() {
           </div>
         </div>
       </footer>
+
+      {/* Cinematic Video Lightbox Modal */}
+      <AnimatePresence>
+        {playingVideoId && playingStory && (
+          <div className="fixed inset-0 z-[115] flex items-center justify-center p-4 md:p-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setPlayingVideoId(null)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden bg-black border border-white/10 shadow-2xl z-10"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setPlayingVideoId(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#E89D7A] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+              
+              <iframe
+                src={getYouTubeEmbedUrl(playingStory.videoUrl, true)}
+                title={playingStory.title}
+                className="w-full h-full border-0 absolute inset-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="no-referrer"
+              ></iframe>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

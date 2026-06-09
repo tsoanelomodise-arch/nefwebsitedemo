@@ -12,6 +12,7 @@ export interface Story {
   fullContent?: string[]; // For more detailed text if needed
   gallery?: string[];
   stats?: { label: string; value: string; icon?: string }[];
+  videoUrl: string;
 }
 
 export const STORIES: Story[] = [
@@ -35,7 +36,7 @@ export const STORIES: Story[] = [
       "Beyond the economic impact, The Orchards has also become a focal point for social interaction. The centre's design includes public spaces that encourage community gathering, making it more than just a place to shop. It is a place where neighbors meet, where families spend time together, and where the spirit of community is celebrated.",
       "Today, The Orchards is more than just a shopping destination; it is a hub of economic activity that continues to inspire local entrepreneurs to dream big and contribute to South Africa's growth story. It stands as a shining example of what can be achieved when vision, investment, and community commitment come together."
     ],
-    image: "https://images.unsplash.com/photo-1555633514-abcee6ad93e1?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1000&auto=format&fit=crop",
     quote: "The NEF didn't just provide funding; they provided a partnership that understood our vision for the community.",
     impact: [
       "Created 250+ permanent jobs",
@@ -49,9 +50,10 @@ export const STORIES: Story[] = [
       { label: "Retail Space", value: "12,000m²", icon: "Maximize" }
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop"
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=odpZYB85fjg"
   },
   {
     id: "busamed-healthcare",
@@ -73,7 +75,7 @@ export const STORIES: Story[] = [
       "One of Busamed's core values is its commitment to transformation and skills development. The group actively recruits and trains black medical professionals, providing them with opportunities to excel in specialized fields. This focus on empowerment extends beyond the clinical staff to all levels of the organization, creating a culture of excellence and inclusivity.",
       "The success of Busamed demonstrates that with the right backing, black-owned enterprises can compete and excel in highly specialized and capital-intensive sectors, driving both economic value and social good. It is a story of vision, perseverance, and the power of strategic empowerment."
     ],
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1586773860418-d3b3b998cf67?q=80&w=1000&auto=format&fit=crop",
     quote: "Our goal was to create a healthcare legacy that reflects the diversity and excellence of South Africa.",
     impact: [
       "7 World-class hospitals established",
@@ -87,9 +89,10 @@ export const STORIES: Story[] = [
       { label: "Specialties", value: "25+", icon: "Stethoscope" }
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1000&auto=format&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop"
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=I43dWe93u84"
   },
   {
     id: "mamelodi-square",
@@ -111,7 +114,7 @@ export const STORIES: Story[] = [
       "A key feature of the Mamelodi Square project was its commitment to local economic empowerment. During the construction phase, hundreds of jobs were created for local residents, and many local sub-contractors were given the opportunity to participate in the project. This focus on local involvement has continued into the operational phase, with many of the retail staff being recruited from the surrounding community.",
       "As a vibrant centre of commerce, Mamelodi Square is proving that township markets are ripe for investment and capable of sustaining sophisticated retail developments that drive local growth. It is a model for future township developments across the country."
     ],
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1000&auto=format&fit=crop",
     quote: "Mamelodi Square is a symbol of dignity and progress for our community.",
     impact: [
       "R250 million total investment",
@@ -126,7 +129,22 @@ export const STORIES: Story[] = [
     ],
     gallery: [
       "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1000&auto=format&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop"
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=mCstRzPqX0k"
   }
 ];
+
+export function getYouTubeEmbedUrl(url: string, autoplay = true): string {
+  if (!url) return "";
+  let videoId = "";
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    videoId = match[2];
+  } else {
+    videoId = url;
+  }
+  return `https://www.youtube.com/embed/${videoId}${autoplay ? "?autoplay=1&mute=1&rel=0&modestbranding=1" : "?rel=0&modestbranding=1"}`;
+}
+

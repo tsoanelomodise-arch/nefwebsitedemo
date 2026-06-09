@@ -12,6 +12,7 @@ import NonFinancialSupport from "./NonFinancialSupport";
 import FundChatbot from "./components/FundChatbot";
 import BackToTopButton from "./components/BackToTopButton";
 import { NEF_FUNDS } from "./data/funds";
+import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
 
 import MandateVisionMission from "./MandateVisionMission";
 import FAQ from "./FAQ";
@@ -88,15 +89,34 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  // Infer the latest story from the Success Stories page (sorted by date descending)
+  const latestStory = [...STORIES].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0] || STORIES[0];
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [playingHomeVideo, setPlayingHomeVideo] = useState(false);
 
   const [activeSection, setActiveSection] = useState("01");
   const location = useLocation();
   const navigate = useNavigate();
 
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+  // States & Handler for Contact Form
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate real database submission timeout
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+    }, 1200);
+  };
 
   useEffect(() => {
     setActiveMegaMenu(null);
@@ -293,7 +313,7 @@ export default function App() {
                     : "text-neutral-500 border-transparent hover:text-[#1E1B18]"
                 }`}
               >
-                About the NEF
+                About NEF
                 <ChevronDown size={11} className={`transition-transform duration-300 ${activeMegaMenu === "about" ? "rotate-180" : ""}`} />
               </button>
             </div>
@@ -360,44 +380,45 @@ export default function App() {
               </div>
             </div>
 
-            {/* Social Media Links (Visible at all times inside header) */}
-            <div className="flex items-center gap-2 border-r border-[#EFE6DA]/40 pr-4 mr-1">
-              <a 
-                href="https://twitter.com/nefcorp" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                title="Twitter"
-                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
+            {/* Group with stacked Check Eligibility action button and social media icons */}
+            <div className="flex flex-col items-center gap-1 shrink-0">
+              <button
+                onClick={() => navigate("/check-eligibility")}
+                className="px-5 py-2 bg-[#1E1B18] text-[#FCFAF7] hover:bg-[#E89D7A] hover:text-white rounded-full text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95 cursor-pointer text-center"
               >
-                <Twitter size={14} />
-              </a>
-              <a 
-                href="https://www.linkedin.com/company/national-empowerment-fund" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                title="LinkedIn"
-                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
-              >
-                <Linkedin size={14} />
-              </a>
-              <a 
-                href="https://www.facebook.com/NationalEmpowermentFund" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                title="Facebook"
-                className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-1"
-              >
-                <Facebook size={14} />
-              </a>
+                Check Eligibility
+              </button>
+              
+              <div className="flex items-center justify-center gap-3 mt-0.5">
+                <a 
+                  href="https://twitter.com/nefcorp" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  title="Twitter"
+                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                >
+                  <Twitter size={11} />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/company/national-empowerment-fund" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  title="LinkedIn"
+                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                >
+                  <Linkedin size={11} />
+                </a>
+                <a 
+                  href="https://www.facebook.com/NationalEmpowermentFund" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  title="Facebook"
+                  className="text-neutral-400 hover:text-[#E89D7A] transition-colors p-0.5"
+                >
+                  <Facebook size={11} />
+                </a>
+              </div>
             </div>
-
-            {/* Primary Action Button */}
-            <button
-              onClick={() => navigate("/check-eligibility")}
-              className="px-6 py-2.5 bg-[#1E1B18] text-[#FCFAF7] hover:bg-[#E89D7A] hover:text-white rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
-            >
-              Check Eligibility
-            </button>
           </div>
 
           {/* Mobile menu trigger button */}
@@ -1444,16 +1465,21 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 max-w-7xl mx-auto">
                   <div className="space-y-12">
                     <div className="space-y-6">
-                      <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em] block">Impact & Transformation</span>
+                      <span className="text-[#E89D7A] text-[9px] font-bold uppercase tracking-[0.25em] block">Latest Success Spotlight</span>
                       <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight leading-none uppercase">
                         INVESTEE <br />
                         <span className="font-serif italic text-[#E89D7A]">STORIES</span>
                       </h2>
                     </div>
                     
-                    <p className="text-white/50 text-sm md:text-base max-w-md font-light leading-relaxed">
-                      Discover how the NEF has partnered with black entrepreneurs to build sustainable businesses and create lasting economic impact across South Africa.
-                    </p>
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#E89D7A]">
+                        {latestStory.title}
+                      </h3>
+                      <p className="text-white/50 text-sm md:text-base max-w-md font-light leading-relaxed">
+                        {latestStory.summary}
+                      </p>
+                    </div>
 
                     <button 
                       onClick={() => navigate("/investee-stories")}
@@ -1469,80 +1495,82 @@ export default function App() {
                     </button>
                   </div>
 
-                  <div className="relative grid grid-cols-2 gap-6">
-                    <div className="space-y-6">
-                      <div 
-                        onClick={() => navigate("/investee-stories/the-orchards")}
-                        className="aspect-[3/4] bg-[#2C2621]/80 rounded-[2rem] overflow-hidden relative group cursor-pointer border border-white/5 shadow-xl"
-                      >
-                        <img 
-                          src="https://images.unsplash.com/photo-1555633514-abcee6ad93e1?q=80&w=1000&auto=format&fit=crop" 
-                          alt="Story 1" 
-                          className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000 ease-out"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                          <span className="text-[8px] font-bold uppercase tracking-widest bg-[#E89D7A] text-[#1E1B18] px-4 py-1.5 rounded-full shadow-lg">Retail</span>
-                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                            <ArrowRight size={12} className="text-white" />
-                          </div>
+                  <div className="relative flex flex-col gap-8 md:gap-10">
+                    {/* ENLARGED HERO VIDEO CARD */}
+                    <div 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setPlayingHomeVideo(true);
+                      }}
+                      className="aspect-video bg-[#2C2621]/80 rounded-[2.5rem] overflow-hidden relative group border border-white/5 shadow-2xl cursor-pointer"
+                    >
+                      <img 
+                        src={latestStory.image} 
+                        alt={latestStory.title} 
+                        className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-102 transition-all duration-1000 ease-out"
+                        referrerPolicy="no-referrer"
+                      />
+                      {/* Centered Play Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#E89D7A]/95 text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#E89D7A]">
+                          <Play size={24} fill="#1E1B18" className="ml-1 md:ml-1.5" />
                         </div>
                       </div>
-                      <div 
-                        onClick={() => navigate("/investee-stories/busamed-healthcare")}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] overflow-hidden relative group cursor-pointer border border-white/5 shadow-xl"
-                      >
-                        <img 
-                          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" 
-                          alt="Story 2" 
-                          className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000 ease-out"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                          <span className="text-[8px] font-bold uppercase tracking-widest bg-[#E89D7A] text-[#1E1B18] px-4 py-1.5 rounded-full shadow-lg">Healthcare</span>
-                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                            <ArrowRight size={12} className="text-white" />
-                          </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent opacity-95"></div>
+                      <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex items-end justify-between z-10 gap-4">
+                        <div className="space-y-1 md:space-y-2 text-left">
+                          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#E89D7A] text-[#1E1B18] px-3 py-1 md:px-4 md:py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
+                          <h4 className="text-sm md:text-xl font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
+                        </div>
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#E89D7A]/20 shrink-0">
+                          <ArrowRight size={14} className="text-white md:w-4 md:h-4" />
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-6 pt-12">
+
+                    {/* Supporting cards row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                       <div 
-                        onClick={() => navigate("/investee-stories/mamelodi-square")}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] overflow-hidden relative group cursor-pointer border border-white/5 shadow-xl"
+                        onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
+                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#E89D7A]/20 transition-[border-color] duration-500"
                       >
-                        <img 
-                          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop" 
-                          alt="Story 3" 
-                          className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000 ease-out"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                          <span className="text-[8px] font-bold uppercase tracking-widest bg-[#E89D7A] text-[#1E1B18] px-4 py-1.5 rounded-full shadow-lg">Property</span>
-                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                            <ArrowRight size={12} className="text-white" />
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#E89D7A]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Testimonial</span>
+                        <p className="text-white/80 text-[10px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-4">
+                          "{latestStory.quote}"
+                        </p>
+                        <div className="flex justify-between items-center relative z-10">
+                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#E89D7A] transition-colors">{latestStory.author}</span>
+                          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all">
+                            <ArrowRight size={10} className="text-white" />
                           </div>
                         </div>
                       </div>
+
                       <div 
-                        onClick={() => navigate("/investee-stories")}
-                        className="aspect-[3/4] bg-[#2C2621]/80 rounded-[2rem] overflow-hidden relative group cursor-pointer border border-white/5 shadow-xl"
+                        onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
+                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#E89D7A]/20 transition-[border-color] duration-500"
                       >
-                        <img 
-                          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1000&auto=format&fit=crop" 
-                          alt="Story 4" 
-                          className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000 ease-out"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
-                        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                          <span className="text-[8px] font-bold uppercase tracking-widest bg-[#E89D7A] text-[#1E1B18] px-4 py-1.5 rounded-full shadow-lg">Services</span>
-                          <div className="w-8 h-8 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                            <ArrowRight size={12} className="text-white" />
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#E89D7A]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#E89D7A]/10 transition-all duration-500"></div>
+                        <div className="space-y-4">
+                          <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#E89D7A] block">Impact stats</span>
+                          <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#E89D7A] transition-colors">
+                            {latestStory.title}
+                          </h4>
+                          <div className="space-y-2 pt-2 border-t border-white/5 font-serif italic text-gold-foil">
+                            {latestStory.impact?.slice(0, 2).map((item, idx) => (
+                              <div key={idx} className="flex items-start gap-2 text-[10px] text-white/70 font-light font-sans not-italic">
+                                <span className="text-[#C79F6E]">•</span>
+                                <span>{item}</span>
+                              </div>
+                            ))}
                           </div>
+                        </div>
+                        <div className="flex justify-between items-center relative z-10 mt-4 border-t border-white/5 pt-4">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#E89D7A] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
+                            Read Full Story <span className="text-xs">→</span>
+                          </span>
+                          <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Interactive</span>
                         </div>
                       </div>
                     </div>
@@ -1629,54 +1657,269 @@ export default function App() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="py-28 px-8 md:px-24 bg-gradient-to-br from-[#E89D7A] to-[#E58E62] text-center relative overflow-hidden">
+              <section id="contact" className="py-24 px-8 md:px-24 bg-gradient-to-br from-[#E89D7A] to-[#E58E62] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div className="max-w-3xl mx-auto relative z-10">
-                  <span className="text-[#1E1B18] text-[9px] font-bold uppercase tracking-[0.3em] mb-4 block">Get In Touch</span>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight mb-10 text-[#1E1B18] uppercase leading-none">
+                <div className="max-w-xl mx-auto relative z-10">
+                  <span className="text-[#1E1B18] text-[9px] font-bold uppercase tracking-[0.3em] mb-3 block text-center">Get In Touch</span>
+                  <h2 className="text-3xl md:text-4xl font-sans font-light tracking-tight mb-8 text-[#1E1B18] uppercase leading-none text-center">
                     Got some questions?
                   </h2>
-                  <button 
-                    className="group relative px-10 py-4 bg-[#1E1B18] text-white font-bold uppercase text-[10px] tracking-widest overflow-hidden rounded-full shadow-xl hover:scale-105 duration-300"
-                  >
-                    <span className="relative z-10">Send Message</span>
-                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    <span className="absolute inset-0 flex items-center justify-center text-[#1E1B18] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">Send Message</span>
-                  </button>
-                  <p className="mt-10 text-xs font-semibold text-[#1E1B18]/75 tracking-wider">
-                    or reach us via <a href="mailto:hello@nefcorp.co.za" className="border-b border-[#1E1B18] font-bold hover:opacity-100 transition-opacity">hello@nefcorp.co.za</a>
+
+                  <AnimatePresence mode="wait">
+                    {!submitSuccess ? (
+                      <motion.form 
+                        key="contact-form"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.3 }}
+                        onSubmit={handleContactSubmit} 
+                        className="space-y-4 text-left"
+                      >
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18] block pl-1">Your Name</label>
+                            <input
+                              type="text"
+                              required
+                              value={contactForm.name}
+                              onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                              placeholder="e.g. Sipho Nkosi"
+                              className="w-full px-4 h-11 bg-white/30 hover:bg-white/40 focus:bg-white/60 text-[#1E1B18] placeholder-[#1E1B18]/40 border border-[#1E1B18]/10 rounded-2xl text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#1E1B18] transition-all"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18] block pl-1">Your Email</label>
+                            <input
+                              type="email"
+                              required
+                              value={contactForm.email}
+                              onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                              placeholder="e.g. sipho@company.co.za"
+                              className="w-full px-4 h-11 bg-white/30 hover:bg-white/40 focus:bg-white/60 text-[#1E1B18] placeholder-[#1E1B18]/40 border border-[#1E1B18]/10 rounded-2xl text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#1E1B18] transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18] block pl-1">How can we help you?</label>
+                          <textarea
+                            required
+                            rows={4}
+                            value={contactForm.message}
+                            onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                            placeholder="Tell us about your business or inquiry..."
+                            className="w-full px-4 py-3 bg-white/30 hover:bg-white/40 focus:bg-white/60 text-[#1E1B18] placeholder-[#1E1B18]/40 border border-[#1E1B18]/10 rounded-2xl text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#1E1B18] transition-all resize-none"
+                          ></textarea>
+                        </div>
+
+                        <div className="text-center pt-2">
+                          <button 
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="group relative px-10 py-3.5 bg-[#1E1B18] text-white font-bold uppercase text-[9px] tracking-widest overflow-hidden rounded-full shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 disabled:opacity-50 cursor-pointer min-w-[200px]"
+                          >
+                            <span className="relative z-10 flex items-center justify-center gap-2">
+                              {isSubmitting ? "Sending message..." : "Send Message"}
+                              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </motion.form>
+                    ) : (
+                      <motion.div 
+                        key="success-message"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.4 }}
+                        className="bg-white/30 backdrop-blur-md border border-white/20 p-8 rounded-[2rem] text-center space-y-4"
+                      >
+                        <div className="w-14 h-14 bg-[#1E1B18] text-white rounded-full flex items-center justify-center mx-auto shadow-md">
+                          <CheckCircle2 size={24} className="text-[#E89D7A]" />
+                        </div>
+                        <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#1E1B18]">Message Sent Successfully</h3>
+                        <p className="text-xs text-[#1E1B18]/80 leading-relaxed font-light">
+                          Thank you for reaching out, <strong className="font-bold">{contactForm.name}</strong>. Your inquiry has been routed dynamically to our support team and we will respond to you at <strong className="font-bold">{contactForm.email}</strong> within 24 working hours.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSubmitSuccess(false);
+                            setContactForm({ name: "", email: "", message: "" });
+                          }}
+                          className="px-6 py-2 bg-[#1E1B18] text-white hover:bg-white hover:text-[#1E1B18] rounded-full text-[9px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer"
+                        >
+                          Send Another Message
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <p className="mt-8 text-[11px] font-light text-[#1E1B18]/75 tracking-wider text-center">
+                    or email us directly at <a href="mailto:applications@nefcorp.co.za" className="border-b border-[#1E1B18] font-bold hover:opacity-100 transition-opacity">applications@nefcorp.co.za</a>
                   </p>
                 </div>
               </section>
 
               {/* Footer */}
-              <footer className="bg-[#FAF8F5] py-12 px-8 md:px-24 border-t border-[#EFE6DA]/40 flex flex-col md:flex-row justify-between items-center gap-8 text-[#1E1B18]">
-                <div className="text-[10px] font-bold tracking-widest uppercase opacity-40">© 2026 NEF CORP. ALL RIGHTS RESERVED.</div>
-                <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
-                  <a 
-                    href="#" 
-                    className="transition-colors hover:text-[#E89D7A]"
-                  >
-                    Instagram
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/company/national-empowerment-fund" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-[#E89D7A]"
-                  >
-                    LinkedIn
-                  </a>
-                  <a 
-                    href="https://twitter.com/nefcorp" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-[#E89D7A]"
-                  >
-                    Twitter
-                  </a>
+              <footer className="bg-[#FAF8F5] pt-16 pb-12 px-8 md:px-24 border-t border-[#EFE6DA]/40 text-[#1E1B18]">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-[#EFE6DA]/40">
+                  {/* Brand Column */}
+                  <div className="md:col-span-4 space-y-4">
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E]">National Empowerment Fund</span>
+                      <h3 className="text-lg font-sans font-light uppercase tracking-tight text-[#1E1B18]">Growing Black Participation</h3>
+                    </div>
+                    <p className="text-neutral-500 text-xs font-light leading-relaxed max-w-sm">
+                      A catalyst for Broad-Based Black Economic Empowerment, accelerating business development, asset transformation, and operational sustainability across South Africa.
+                    </p>
+                  </div>
+
+                  {/* Funding Solutions Column */}
+                  <div className="md:col-span-3 space-y-4">
+                    <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E] block mb-2">Funding Solutions</span>
+                    <ul className="space-y-2.5">
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/our-funds", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Our Main Funds
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/funding-criteria", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Funding Criteria
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/check-eligibility", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Eligibility Checklist
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/non-financial-support", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Non-Financial Support
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/how-to-apply", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          How to Apply
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* About & Impact Column */}
+                  <div className="md:col-span-2 space-y-4">
+                    <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E] block mb-2">About & Impact</span>
+                    <ul className="space-y-2.5">
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/about/mandate-vision-mission", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Mandate, Vision & Mission
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Performance Report 2025
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/investee-stories", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Investee Success Stories
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Support Column */}
+                  <div className="md:col-span-3 space-y-4">
+                    <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-[#C79F6E] block mb-2">Support & Connect</span>
+                    <ul className="space-y-2.5">
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "/faq", isExternal: true })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Frequently Asked Questions
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => handleNavItemClick({ href: "#contact", isExternal: false })}
+                          className="text-xs text-neutral-500 hover:text-[#E89D7A] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Contact & General Inquiries
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => {
+                            const chatbotBtn = document.querySelector('.fixed.bottom-8.right-8') as HTMLButtonElement;
+                            if (chatbotBtn) chatbotBtn.click();
+                          }}
+                          className="text-xs text-[#E89D7A] hover:underline transition-all font-semibold tracking-wide text-left flex items-center gap-1.5 shadow-none p-0 bg-transparent border-0 cursor-pointer"
+                        >
+                          Speak with AI Advisor 💬
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Bottom Bar */}
+                <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                  <div className="text-[10px] font-bold tracking-widest uppercase opacity-40">
+                    © 2026 NATIONAL EMPOWERMENT FUND. ALL RIGHTS RESERVED.
+                  </div>
+                  <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+                    <a 
+                      href="#" 
+                      className="transition-colors hover:text-[#E89D7A]"
+                    >
+                      Instagram
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/company/national-empowerment-fund" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-[#E89D7A]"
+                    >
+                      LinkedIn
+                    </a>
+                    <a 
+                      href="https://twitter.com/nefcorp" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-[#E89D7A]"
+                    >
+                      Twitter
+                    </a>
+                  </div>
                 </div>
               </footer>
             </>
@@ -1968,6 +2211,45 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Investee Story Video Lightbox Modal */}
+      <AnimatePresence>
+        {playingHomeVideo && (
+          <div className="fixed inset-0 z-[115] flex items-center justify-center p-4 md:p-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setPlayingHomeVideo(false)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden bg-black border border-white/10 shadow-2xl z-10"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setPlayingHomeVideo(false)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#E89D7A] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+              
+              <iframe
+                src={getYouTubeEmbedUrl(latestStory.videoUrl, true)}
+                title={latestStory.title}
+                className="w-full h-full border-0 absolute inset-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="no-referrer"
+              ></iframe>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

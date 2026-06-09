@@ -5,7 +5,7 @@ import {
   ArrowLeft, Quote, Calendar, User, Share2, Facebook, Twitter, Linkedin, ArrowRight, Check,
   TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
 } from "lucide-react";
-import { STORIES } from "./data/stories";
+import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
 
 const IconMap: Record<string, any> = {
   TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
@@ -67,12 +67,12 @@ export default function InvesteeStoryDetail() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Header */}
-      <header className="relative h-[80vh] flex items-end overflow-hidden bg-black">
+      <header className="relative min-h-[60vh] md:min-h-[75vh] flex items-end bg-black pt-32 pb-16 md:pb-24">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.6 }}
+          animate={{ scale: 1, opacity: 0.55 }}
           transition={{ duration: 1.5 }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
         >
           <img 
             src={story.image} 
@@ -80,10 +80,10 @@ export default function InvesteeStoryDetail() {
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
         </motion.div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-24">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -100,11 +100,11 @@ export default function InvesteeStoryDetail() {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
+            <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tighter leading-tight uppercase">
               {story.title}
             </h1>
             
-            <p className="text-white/60 text-xl md:text-2xl font-light leading-relaxed max-w-2xl italic">
+            <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl italic border-l border-gold-foil/40 pl-4">
               "{story.summary}"
             </p>
           </motion.div>
@@ -115,9 +115,9 @@ export default function InvesteeStoryDetail() {
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/investee-stories")}
-          className="absolute top-12 left-12 z-20 group flex items-center gap-4 text-white/40 hover:text-gold-foil transition-colors"
+          className="absolute top-6 left-6 md:top-8 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-gold-foil transition-colors"
         >
-          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-gold-foil transition-colors">
+          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-gold-foil transition-colors bg-black/25 backdrop-blur-md">
             <ArrowLeft className="w-4 h-4" />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-widest">Back to Stories</span>
@@ -230,6 +230,22 @@ export default function InvesteeStoryDetail() {
               {(story.fullContent || story.content).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
+            </div>
+
+            {/* YouTube Video Embed */}
+            <div className="space-y-6 pt-4">
+              <span className="text-gold-foil text-[10px] font-bold uppercase tracking-widest block">Video Showcase</span>
+              <h3 className="text-2xl font-bold tracking-tighter text-black uppercase">Watch Their Success Story</h3>
+              <div className="aspect-video w-full rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl bg-gray-950">
+                <iframe
+                  src={getYouTubeEmbedUrl(story.videoUrl, false)}
+                  title={story.title}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  referrerPolicy="no-referrer"
+                ></iframe>
+              </div>
             </div>
 
             {/* Quote Block */}
