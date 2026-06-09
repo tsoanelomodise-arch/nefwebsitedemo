@@ -1406,20 +1406,15 @@ export default function App() {
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-[#EFE6DA]/40">
                   {/* Brand Column */}
                   <div className="md:col-span-4 space-y-4 text-left">
-                    <div className="inline-flex items-center gap-3 bg-[#113f36] text-white py-2.5 px-4 rounded-2xl border border-green-800 shadow-xs max-w-full">
-                      <div className="relative w-7 h-7 flex-shrink-0 text-white leading-none">
-                        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" stroke="currentColor">
-                          <path d="M25,15 C10,35 10,65 25,85" strokeWidth="8" strokeLinecap="round" opacity="0.65" />
-                          <path d="M40,15 C25,35 25,65 40,85" strokeWidth="8" strokeLinecap="round" opacity="0.85" />
-                          <path d="M55,15 C40,35 40,65 55,85" strokeWidth="8" strokeLinecap="round" />
-                        </svg>
-                      </div>
-                      <div className="flex flex-col leading-[1.05] text-left">
-                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">National</span>
-                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">Empowerment</span>
-                        <span className="font-serif font-black text-[9px] tracking-wider uppercase">Fund</span>
-                        <span className="text-[4.5px] font-sans font-light tracking-wide opacity-80 uppercase mt-0.5">Growing Black Economic Participation</span>
-                      </div>
+                    <div 
+                      className="cursor-pointer inline-block" 
+                      onClick={() => handleNavItemClick({ href: "#home", isExternal: false })}
+                    >
+                      <img 
+                        src="https://empowerment-pulse-tracker.lovable.app/assets/nef-logo-B_u3VTf0.png" 
+                        alt="NEF Logo" 
+                        className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 hover:scale-[1.02]" 
+                      />
                     </div>
                     <p className="text-neutral-500 text-xs font-light leading-relaxed max-w-sm">
                       A catalyst for Broad-Based Black Economic Empowerment, accelerating business development, asset transformation, and operational sustainability across South Africa.
@@ -1611,8 +1606,19 @@ export default function App() {
                 className="w-full h-full border-0 absolute inset-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
-                referrerPolicy="no-referrer"
               ></iframe>
+
+              {/* Sandbox/Embed Fallback Bar */}
+              <div className="absolute bottom-4 left-4 z-20 flex gap-2">
+                <a
+                  href={latestStory.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-black/75 hover:bg-[#F2901C] text-white hover:text-black rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center lg:gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer"
+                >
+                  Watch on YouTube ↗
+                </a>
+              </div>
             </motion.div>
           </div>
         )}

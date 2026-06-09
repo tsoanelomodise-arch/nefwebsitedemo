@@ -240,15 +240,37 @@ export default function InvesteeStoryDetail() {
             <div className="space-y-6 pt-4">
               <span className="text-gold-foil text-[10px] font-bold uppercase tracking-widest block">Video Showcase</span>
               <h3 className="text-2xl font-bold tracking-tighter text-black uppercase">Watch Their Success Story</h3>
-              <div className="aspect-video w-full rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl bg-gray-950">
+              <div className="aspect-video w-full rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl bg-gray-950 relative group">
                 <iframe
                   src={getYouTubeEmbedUrl(story.videoUrl, false)}
                   title={story.title}
                   className="w-full h-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  referrerPolicy="no-referrer"
                 ></iframe>
+                
+                {/* Fallback floating button for sandbox/embed restrictions */}
+                <div className="absolute bottom-4 left-4 z-10 flex gap-2">
+                  <a
+                    href={story.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-black/75 hover:bg-[#F2901C] text-white hover:text-black rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer"
+                  >
+                    Watch on YouTube ↗
+                  </a>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 bg-amber-50/40 rounded-2xl text-[11px] text-neutral-600 border border-amber-100/50 gap-2">
+                <span className="font-sans font-medium">Facing playback issues or configuration Error 153 in the development sandbox?</span>
+                <a
+                  href={story.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#F2901C] hover:underline flex items-center gap-1 uppercase tracking-wider shrink-0 text-[10px]"
+                >
+                  Watch Directly on YouTube ↗
+                </a>
               </div>
             </div>
 
