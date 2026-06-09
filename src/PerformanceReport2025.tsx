@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Download, TrendingUp, Users, Briefcase, Globe, Award, BarChart3, PieChart, Activity, CheckCircle, FileText, Share2, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import performanceHeroBg from './performance_hero_bg.jpg';
 
 // Custom high-fidelity NEF Logo Component from the Cover Page
 const NefLogo = ({ className = "text-white" }: { className?: string }) => (
@@ -167,58 +168,71 @@ export default function PerformanceReport2025() {
 
       {/* Hero Book-Cover Section Styled Exactly After the Attached Cover */}
       <header className="pt-24 pb-16 px-4 md:px-12 max-w-7xl mx-auto">
-        <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#113f36] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl flex flex-col justify-between p-8 md:p-16 border-t border-white/10">
+        <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#FAF8F5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-xl flex flex-col justify-between p-8 md:p-16 border border-[#EFE6DA]/50">
           
-          {/* Cover Graphic element (Slanted diagonal stripes) */}
-          <div className="absolute inset-x-0 inset-y-0 overflow-hidden pointer-events-none">
-            {/* Ambient glows */}
-            <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-            
-            {/* Deep green & gold gradient diagonal pillars from logo */}
-            {/* Stripe 1 */}
-            <div className="absolute left-[5%] -bottom-[20%] w-16 md:w-28 h-[140%] bg-gradient-to-t from-white/0 via-white/10 to-white/35 rotate-[-35deg] rounded-full transform origin-bottom-left block opacity-40 md:opacity-70"></div>
-            {/* Stripe 2 (Solid White/Teal Blend) */}
-            <div className="absolute left-[18%] -bottom-[30%] w-16 md:w-24 h-[155%] bg-gradient-to-r from-white/10 to-white/40 rotate-[-35deg] rounded-full transform origin-bottom-left block shadow-lg"></div>
-            {/* Stripe 3 (The main graphic) */}
-            <div className="absolute left-[31%] -bottom-[40%] w-16 md:w-28 h-[170%] bg-gradient-to-t from-[#ea9e3d]/10 via-[#ea9e3d]/30 to-white/80 rotate-[-35deg] rounded-full transform origin-bottom-left block"></div>
+          {/* Background Image Layer positioned on the right half */}
+          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] h-full pointer-events-none overflow-hidden">
+            <img 
+              src={performanceHeroBg} 
+              alt="NEF Performance Hero" 
+              className="w-full h-full object-cover object-[center_right] select-none"
+              referrerPolicy="no-referrer"
+            />
+            {/* Smooth linear fade to pure off-white on the left side to blend into the text zone */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/85 to-transparent lg:block hidden"></div>
+            {/* Vertically faded back-cover mask for smaller screens */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent lg:hidden block"></div>
           </div>
 
-          {/* Spacer to preserve bottom layout alignment of the content card */}
-          <div className="relative z-10 w-full mb-12"></div>
+          {/* Golden Orange Geometric Accent Stripe mimicking the logo's curved branding on the right of the cover */}
+          <div className="absolute right-0 top-0 w-full lg:w-[60%] h-full pointer-events-none z-10 overflow-hidden mix-blend-multiply opacity-80">
+            {/* Stripe 1 */}
+            <div className="absolute right-[5%] top-[-30%] w-12 md:w-16 h-[160%] bg-gradient-to-b from-[#ea9e3d]/0 via-[#ea9e3d]/10 to-[#ea9e3d]/30 rotate-[35deg] rounded-full transform origin-top-right"></div>
+            {/* Stripe 2 (Solid White swoosh layer) */}
+            <div className="absolute right-[15%] top-[-25%] w-16 md:w-20 h-[155%] bg-gradient-to-b from-white/0 via-white/40 to-white/95 rotate-[35deg] rounded-full transform origin-top-right"></div>
+            {/* Stripe 3 - The vibrant gold diagonal stripe from NEF emblem */}
+            <div className="absolute right-[25%] top-[-40%] w-20 md:w-32 h-[180%] bg-gradient-to-b from-[#ea9e3d]/20 via-[#ea9e3d]/40 to-[#ea9e3d]/10 rotate-[35deg] rounded-full transform origin-top-right"></div>
+          </div>
 
-          {/* Core Content Zone mimicking the asymmetric orange card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end relative z-10 w-full">
+          {/* Ambient subtle light glow */}
+          <div className="absolute -top-32 -left-32 w-128 h-128 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          {/* Spacer to preserve bottom layout alignment of the content zone */}
+          <div className="relative z-10 w-full mb-8"></div>
+
+          {/* Core Content Zone placed directly over the high-contrast left fade zone */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-20 w-full mt-auto">
             
-            {/* Left side spacer to let graphic shine */}
-            <div className="hidden lg:block lg:col-span-4"></div>
-
-            {/* Asymmetrical Orange Card "Information Manual" equivalent */}
             <motion.div 
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring" }}
-              className="col-span-1 lg:col-span-8 bg-[#ea9e3d] text-white p-8 md:p-14 rounded-l-[3rem] md:rounded-l-[4rem] rounded-r-3xl shadow-xl border-l-4 border-white/30 text-left"
+              className="col-span-1 lg:col-span-7 text-left p-2 md:p-6"
             >
-              <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.35em] text-white/90 mb-4 block font-bold">
-                Promotion of Access to Economic Equality
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#113f36]/5 border border-[#113f36]/10 rounded-full mb-6">
+                <span className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-[#113f36] font-bold">
+                  Promotion of Access to Economic Equality
+                </span>
+              </div>
               
-              <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] uppercase">
+              <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight leading-[1.05] uppercase text-[#113f36]">
                 Performance <br />
                 Manual 2025
               </h1>
 
-              <div className="h-1 w-20 bg-white my-6 opacity-70"></div>
+              <div className="h-1.5 w-24 bg-[#ea9e3d] my-6 rounded-full"></div>
 
-              <p className="text-sm md:text-base text-white/95 leading-relaxed max-w-xl font-light">
+              <p className="text-sm md:text-base text-[#1E1B18]/90 leading-relaxed max-w-xl font-light">
                 In terms of the National Empowerment Fund Act, No 105 of 1998, 
                 this document showcases key performance indicators (KPIs), operational 
                 disbursements, enterprise funding frameworks, and social transformation 
                 outcomes for the latest financial review period.
               </p>
             </motion.div>
-          </div>
 
+            {/* Right spacer zone to keep the woman's face and laptop clear of overlaying text */}
+            <div className="hidden lg:block lg:col-span-5 h-1"></div>
+          </div>
 
         </div>
       </header>
