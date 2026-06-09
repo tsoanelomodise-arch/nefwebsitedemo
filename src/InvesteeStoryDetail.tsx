@@ -67,7 +67,7 @@ export default function InvesteeStoryDetail() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Header */}
-      <header className="relative min-h-[60vh] md:min-h-[75vh] flex items-end bg-black pt-32 pb-16 md:pb-24">
+      <header className="relative min-h-[60vh] md:min-h-[75vh] flex items-end bg-black pt-44 md:pt-48 pb-16 md:pb-24">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.55 }}
@@ -79,6 +79,10 @@ export default function InvesteeStoryDetail() {
             alt={story.title}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
         </motion.div>
@@ -110,12 +114,12 @@ export default function InvesteeStoryDetail() {
           </motion.div>
         </div>
 
-        {/* Back Button */}
+        {/* Back Button - Positioned to clear the sticky header */}
         <motion.button 
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/investee-stories")}
-          className="absolute top-6 left-6 md:top-8 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-gold-foil transition-colors"
+          className="absolute top-24 left-6 md:top-28 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-gold-foil transition-colors"
         >
           <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-gold-foil transition-colors bg-black/25 backdrop-blur-md">
             <ArrowLeft className="w-4 h-4" />
@@ -276,6 +280,10 @@ export default function InvesteeStoryDetail() {
                       alt={`Gallery ${i}`} 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80";
+                      }}
                     />
                   </motion.div>
                 ))}
@@ -317,6 +325,10 @@ export default function InvesteeStoryDetail() {
                     alt={s.title} 
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80";
+                    }}
                   />
                 </div>
                 <div className="p-8 space-y-4">

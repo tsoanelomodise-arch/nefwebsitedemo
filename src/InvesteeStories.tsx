@@ -44,7 +44,7 @@ export default function InvesteeStories() {
   return (
     <div className="min-h-screen bg-[#FCFAF7] text-[#1E1B18] selection:bg-[#E89D7A] selection:text-white font-sans">
       {/* Header */}
-      <header className="relative min-h-[45vh] md:min-h-[50vh] pt-28 pb-16 flex items-center justify-center overflow-hidden bg-[#1E1B18]">
+      <header className="relative min-h-[45vh] md:min-h-[50vh] pt-36 md:pt-48 pb-16 flex items-center justify-center overflow-hidden bg-[#1E1B18]">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.25 }}
@@ -56,6 +56,10 @@ export default function InvesteeStories() {
             alt="Success Stories"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80";
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1E1B18]/80 via-transparent to-[#1E1B18]"></div>
         </motion.div>
@@ -78,12 +82,12 @@ export default function InvesteeStories() {
           </motion.div>
         </div>
 
-        {/* Back Button */}
+        {/* Back Button - Positioned to clear the sticky header */}
         <motion.button 
           whileHover={{ x: -2 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => navigate("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-white transition-colors"
+          className="absolute top-24 left-6 md:top-28 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-white transition-colors"
         >
           <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#E89D7A] transition-colors bg-[#1E1B18]/30 backdrop-blur-md">
             <ArrowLeft className="w-4 h-4 text-white" />
@@ -153,6 +157,10 @@ export default function InvesteeStories() {
                         alt={story.title}
                         className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80";
+                        }}
                       />
                       {/* Interactive Play Button in list */}
                       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
