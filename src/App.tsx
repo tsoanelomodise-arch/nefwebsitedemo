@@ -25,7 +25,7 @@ const HERO_SLIDES = [
     subtitle: "we can absolutely help you",
     title: "Empowering Black Business",
     description: "The National Empowerment Fund is dedicated to the economic empowerment of black South Africans through innovative funding solutions.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1000&auto=format&fit=crop"
+    image: "https://nef.wonderlandstudio.co.za/images/be58a4d8-d701-4998-b65a-6b3c7f29e28f.png"
   },
   {
     id: "02",
@@ -895,6 +895,7 @@ export default function App() {
                     src={HERO_SLIDES[currentSlide].image} 
                     alt={HERO_SLIDES[currentSlide].title} 
                     className="w-full h-full object-cover grayscale opacity-20 contrast-125 scale-102 transition-all duration-1000 mix-blend-overlay"
+                    style={currentSlide === 0 ? { transform: 'scaleX(-1) scale(1.02)' } : undefined}
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7]/20 via-transparent to-transparent z-10"></div>
