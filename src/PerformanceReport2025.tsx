@@ -166,7 +166,7 @@ export default function PerformanceReport2025() {
       </nav>
 
       {/* Hero Book-Cover Section Styled Exactly After the Attached Cover */}
-      <header className="pt-24 pb-16 px-4 md:px-12 max-w-7xl mx-auto">
+      <header className="pt-16 pb-12 px-4 md:px-12 max-w-7xl mx-auto">
         <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#FAF8F5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-xl flex flex-col justify-between p-8 md:p-16 border border-[#EFE6DA]/50">
           
           {/* Background Video Layer playing looping cinematic NEF support footage */}

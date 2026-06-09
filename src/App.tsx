@@ -890,14 +890,21 @@ export default function App() {
               <section id="home" className="relative h-screen overflow-hidden bg-gradient-to-b from-[#8FA3B0] via-[#C9AFA3] to-[#E6A07E]">
                 
                 {/* 1. Atmospheric Background Blend */}
-                <div className="absolute inset-0 z-10 transition-all duration-1000 ease-in-out">
-                  <img 
-                    src={HERO_SLIDES[currentSlide].image} 
-                    alt={HERO_SLIDES[currentSlide].title} 
-                    className="w-full h-full object-cover grayscale opacity-20 contrast-125 scale-102 transition-all duration-1000 mix-blend-overlay"
-                    style={currentSlide === 0 ? { transform: 'scaleX(-1) scale(1.02)' } : undefined}
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="absolute inset-0 z-10">
+                  <AnimatePresence initial={false}>
+                    <motion.img 
+                      key={currentSlide}
+                      src={HERO_SLIDES[currentSlide].image} 
+                      alt={HERO_SLIDES[currentSlide].title} 
+                      className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 mix-blend-overlay"
+                      style={currentSlide === 0 ? { transform: 'scaleX(-1) scale(1.02)', transformOrigin: 'center' } : { transform: 'scale(1.02)', transformOrigin: 'center' }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.2 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1 }}
+                      referrerPolicy="no-referrer"
+                    />
+                  </AnimatePresence>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7]/20 via-transparent to-transparent z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#E6A07E]/10 z-10"></div>
                 </div>
@@ -998,39 +1005,48 @@ export default function App() {
 
                     {/* B. RIGHT AREA: High Impact Display Typography, Description, Actions */}
                     <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-col gap-5 text-left md:pl-10">
-                      <div>
-                        {/* Slide Subtitle tracking label */}
-                        <span className="text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-[#F2901C] block mb-2 font-mono">
-                          {HERO_SLIDES[currentSlide].subtitle}
-                        </span>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentSlide}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -15 }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          className="w-full"
+                        >
+                          {/* Slide Subtitle tracking label */}
+                          <span className="text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-[#F2901C] block mb-2 font-mono">
+                            {HERO_SLIDES[currentSlide].subtitle}
+                          </span>
 
-                        {/* Slide Master Heading */}
-                        <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-sans font-black uppercase text-white tracking-tighter leading-[0.95] mb-5">
-                          {HERO_SLIDES[currentSlide].title}
-                        </h1>
+                          {/* Slide Master Heading */}
+                          <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-sans font-black uppercase text-white tracking-tighter leading-[0.95] mb-5">
+                            {HERO_SLIDES[currentSlide].title}
+                          </h1>
 
-                        {/* Slide Description paragraph */}
-                        <p className="text-white/80 text-xs md:text-sm lg:text-base font-sans font-light leading-relaxed mb-6 max-w-lg">
-                          {HERO_SLIDES[currentSlide].description}
-                        </p>
+                          {/* Slide Description paragraph */}
+                          <p className="text-white/80 text-xs md:text-sm lg:text-base font-sans font-light leading-relaxed mb-6 max-w-lg">
+                            {HERO_SLIDES[currentSlide].description}
+                          </p>
 
-                        {/* High fidelity Action Buttons */}
-                        <div className="flex flex-wrap gap-3">
-                          <button
-                            onClick={() => navigate("/our-funds")}
-                            className="px-6 py-3 bg-white text-[#1E1B18] hover:bg-[#F2901C] hover:text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
-                          >
-                            Explore Solutions
-                          </button>
-                          
-                          <button
-                            onClick={() => navigate("/check-eligibility")}
-                            className="px-6 py-3 border-[1.5px] border-white/30 hover:border-white hover:bg-white/10 text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 active:scale-95 cursor-pointer"
-                          >
-                            Apply Screen Online
-                          </button>
-                        </div>
-                      </div>
+                          {/* High fidelity Action Buttons */}
+                          <div className="flex flex-wrap gap-3">
+                            <button
+                              onClick={() => navigate("/our-funds")}
+                              className="px-6 py-3 bg-white text-[#1E1B18] hover:bg-[#F2901C] hover:text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
+                            >
+                              Explore Solutions
+                            </button>
+                            
+                            <button
+                              onClick={() => navigate("/check-eligibility")}
+                              className="px-6 py-3 border-[1.5px] border-white/30 hover:border-white hover:bg-white/10 text-white rounded-full text-[9px] font-sans font-extrabold uppercase tracking-widest transition-all duration-300 active:scale-95 cursor-pointer"
+                            >
+                              Apply Screen Online
+                            </button>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
 
                   </div>
