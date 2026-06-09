@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Download, TrendingUp, Users, Briefcase, Globe, Award, BarChart3, PieChart, Activity, CheckCircle, FileText, Share2, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import performanceHeroBg from './performance_hero_bg.jpg';
 
 // Custom high-fidelity NEF Logo Component from the Cover Page
 const NefLogo = ({ className = "text-white" }: { className?: string }) => (
@@ -170,13 +169,15 @@ export default function PerformanceReport2025() {
       <header className="pt-24 pb-16 px-4 md:px-12 max-w-7xl mx-auto">
         <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#FAF8F5] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-xl flex flex-col justify-between p-8 md:p-16 border border-[#EFE6DA]/50">
           
-          {/* Background Image Layer positioned on the right half */}
+          {/* Background Video Layer playing looping cinematic NEF support footage */}
           <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] h-full pointer-events-none overflow-hidden">
-            <img 
-              src={performanceHeroBg} 
-              alt="NEF Performance Hero" 
-              className="w-full h-full object-cover object-[center_right] select-none"
-              referrerPolicy="no-referrer"
+            <video 
+              src="https://nef.wonderlandstudio.co.za/images/Camera_pans_capturing_motion_202606092000.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover object-left select-none scale-x-[-1]"
             />
             {/* Smooth linear fade to pure off-white on the left side to blend into the text zone */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/85 to-transparent lg:block hidden"></div>
