@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Search, Trash2, SlidersHorizontal, HelpCircle, MessageSquare, Phone } from "lucide-react";
+import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Youtube, Instagram, Search, Trash2, SlidersHorizontal, HelpCircle, MessageSquare, Phone } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
@@ -887,26 +887,28 @@ export default function App() {
           <Route path="/" element={
             <>
               {/* Hero Section */}
-              <section id="home" className="relative h-screen overflow-hidden bg-gradient-to-b from-[#8FA3B0] via-[#C9AFA3] to-[#E6A07E]">
+              <section id="home" className="relative h-screen overflow-hidden bg-[#CE7E34]">
                 
-                {/* 1. Atmospheric Background Blend */}
+                {/* 1. Underlying Image Layer with See-Through Gradient Overlay */}
                 <div className="absolute inset-0 z-10">
                   <AnimatePresence initial={false}>
                     <motion.img 
                       key={currentSlide}
                       src={HERO_SLIDES[currentSlide].image} 
                       alt={HERO_SLIDES[currentSlide].title} 
-                      className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 mix-blend-overlay"
+                      className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
                       style={currentSlide === 0 ? { transform: 'scaleX(-1) scale(1.02)', transformOrigin: 'center' } : { transform: 'scale(1.02)', transformOrigin: 'center' }}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.2 }}
+                      animate={{ opacity: 0.8 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 1 }}
                       referrerPolicy="no-referrer"
                     />
                   </AnimatePresence>
+                  {/* Background gradient layout modified to allow the top lighter shade to be see-through */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#DF8D3C]/40 to-[#CE7E34] z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7]/20 via-transparent to-transparent z-10"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#E6A07E]/10 z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#DF8D3C]/20 z-10"></div>
                 </div>
 
                 {/* 2. Distinctive Rounded Formatting Frame (Border Overlay Inspired by Mockup) */}
@@ -1063,6 +1065,25 @@ export default function App() {
                       }`}
                     />
                   ))}
+                </div>
+
+                {/* 6. Social Media Links */}
+                <div className="absolute bottom-11 left-8 md:left-16 z-30 flex gap-3">
+                  <a href="https://x.com/NEFCORP" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Twitter size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGIKFgf-74C5AAAAZ7vbLtIvQyUibcVhd58vM2kHca3daF7QIewXC54Pa8_tNBaBEbHeDDM82layCmmYH2CEtV3xCGaECWdfz4Q5xHNMPqL6qHuiNtbo3Ka1xHvrlWBLLxXHDs=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fnef1%2Fpeople%2F%3FviewAsMember%3Dtrue" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Linkedin size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.youtube.com/@nef-nationalempowermentfun6193" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Youtube size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.instagram.com/nationalempowermentfund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Instagram size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.facebook.com/NationalEmpowermentFund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Facebook size={18} strokeWidth={2} />
+                  </a>
                 </div>
 
               </section>
