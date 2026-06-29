@@ -333,36 +333,6 @@ export default function App() {
               >
                 Check Eligibility
               </button>
-              
-              <div className="flex items-center justify-center gap-3 mt-0.5">
-                <a 
-                  href="https://twitter.com/nefcorp" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  title="Twitter"
-                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
-                >
-                  <Twitter size={11} />
-                </a>
-                <a 
-                  href="https://www.linkedin.com/company/national-empowerment-fund" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  title="LinkedIn"
-                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
-                >
-                  <Linkedin size={11} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/NationalEmpowermentFund" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  title="Facebook"
-                  className="text-neutral-400 hover:text-[#F2901C] transition-colors p-0.5"
-                >
-                  <Facebook size={11} />
-                </a>
-              </div>
             </div>
           </div>
 
@@ -906,8 +876,8 @@ export default function App() {
                     />
                   </AnimatePresence>
                   {/* Background gradient layout modified to allow the top lighter shade to be see-through */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#DF8D3C]/40 to-[#CE7E34] z-10"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7]/20 via-transparent to-transparent z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#DF8D3C]/20 to-[#CE7E34] z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-transparent to-transparent z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#DF8D3C]/20 z-10"></div>
                 </div>
 
@@ -918,6 +888,25 @@ export default function App() {
                     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 32% 100%, 32% 90%, 8% 90%, 8% 100%, 0% 100%)" 
                   }}
                 />
+
+                {/* 6. Social Media Links (Moved to Top) */}
+                <div className="absolute top-8 md:top-14 right-8 md:right-16 z-30 flex gap-3">
+                  <a href="https://x.com/NEFCORP" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Twitter size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGIKFgf-74C5AAAAZ7vbLtIvQyUibcVhd58vM2kHca3daF7QIewXC54Pa8_tNBaBEbHeDDM82layCmmYH2CEtV3xCGaECWdfz4Q5xHNMPqL6qHuiNtbo3Ka1xHvrlWBLLxXHDs=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fnef1%2Fpeople%2F%3FviewAsMember%3Dtrue" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Linkedin size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.youtube.com/@nef-nationalempowermentfun6193" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Youtube size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.instagram.com/nationalempowermentfund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Instagram size={18} strokeWidth={2} />
+                  </a>
+                  <a href="https://www.facebook.com/NationalEmpowermentFund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
+                    <Facebook size={18} strokeWidth={2} />
+                  </a>
+                </div>
 
                 {/* 3. "SCROLL DOWN" Custom Cutout Marker Inspired by Mockup */}
                 <div className="absolute bottom-8 left-[10%] md:left-[11%] lg:left-[12%] text-white text-[9.5px] font-sans font-extrabold uppercase tracking-[0.3em] z-30 select-none flex items-center gap-2">
@@ -1065,25 +1054,6 @@ export default function App() {
                       }`}
                     />
                   ))}
-                </div>
-
-                {/* 6. Social Media Links */}
-                <div className="absolute bottom-11 left-8 md:left-16 z-30 flex gap-3">
-                  <a href="https://x.com/NEFCORP" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
-                    <Twitter size={18} strokeWidth={2} />
-                  </a>
-                  <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGIKFgf-74C5AAAAZ7vbLtIvQyUibcVhd58vM2kHca3daF7QIewXC54Pa8_tNBaBEbHeDDM82layCmmYH2CEtV3xCGaECWdfz4Q5xHNMPqL6qHuiNtbo3Ka1xHvrlWBLLxXHDs=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fnef1%2Fpeople%2F%3FviewAsMember%3Dtrue" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
-                    <Linkedin size={18} strokeWidth={2} />
-                  </a>
-                  <a href="https://www.youtube.com/@nef-nationalempowermentfun6193" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
-                    <Youtube size={18} strokeWidth={2} />
-                  </a>
-                  <a href="https://www.instagram.com/nationalempowermentfund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
-                    <Instagram size={18} strokeWidth={2} />
-                  </a>
-                  <a href="https://www.facebook.com/NationalEmpowermentFund/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-black text-white hover:bg-[#F2901C] hover:-translate-y-1 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer">
-                    <Facebook size={18} strokeWidth={2} />
-                  </a>
                 </div>
 
               </section>
