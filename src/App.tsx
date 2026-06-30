@@ -1,5 +1,5 @@
-import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Youtube, Instagram, Search, Trash2, SlidersHorizontal, HelpCircle, MessageSquare, Phone } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import { ArrowRight, Briefcase, ShieldCheck, Users, Zap, Menu, X, ChevronRight, ChevronLeft, Play, CheckCircle2, ArrowLeft, ChevronDown, Twitter, Linkedin, Facebook, Youtube, Instagram, Search, Trash2, SlidersHorizontal, HelpCircle, MessageSquare, Phone, Eye, Target } from "lucide-react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Routes, Route, useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import HowToApply from "./HowToApply";
@@ -32,7 +32,7 @@ const HERO_SLIDES = [
     subtitle: "driving transformation",
     title: "Sustainable Economic Growth",
     description: "We provide financial and non-financial support to black-owned businesses, ensuring sustainable growth and economic transformation.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
+    image: "https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg"
   },
   {
     id: "03",
@@ -89,8 +89,30 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  // Infer the latest story from the Success Stories page (sorted by date descending)
-  const latestStory = [...STORIES].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0] || STORIES[0];
+  // Sort the stories by date descending for the success stories slider
+  const sortedStories = useMemo(() => {
+    return [...STORIES].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }, []);
+
+  const [activeStoryIndex, setActiveStoryIndex] = useState(0);
+  const activeStory = sortedStories[activeStoryIndex] || sortedStories[0] || STORIES[0];
+  const latestStory = activeStory; // Bind slider active story to latestStory to preserve all references
+
+  // Auto-play interval for the slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStoryIndex((prev) => (prev + 1) % sortedStories.length);
+    }, 6000); // 6 seconds auto-play interval
+    return () => clearInterval(timer);
+  }, [sortedStories.length]);
+
+  const handlePrevStory = () => {
+    setActiveStoryIndex((prev) => (prev - 1 + sortedStories.length) % sortedStories.length);
+  };
+
+  const handleNextStory = () => {
+    setActiveStoryIndex((prev) => (prev + 1) % sortedStories.length);
+  };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -1061,178 +1083,329 @@ export default function App() {
               {/* Portfolio Finder has been moved to Our Funds page under /our-funds */}
 
               {/* About Section (Placed directly below `#funds`) */}
-              <section id="about" className="py-24 px-8 md:px-24 bg-[#FAF8F5] relative overflow-hidden border-b border-[#FAF6F0]">
-                <div className="absolute top-0 right-1/4 w-px h-full bg-[#1E1B18]/5 pointer-events-none"></div>
-                <div className="absolute top-1/3 right-0 w-1/4 h-px bg-[#1E1B18]/5 pointer-events-none"></div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-7xl mx-auto relative z-10">
-                  <div className="space-y-8">
-                    <div className="flex items-center gap-4">
-                      <div className="h-px w-12 bg-[#F2901C]"></div>
-                      <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C79F6E]">Our Legacy</span>
-                      <Zap size={14} className="text-[#F2901C]" />
+              <section id="about" className="py-28 md:py-36 px-6 sm:px-8 md:px-24 bg-[#FCFAF9] relative overflow-hidden border-b border-[#FAF6F0]">
+                {/* Clean, delicate grid line overlays mimicking modern line art */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(242,144,28,0.035)_0%,transparent_60%)] pointer-events-none"></div>
+                <div className="absolute left-12 md:left-24 top-0 bottom-0 w-px bg-gradient-to-b from-neutral-200/50 via-[#1E1B18]/5 to-neutral-200/50 opacity-40 hidden xl:block pointer-events-none"></div>
+                <div className="absolute right-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-[#1E1B18]/5 to-transparent opacity-20 hidden xl:block pointer-events-none"></div>
+
+                {/* Ambient Warm-Orange Soft Glow Orbs */}
+                <div className="absolute -left-32 top-10 w-[30rem] h-[30rem] rounded-full bg-[#F2901C]/5 blur-3xl pointer-events-none"></div>
+                <div className="absolute right-10 bottom-24 w-[35rem] h-[35rem] rounded-full bg-[#E58E62]/4 blur-3xl pointer-events-none"></div>
+
+                <div className="max-w-7xl mx-auto relative z-10 space-y-16">
+                  {/* Unified Section Header */}
+                  <div className="text-center md:text-left space-y-4 max-w-3xl">
+                    <div className="inline-flex items-center gap-3 py-1 px-3 bg-white/60 border border-[#EFE6DA]/40 rounded-full backdrop-blur-sm shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C] animate-pulse"></span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C79F6E]">Our Legacy & Foundations</span>
+                      <Zap size={12} className="text-[#F2901C]" />
                     </div>
-                    <p className="text-[#3A3530] max-w-md leading-relaxed text-base md:text-lg font-light">
-                      The NEF provides financial and non-financial support to black-owned businesses, ensuring sustainable growth and economic transformation.
-                    </p>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light text-[#1E1B18] tracking-tight leading-none uppercase">
-                      About Our <br />
-                      <span className="text-[#FAF6F0] bg-[#1E1B18] px-5 py-2 inline-block rounded-2xl transform -rotate-1 shadow-md font-sans text-3xl md:text-4xl mt-3">Mission</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight leading-[1.05] uppercase text-[#1E1B18]">
+                      About Our <span className="font-serif italic text-[#F2901C] lowercase">mission & pillars</span>
                     </h2>
+                    <p className="text-[#3A3530]/70 leading-relaxed text-base md:text-lg font-light">
+                      The National Empowerment Fund is established by Act 105 of 1998 to drive economic transformation, catalyze black economic empowerment, and promote a culture of savings and investment.
+                    </p>
                   </div>
 
-                  <div className="relative">
-                    <div className="aspect-square bg-[#EFE6DA] rounded-[2.5rem] overflow-hidden relative group shadow-[0_24px_60px_rgba(42,38,34,0.08)] border border-white/60">
-                      <img 
-                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop" 
-                        alt="Culture" 
-                        className="w-full h-full object-cover grayscale opacity-40 mix-blend-multiply group-hover:scale-105 transition-transform duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/40 to-transparent"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <button 
-                          className="w-16 h-16 bg-[#F2901C] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 active:scale-95 transition-all duration-300 relative group"
-                        >
-                          <span className="absolute inset-x-0 inset-y-0 rounded-full bg-[#F2901C]/30 group-hover:animate-ping"></span>
-                          <Play fill="white" size={18} className="relative z-10 text-white translate-x-0.5" />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="absolute -bottom-8 -left-8 bg-white border border-neutral-100 p-6 rounded-3xl shadow-[0_30px_60px_rgba(42,38,34,0.06)] max-w-xs hidden md:block group hover:-translate-y-1 transition-transform duration-500">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#E58E62] border border-neutral-100 group-hover:bg-[#F2901C] group-hover:text-white transition-colors duration-300">
-                          <ArrowRight size={14} />
+                  {/* Integrated Bento Grid of Core Pillars */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+                    {/* Bento Card 3: Legislative Mandate */}
+                    <div className="group relative bg-white rounded-[2.2rem] p-9 border border-[#EFE6DA]/40 shadow-[0_12px_45px_rgba(42,38,34,0.02)] hover:shadow-[0_28px_70px_rgba(42,38,34,0.06)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#DF8D3C]/3 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      <div className="space-y-6 relative z-10">
+                        <div className="w-12 h-12 rounded-2xl bg-[#F2901C]/10 flex items-center justify-center text-[#F2901C] group-hover:bg-[#F2901C] group-hover:text-white transition-all duration-300 shadow-inner">
+                          <ShieldCheck size={24} />
                         </div>
-                        <button 
-                          onClick={() => navigate("/about/mandate-vision-mission")}
-                          className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18]"
-                        >
-                          Read More
-                        </button>
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#C79F6E] block">FOUNDATION</span>
+                          <h3 className="text-xl md:text-2xl font-sans font-normal uppercase tracking-tight text-[#1E1B18]">Legislative Mandate</h3>
+                        </div>
+                        <p className="text-[#3A3530]/75 font-light text-[13px] leading-relaxed">
+                          Established by the <strong className="font-medium text-neutral-800">NEF Act No. 105 of 1998</strong> to drive and facilitate black economic participation.
+                        </p>
+                        <div className="space-y-2 pt-3 border-t border-neutral-100">
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-500">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C]"></span>
+                            <span>Governed by the PFMA</span>
+                          </div>
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-500">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C]"></span>
+                            <span>Savings and Investment Culture</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pt-6 mt-6 border-t border-[#FAF6F0] flex items-center justify-between text-[10px] text-neutral-400 relative z-10">
+                        <span className="uppercase tracking-wider font-bold">Act 105 of 1998</span>
+                        <span className="font-mono bg-[#1E1B18]/5 px-2.5 py-1 rounded text-[9px] text-[#1E1B18] font-bold">Standard</span>
                       </div>
                     </div>
+
+                    {/* Bento Card 5: Our Vision */}
+                    <div className="group relative bg-white rounded-[2.2rem] p-9 border-2 border-[#F2901C] shadow-[0_20px_60px_rgba(242,144,28,0.08)] hover:shadow-[0_32px_80px_rgba(242,144,28,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                      <div className="absolute top-5 right-5 bg-[#F2901C] text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm z-20">
+                        Strategic Focus
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#F2901C]/5 via-transparent to-transparent pointer-events-none"></div>
+                      <div className="space-y-6 relative z-10">
+                        <div className="w-12 h-12 rounded-2xl bg-[#F2901C] flex items-center justify-center text-white shadow-md shadow-[#F2901C]/20 group-hover:scale-105 transition-transform duration-300">
+                          <Eye size={24} />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#C79F6E] block">ASPIRATION</span>
+                          <h3 className="text-xl md:text-2xl font-sans font-normal uppercase tracking-tight text-[#1E1B18]">Our Vision</h3>
+                        </div>
+                        <p className="text-[#3A3530]/80 font-light text-[13px] leading-relaxed">
+                          To become the <strong className="font-medium text-neutral-800">leading provider of innovative transformation solutions</strong> for an economically inclusive South Africa.
+                        </p>
+                        <div className="space-y-2 pt-3 border-t border-[#F2901C]/20">
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-600">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C] shadow-sm"></span>
+                            <span className="font-medium">Inclusive South Africa</span>
+                          </div>
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-600">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C] shadow-sm"></span>
+                            <span className="font-medium">Sustainable Growth</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pt-6 mt-6 border-t border-[#F2901C]/20 flex items-center justify-between text-[10px] text-[#F2901C] relative z-10 font-bold">
+                        <span className="uppercase tracking-wider">Economic Inclusion</span>
+                        <span className="font-mono bg-[#F2901C]/10 px-2.5 py-1 rounded text-[9px] text-[#F2901C]">Strategic Vision</span>
+                      </div>
+                    </div>
+
+                    {/* Bento Card 6: Our Mission */}
+                    <div className="group relative bg-white rounded-[2.2rem] p-9 border border-[#EFE6DA]/40 shadow-[0_12px_45px_rgba(42,38,34,0.02)] hover:shadow-[0_28px_70px_rgba(42,38,34,0.06)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden backdrop-blur-sm">
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#1E1B18]/3 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      <div className="space-y-6 relative z-10">
+                        <div className="w-12 h-12 rounded-2xl bg-[#1E1B18]/5 flex items-center justify-center text-[#1E1B18] group-hover:bg-[#1E1B18] group-hover:text-white transition-all duration-300 shadow-inner">
+                          <Target size={24} />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#C79F6E] block">EXECUTION</span>
+                          <h3 className="text-xl md:text-2xl font-sans font-normal uppercase tracking-tight text-[#1E1B18]">Our Mission</h3>
+                        </div>
+                        <p className="text-[#3A3530]/75 font-light text-[13px] leading-relaxed">
+                          Catalyzing <strong className="font-medium text-neutral-800">Broad-Based Black Economic Empowerment</strong> by implementing innovative investment solutions.
+                        </p>
+                        <div className="space-y-2 pt-3 border-t border-neutral-100">
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-500">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C]"></span>
+                            <span>B-BBEE Catalyst</span>
+                          </div>
+                          <div className="flex items-center gap-2.5 text-xs text-neutral-500">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C]"></span>
+                            <span>Empowerment Solutions</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pt-6 mt-6 border-t border-[#FAF6F0] flex items-center justify-between text-[10px] text-neutral-400 relative z-10">
+                        <span className="uppercase tracking-wider font-bold">B-BBEE Catalyst</span>
+                        <span className="font-mono bg-[#1E1B18]/5 px-2.5 py-1 rounded text-[9px] text-[#1E1B18] font-bold">Empowerment</span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </section>
 
               {/* Success Stories Preview Section */}
-              <section className="py-24 px-8 md:px-24 bg-[#1E1B18] text-white overflow-hidden relative border-t border-white/5">
-                <div className="absolute top-0 left-1/2 w-px h-full bg-white opacity-5"></div>
-                <div className="absolute top-1/2 left-0 w-full h-px bg-white opacity-5"></div>
+              <section className="py-28 px-8 md:px-24 bg-gradient-to-br from-[#1E1B18] via-[#26211D] to-[#12100E] text-white overflow-hidden relative border-t border-white/5">
+                {/* Decorative Amber and Warm Sand Glowing Blobs */}
+                <div className="absolute top-1/4 -left-32 w-[35rem] h-[35rem] rounded-full bg-[#F2901C]/5 blur-3xl pointer-events-none"></div>
+                <div className="absolute bottom-1/4 -right-32 w-[30rem] h-[30rem] rounded-full bg-[#C79F6E]/4 blur-3xl pointer-events-none"></div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 max-w-7xl mx-auto">
-                  <div className="space-y-12">
-                    <div className="space-y-6">
-                      <span className="text-[#F2901C] text-[9px] font-bold uppercase tracking-[0.25em] block">Latest Success Spotlight</span>
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light tracking-tight leading-none uppercase">
+                {/* Visual grid lines to represent premium layout architecture */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center relative z-10 max-w-7xl mx-auto">
+                  
+                  {/* Left Column: Brand Typography and Dynamic CTA (Inspired by the Design Reference layout) */}
+                  <div className="space-y-12 lg:col-span-5 flex flex-col justify-between h-full">
+                    <div className="space-y-8">
+                      {/* Premium glass-styled category badge */}
+                      <div className="inline-flex items-center gap-3 py-1.5 px-4 bg-white/5 border border-white/10 rounded-full backdrop-blur-md shadow-sm w-max">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F2901C] animate-pulse"></span>
+                        <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C79F6E]">Latest Success Spotlight</span>
+                      </div>
+                      
+                      {/* High-End, Massive Display Typography matching the "Africa" layout style */}
+                      <h2 className="text-5xl md:text-6xl lg:text-7.5xl font-sans font-light tracking-tight leading-[0.95] uppercase">
                         INVESTEE <br />
-                        <span className="font-serif italic text-[#F2901C]">STORIES</span>
+                        <span className="font-serif italic text-[#F2901C] lowercase tracking-normal block mt-1 pl-1 relative">
+                          stories
+                        </span>
                       </h2>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-sans font-light uppercase tracking-tight text-[#F2901C]">
-                        {latestStory.title}
-                      </h3>
-                      <p className="text-white/50 text-sm md:text-base max-w-md font-light leading-relaxed">
-                        {latestStory.summary}
-                      </p>
+
+                      {/* Content Area with a neat, warm light border top divider */}
+                      <div className="space-y-4 pt-8 border-t border-white/10">
+                        <span className="text-[9px] font-mono tracking-widest text-[#C79F6E] uppercase block font-bold">Featured Partner</span>
+                        <h3 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight text-white leading-tight">
+                          {latestStory.title}
+                        </h3>
+                        <p className="text-white/60 text-sm md:text-base max-w-md font-light leading-relaxed">
+                          {latestStory.summary}
+                        </p>
+                      </div>
                     </div>
 
-                    <button 
-                      onClick={() => navigate("/investee-stories")}
-                      className="group flex items-center gap-6 text-left"
-                    >
-                      <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:border-[#F2901C] group-hover:bg-[#F2901C] hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                        <ArrowRight className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                    {/* Premium Call-To-Action Layout (Modern pill + supporting meta label) */}
+                    <div className="pt-6 space-y-6">
+                      <div className="flex flex-wrap items-center gap-6">
+                        <button 
+                          onClick={() => navigate("/investee-stories")}
+                          className="group inline-flex items-center gap-5 px-8 py-4.5 bg-[#FAF8F5] hover:bg-[#F2901C] text-[#1E1B18] font-sans font-bold text-[10px] tracking-widest uppercase rounded-full shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer"
+                        >
+                          <span>View All Stories</span>
+                          <div className="w-6 h-6 rounded-full bg-[#1E1B18]/5 group-hover:bg-[#1E1B18]/15 flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
+                            <ArrowRight size={11} />
+                          </div>
+                        </button>
+                        
+                        <div className="flex items-center gap-3 py-3 px-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                          <span className="text-[9px] font-mono tracking-widest font-bold uppercase text-white/40 block">Real Impact. Real People.</span>
+                        </div>
                       </div>
-                      <div className="space-y-0.5">
-                        <span className="text-xs font-bold uppercase tracking-widest block text-[#C79F6E] group-hover:text-[#F2901C] transition-colors">View All Stories</span>
-                        <span className="text-[9px] font-mono tracking-widest font-bold uppercase opacity-30 block">Real Impact. Real People.</span>
-                      </div>
-                    </button>
+                    </div>
                   </div>
 
-                  <div className="relative flex flex-col gap-8 md:gap-10">
-                    {/* ENLARGED HERO VIDEO CARD */}
-                    <div 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setPlayingHomeVideo(true);
-                      }}
-                      className="aspect-video bg-[#2C2621]/80 rounded-[2.5rem] overflow-hidden relative group border border-white/5 shadow-2xl cursor-pointer"
-                    >
-                      <img 
-                        src={latestStory.image} 
-                        alt={latestStory.title} 
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-102 transition-all duration-1000 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      {/* Centered Play Button Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#F2901C]/95 text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#F2901C]">
-                          <Play size={24} fill="#1E1B18" className="ml-1 md:ml-1.5" />
+                  {/* Right Column: Dynamic Stacked Glass/Image Boards (Directly inspired by Design Reference's layered layout) */}
+                  <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch relative">
+                    
+                    {/* ENLARGED HERO VIDEO CARD (Landscape portrait card with custom play interactive frame) */}
+                    <div className="md:col-span-7 flex flex-col justify-between">
+                      <div 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setPlayingHomeVideo(true);
+                        }}
+                        className="aspect-[3/4] bg-[#2C2621]/90 rounded-[2.8rem] overflow-hidden relative group border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] cursor-pointer"
+                      >
+                        <img 
+                          src={latestStory.image} 
+                          alt={latestStory.title} 
+                          className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
+                          referrerPolicy="no-referrer"
+                        />
+                        
+                        {/* High-Contrast Floating White Play Button from Design Reference */}
+                        <div className="absolute inset-0 flex items-center justify-center z-20">
+                          <div className="w-16 h-16 rounded-full bg-white text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#F2901C] group-hover:text-white relative">
+                            <span className="absolute inset-0 rounded-full bg-white/30 animate-ping group-hover:bg-[#F2901C]/30"></span>
+                            <Play size={18} fill="currentColor" className="relative z-10 translate-x-0.5" />
+                          </div>
                         </div>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent opacity-95"></div>
-                      <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex items-end justify-between z-10 gap-4">
-                        <div className="space-y-1 md:space-y-2 text-left">
-                          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#F2901C] text-[#1E1B18] px-3 py-1 md:px-4 md:py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
-                          <h4 className="text-sm md:text-xl font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
-                        </div>
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#F2901C]/20 shrink-0">
-                          <ArrowRight size={14} className="text-white md:w-4 md:h-4" />
+
+                        {/* Dark Vignette Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
+                        
+                        {/* Metadata Tagline Overlay */}
+                        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-10 gap-4">
+                          <div className="space-y-2 text-left">
+                            <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#F2901C] text-[#1E1B18] px-3.5 py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
+                            <h4 className="text-base font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] shrink-0">
+                            <ArrowRight size={12} className="text-white group-hover:text-[#1E1B18]" />
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Supporting cards row */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+                    {/* Supporting cards row stacked vertically (Testimonial & Impact stats) */}
+                    <div className="md:col-span-5 flex flex-col gap-8 justify-between">
+                      
+                      {/* Card 1: Testimonial Card */}
                       <div 
                         onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#F2901C]/20 transition-[border-color] duration-500"
+                        className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
                       >
                         <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Testimonial</span>
-                        <p className="text-white/80 text-[10px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-4">
+                        
+                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block mb-4">Testimonial</span>
+                        
+                        <p className="text-white/80 text-[11px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-5">
                           "{latestStory.quote}"
                         </p>
-                        <div className="flex justify-between items-center relative z-10">
-                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#F2901C] transition-colors">{latestStory.author}</span>
-                          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all">
-                            <ArrowRight size={10} className="text-white" />
+                        
+                        <div className="flex justify-between items-center relative z-10 mt-6 pt-4 border-t border-white/5">
+                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#F2901C] transition-colors font-bold">{latestStory.author}</span>
+                          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] transition-all">
+                            <ArrowRight size={10} className="text-white group-hover:text-[#1E1B18]" />
                           </div>
                         </div>
                       </div>
 
+                      {/* Card 2: Impact stats Card */}
                       <div 
                         onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="aspect-square bg-[#2C2621]/80 rounded-[2rem] p-6 md:p-8 flex flex-col justify-between relative group cursor-pointer border border-white/5 shadow-xl overflow-hidden hover:border-[#F2901C]/20 transition-[border-color] duration-500"
+                        className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
                       >
                         <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+                        
                         <div className="space-y-4">
                           <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Impact stats</span>
                           <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#F2901C] transition-colors">
                             {latestStory.title}
                           </h4>
-                          <div className="space-y-2 pt-2 border-t border-white/5 font-serif italic text-gold-foil">
+                          <div className="space-y-2 pt-3 border-t border-white/10">
                             {latestStory.impact?.slice(0, 2).map((item, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-[10px] text-white/70 font-light font-sans not-italic">
-                                <span className="text-[#C79F6E]">•</span>
-                                <span>{item}</span>
+                              <div key={idx} className="flex items-start gap-2.5 text-[10px] text-white/70 font-light font-sans">
+                                <span className="text-[#C79F6E] mt-0.5 font-bold">•</span>
+                                <span className="line-clamp-2">{item}</span>
                               </div>
                             ))}
                           </div>
                         </div>
-                        <div className="flex justify-between items-center relative z-10 mt-4 border-t border-white/5 pt-4">
+                        
+                        <div className="flex justify-between items-center relative z-10 mt-6 border-t border-white/10 pt-4">
                           <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
                             Read Full Story <span className="text-xs">→</span>
                           </span>
                           <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Interactive</span>
                         </div>
                       </div>
+
                     </div>
+
+                    {/* Decorative Design Elements: Carousel Indicators exactly inspired by Design Reference */}
+                    <div className="md:col-span-12 pt-6 flex items-center justify-between mt-4">
+                      {/* Left/Right small circular controls from Design Reference */}
+                      <div className="flex gap-3">
+                        <button 
+                          onClick={handlePrevStory}
+                          className="w-10 h-10 rounded-full border border-white/10 hover:border-[#F2901C] flex items-center justify-center text-white/50 hover:text-[#F2901C] hover:bg-white/5 transition-all duration-300 cursor-pointer"
+                        >
+                          <span className="text-xs">←</span>
+                        </button>
+                        <button 
+                          onClick={handleNextStory}
+                          className="w-10 h-10 rounded-full border border-white/10 hover:border-[#F2901C] flex items-center justify-center text-white/50 hover:text-[#F2901C] hover:bg-white/5 transition-all duration-300 cursor-pointer"
+                        >
+                          <span className="text-xs">→</span>
+                        </button>
+                      </div>
+
+                      {/* Timeline line representation "01 ----------- 08" */}
+                      <div className="flex items-center gap-4 text-white/40">
+                        <span className="text-[10px] font-mono font-bold tracking-widest">
+                          {String(activeStoryIndex + 1).padStart(2, '0')}
+                        </span>
+                        <div className="w-24 md:w-36 h-px bg-white/10 relative">
+                          <div 
+                            className="absolute top-0 left-0 h-full bg-[#F2901C] transition-all duration-500"
+                            style={{ width: `${((activeStoryIndex + 1) / sortedStories.length) * 100}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold tracking-widest">
+                          {String(sortedStories.length).padStart(2, '0')}
+                        </span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </section>
