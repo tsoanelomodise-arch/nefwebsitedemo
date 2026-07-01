@@ -1,39 +1,39 @@
 import { motion } from "motion/react";
-import { CheckCircle2, Users, Lightbulb, BarChart3, Globe, GraduationCap, Info, Target } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const SERVICES = [
   {
     id: "01",
     title: "Mentorship & Coaching",
     description: "Access to experienced business mentors who provide guidance, share industry insights, and help navigate challenges.",
-    icon: Users
+    iconName: "Users" as const
   },
   {
     id: "02",
     title: "Business Planning",
     description: "Assistance in developing robust business plans, financial models, and strategic roadmaps for sustainable growth.",
-    icon: Lightbulb
+    iconName: "Lightbulb" as const
   },
   {
     id: "03",
     title: "Technical Assistance",
     description: "Specialized support in areas such as legal compliance, accounting, human resources, and operational efficiency.",
-    icon: BarChart3
+    iconName: "BarChart3" as const
   },
   {
     id: "04",
     title: "Market Access",
     description: "Facilitating connections with potential customers, partners, and supply chain opportunities in various sectors.",
-    icon: Globe
+    iconName: "Globe" as const
   },
   {
     id: "05",
     title: "Training & Development",
     description: "Workshops and programs designed to enhance entrepreneurial skills, financial literacy, and management capabilities.",
-    icon: GraduationCap
+    iconName: "GraduationCap" as const
   }
 ];
 
@@ -108,7 +108,12 @@ export default function NonFinancialSupport() {
             >
               <div className="flex justify-between items-start mb-8">
                 <span className="text-sm font-bold opacity-40 group-hover:text-white transition-colors">{service.id}</span>
-                <service.icon size={32} className="text-black group-hover:text-gold-foil transition-colors" />
+                <PremiumIcon 
+                  name={service.iconName} 
+                  size={24} 
+                  variant="outlined" 
+                  className="group-hover:bg-[#F2901C] group-hover:text-white group-hover:border-transparent transition-all duration-300"
+                />
               </div>
               <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4 group-hover:text-white transition-colors">
                 {service.title}
@@ -128,8 +133,8 @@ export default function NonFinancialSupport() {
             </h2>
             <div className="grid grid-cols-1 gap-6">
               {BENEFITS.map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-6 bg-gray-50 border-l-4 border-gold-foil">
-                  <CheckCircle2 size={20} className="text-black mt-1 shrink-0" />
+                <div key={i} className="flex items-start gap-4 p-6 bg-gray-50 border-l-4 border-[#F2901C]">
+                  <PremiumIcon name="CheckCircle2" size={16} variant="minimal" color="#F2901C" interactive={false} className="mt-1" />
                   <p className="text-gray-600 leading-relaxed">{item}</p>
                 </div>
               ))}
@@ -138,29 +143,29 @@ export default function NonFinancialSupport() {
           
           <div className="space-y-8">
             <div className="p-8 bg-black text-white">
-              <Info size={32} className="text-gold-foil mb-6" />
+              <PremiumIcon name="Info" size={24} variant="accent" className="mb-6 bg-white/10 text-white" />
               <h3 className="text-xl font-bold uppercase tracking-tighter mb-4">Who Qualifies?</h3>
               <p className="text-sm text-white/60 leading-relaxed mb-6">
                 Our non-financial support is primarily aimed at:
               </p>
               <ul className="space-y-4 text-xs font-bold uppercase tracking-widest">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-gold-foil"></div>
+                  <div className="w-1.5 h-1.5 bg-[#F2901C]"></div>
                   NEF Investees
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-gold-foil"></div>
+                  <div className="w-1.5 h-1.5 bg-[#F2901C]"></div>
                   Potential Applicants
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-gold-foil"></div>
+                  <div className="w-1.5 h-1.5 bg-[#F2901C]"></div>
                   Black-owned SMEs
                 </li>
               </ul>
             </div>
             
             <div className="p-8 border border-gray-200">
-              <Target size={32} className="text-black mb-6" />
+              <PremiumIcon name="Target" size={24} variant="boxed" className="mb-6" />
               <h3 className="text-xl font-bold uppercase tracking-tighter mb-4">Our Vision</h3>
               <p className="text-sm text-gray-500 leading-relaxed italic">
                 "To create a vibrant ecosystem of sustainable black-owned businesses that contribute 

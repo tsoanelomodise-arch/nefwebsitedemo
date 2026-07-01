@@ -1,44 +1,44 @@
 import { motion } from "motion/react";
-import { CheckCircle2, FileText, Search, ClipboardCheck, Scale, CreditCard } from "lucide-react";
 import React from "react";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const STEPS = [
   {
     id: "01",
     title: "Application Form",
     description: "The first step is to complete the official NEF application form, providing basic details about your business and funding requirements.",
-    icon: FileText
+    iconName: "FileText" as const
   },
   {
     id: "02",
     title: "Business Plan Submission",
     description: "Submit a comprehensive business plan that outlines your market analysis, financial projections, and operational strategy.",
-    icon: ClipboardCheck
+    iconName: "ClipboardCheck" as const
   },
   {
     id: "03",
     title: "Initial Screening",
     description: "Our investment team will conduct an initial screening to ensure your project aligns with NEF's mandate and criteria.",
-    icon: Search
+    iconName: "Search" as const
   },
   {
     id: "04",
     title: "Due Diligence",
     description: "A thorough due diligence process is conducted, including site visits, financial audits, and background checks.",
-    icon: CheckCircle2
+    iconName: "CheckCircle2" as const
   },
   {
     id: "05",
     title: "Investment Committee",
     description: "The project is presented to the NEF Investment Committee for final review and approval.",
-    icon: Scale
+    iconName: "Scale" as const
   },
   {
     id: "06",
     title: "Legal & Disbursement",
     description: "Once approved, legal agreements are finalized, and funds are disbursed according to the agreed milestones.",
-    icon: CreditCard
+    iconName: "CreditCard" as const
   }
 ];
 
@@ -90,9 +90,12 @@ export default function HowToApply() {
                     </span>
                     <span className="h-px w-8 bg-[#EFE6DA] group-hover:bg-white/10 transition-all"></span>
                   </div>
-                  <div className="w-11 h-11 rounded-full bg-[#FAF8F5] group-hover:bg-white/10 flex items-center justify-center transition-all duration-500 shadow-xs">
-                    <step.icon size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors duration-500" />
-                  </div>
+                  <PremiumIcon 
+                    name={step.iconName} 
+                    size={18} 
+                    variant="outlined" 
+                    className="group-hover:bg-[#F2901C] group-hover:text-white group-hover:border-transparent transition-all duration-500" 
+                  />
                 </div>
 
                 <h3 className="text-xl md:text-2xl font-sans font-light uppercase tracking-tight mb-4 text-[#1E1B18] group-hover:text-white transition-colors duration-500">

@@ -7,11 +7,12 @@ import {
 } from "lucide-react";
 import React, { useState, useMemo } from "react";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const allQuestions = [
   {
     id: 'ownership',
-    icon: <Users className="w-12 h-12 text-gold-foil mb-6" />,
+    iconName: "Users" as const,
     title: "Black Economic Empowerment",
     question: "Is your business majority-owned by Black entrepreneurs or a Black-owned group?",
     description: "The NEF provides funds specifically to facilitate access to finance in support of Broad-Based BEE.",
@@ -20,7 +21,7 @@ const allQuestions = [
   },
   {
     id: 'operational',
-    icon: <Briefcase className="w-12 h-12 text-gold-foil mb-6" />,
+    iconName: "Briefcase" as const,
     title: "Operational Involvement",
     question: "Are the Black shareholders actively involved in the day-to-day operations and management of the business?",
     description: "There must be operational involvement at the executive or management level, not just passive ownership.",
@@ -29,7 +30,7 @@ const allQuestions = [
   },
   {
     id: 'viability',
-    icon: <TrendingUp className="w-12 h-12 text-gold-foil mb-6" />,
+    iconName: "TrendingUp" as const,
     title: "Business Plan & Projections",
     question: "Do you have a completed Business Plan and 5-year financial projections?",
     description: "A commercially viable case and detailed multi-year projections are mandatory.",
@@ -38,7 +39,7 @@ const allQuestions = [
   },
   {
     id: 'business_stage',
-    icon: <Building2 className="w-12 h-12 text-gold-foil mb-6" />,
+    iconName: "Building2" as const,
     title: "Business Stage",
     question: "What is the current stage or nature of your business?",
     description: "This helps us tailor the specific document checklist for your situation.",
@@ -51,7 +52,7 @@ const allQuestions = [
   },
   {
     id: 'core_docs',
-    icon: <FolderCheck className="w-12 h-12 text-gold-foil mb-6" />,
+    iconName: "FolderCheck" as const,
     title: "Core Required Documents",
     question: "Do you have the following core documents ready?",
     bullets: ["Certified IDs", "Detailed CVs", "Asset & Liability Statements", "Company Registration docs"],
@@ -435,7 +436,9 @@ export default function CheckEligibility() {
           ) : (
             <div className="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center animate-in slide-in-from-right-10 duration-500 no-print">
                <div className="text-center mb-12">
-                  <div className="p-4 bg-gold-foil/10 rounded-full inline-block mb-6 shadow-xl border border-gold-foil/20">{allQuestions[currentStep].icon}</div>
+                  <div className="inline-block mb-6">
+                    <PremiumIcon name={allQuestions[currentStep].iconName} size={32} variant="glowing" />
+                  </div>
                   <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 text-cotton-blush">{allQuestions[currentStep].question}</h2>
                   <p className="text-lg text-cotton-blush/60 italic uppercase tracking-wider">{allQuestions[currentStep].description}</p>
                </div>
@@ -724,13 +727,15 @@ export default function CheckEligibility() {
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
                        {[
-                         { label: 'Compliance', score: scoreData.compliance, max: 30, icon: <ShieldCheck className="w-5 h-5"/> },
-                         { label: 'Mandate', score: scoreData.mandate, max: 20, icon: <Users className="w-5 h-5"/> },
-                         { label: 'Social Impact', score: scoreData.impact, max: 20, icon: <Zap className="w-5 h-5"/> },
-                         { label: 'Commercial', score: scoreData.commercial, max: 30, icon: <BarChart3 className="w-5 h-5"/> }
+                         { label: 'Compliance', score: scoreData.compliance, max: 30, iconName: 'ShieldCheck' as const },
+                         { label: 'Mandate', score: scoreData.mandate, max: 20, iconName: 'Users' as const },
+                         { label: 'Social Impact', score: scoreData.impact, max: 20, iconName: 'Zap' as const },
+                         { label: 'Commercial', score: scoreData.commercial, max: 30, iconName: 'BarChart3' as const }
                        ].map((cat, idx) => (
                          <div key={idx} className="bg-forest-earth/40 p-8 rounded-[3rem] border border-cotton-blush/10 flex flex-col items-center shadow-lg group">
-                            <div className="text-gold-foil mb-4 group-hover:scale-110 transition-transform">{cat.icon}</div>
+                            <div className="mb-4">
+                              <PremiumIcon name={cat.iconName} size={20} variant="minimal" color="#F2901C" />
+                            </div>
                             <div className="text-4xl font-black text-cotton-blush mb-2">{cat.score}<span className="text-[12px] opacity-20 ml-1">/{cat.max}</span></div>
                             <div className="text-[9px] font-black uppercase tracking-widest text-cotton-blush/40 leading-relaxed mb-4">{cat.label}</div>
                             <div className="w-full h-1 bg-cotton-blush/5 rounded-full overflow-hidden">
