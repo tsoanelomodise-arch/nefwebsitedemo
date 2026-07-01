@@ -889,7 +889,14 @@ export default function App() {
                       src={HERO_SLIDES[currentSlide].image} 
                       alt={HERO_SLIDES[currentSlide].title} 
                       className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
-                      style={currentSlide === 0 ? { transform: 'scaleX(-1) scale(1.02)', transformOrigin: 'center' } : { transform: 'scale(1.02)', transformOrigin: 'center' }}
+                      style={{
+                        ...(currentSlide === 0 
+                          ? { transform: 'scaleX(-1) scale(1.02)', transformOrigin: 'center' } 
+                          : currentSlide === 1
+                          ? { transform: 'scale(1.28) translateX(-15%)', transformOrigin: 'center' }
+                          : { transform: 'scale(1.02)', transformOrigin: 'center' }),
+                        objectPosition: currentSlide === 1 ? '10% center' : 'center'
+                      }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 0.8 }}
                       exit={{ opacity: 0 }}
@@ -1017,7 +1024,7 @@ export default function App() {
                     </div>
 
                     {/* B. RIGHT AREA: High Impact Display Typography, Description, Actions */}
-                    <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-col gap-5 text-left md:pl-10">
+                    <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-col gap-5 text-left md:pl-10 transform -translate-y-3 md:-translate-y-6 lg:-translate-y-10">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={currentSlide}
@@ -1213,7 +1220,17 @@ export default function App() {
               </section>
 
               {/* Success Stories Preview Section */}
-              <section className="py-28 px-8 md:px-24 bg-gradient-to-br from-[#1E1B18] via-[#26211D] to-[#12100E] text-white overflow-hidden relative border-t border-white/5">
+              <section className="py-28 px-8 md:px-24 bg-gradient-to-br from-[#1E1B18] via-[#26211D] to-[#12100E] text-white overflow-hidden relative">
+                {/* Background Image (Custom Pastel Gradient matching the reference) */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-500 z-0"
+                  style={{
+                    backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/background_1.png")',
+                    opacity: 1.0, // Set to exactly 100% as requested for premium visual balance and high readability
+                  }}
+                  id="investee-stories-bg"
+                ></div>
+
                 {/* Decorative Amber and Warm Sand Glowing Blobs */}
                 <div className="absolute top-1/4 -left-32 w-[35rem] h-[35rem] rounded-full bg-[#F2901C]/5 blur-3xl pointer-events-none"></div>
                 <div className="absolute bottom-1/4 -right-32 w-[30rem] h-[30rem] rounded-full bg-[#C79F6E]/4 blur-3xl pointer-events-none"></div>
