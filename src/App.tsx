@@ -1399,52 +1399,62 @@ export default function App() {
               </section>
 
               {/* Team/Impact Section */}
-              <section className="bg-[#161412] py-28 px-8 md:px-24 text-white overflow-hidden relative">
+              <section className="bg-[#E9E9E9] py-28 px-8 md:px-24 text-[#1E1B18] overflow-hidden relative">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center pointer-events-none z-0 opacity-15 mix-blend-multiply"
+                  style={{
+                    backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg")',
+                  }}
+                  id="legacy-empowerment-bg"
+                ></div>
+                {/* Light Grey Overlay to soften and tint background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#E9E9E9]/95 via-[#E9E9E9]/80 to-[#E9E9E9]/95 pointer-events-none z-0"></div>
 
                 <div className="max-w-6xl mx-auto relative z-10">
                   <div className="text-center mb-16">
                     <span className="text-[#C79F6E] text-[11px] font-mono font-bold uppercase tracking-[0.4em] mb-4 block">A Legacy of Empowerment</span>
-                    <h2 className="text-3xl md:text-5xl lg:text-3xl font-sans font-semibold tracking-tight mb-6 leading-none uppercase text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.5)]">
+                    <h2 className="text-3xl md:text-5xl lg:text-3xl font-sans font-semibold tracking-tight mb-6 leading-none uppercase text-[#1E1B18]">
                       Annual Review <br />
-                      <span className="font-serif italic text-[#F2901C] lowercase font-medium">performance highlights</span>
+                      <span className="font-serif italic text-[#F2901C] lowercase font-semibold">performance highlights</span>
                     </h2>
-                    <p className="text-neutral-200 text-xs md:text-sm max-w-2xl mx-auto font-normal leading-relaxed [text-shadow:0_1px_5px_rgba(0,0,0,0.6)]">
+                    <p className="text-neutral-700 text-xs md:text-sm max-w-2xl mx-auto font-normal leading-relaxed">
                       A summary of our economic transformation, enterprise development, and job creation impact across South Africa during the latest review period.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                    <div className="text-center px-4 py-8 bg-black/60 rounded-[2rem] border border-white/10 backdrop-blur-md shadow-xl hover:border-[#F2901C]/30 transition-all duration-300 group">
+                    <div className="text-center px-4 py-8 bg-[#1E1B18] rounded-[2rem] border border-[#1E1B18]/10 shadow-xl hover:border-[#F2901C]/40 transition-all duration-300 group">
                       <div className="text-3xl md:text-4xl font-semibold text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">R7.4bn</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest text-neutral-300 font-semibold opacity-90">Total Approvals</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-black/60 rounded-[2rem] border border-white/10 backdrop-blur-md shadow-xl hover:border-[#F2901C]/30 transition-all duration-300 group">
+                    <div className="text-center px-4 py-8 bg-[#1E1B18] rounded-[2rem] border border-[#1E1B18]/10 shadow-xl hover:border-[#F2901C]/40 transition-all duration-300 group">
                       <div className="text-3xl md:text-4xl font-semibold text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">112k+</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest text-neutral-300 font-semibold opacity-90">Jobs Supported</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-black/60 rounded-[2rem] border border-white/10 backdrop-blur-md shadow-xl hover:border-[#F2901C]/30 transition-all duration-300 group">
+                    <div className="text-center px-4 py-8 bg-[#1E1B18] rounded-[2rem] border border-[#1E1B18]/10 shadow-xl hover:border-[#F2901C]/40 transition-all duration-300 group">
                       <div className="text-3xl md:text-4xl font-semibold text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">1,240</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest text-neutral-300 font-semibold opacity-90">SMMEs Funded</div>
                     </div>
-                    <div className="text-center px-4 py-8 bg-black/60 rounded-[2rem] border border-white/10 backdrop-blur-md shadow-xl hover:border-[#F2901C]/30 transition-all duration-300 group">
+                    <div className="text-center px-4 py-8 bg-[#1E1B18] rounded-[2rem] border border-[#1E1B18]/10 shadow-xl hover:border-[#F2901C]/40 transition-all duration-300 group">
                       <div className="text-3xl md:text-4xl font-semibold text-[#F2901C] mb-2 group-hover:scale-105 transition-transform">42%</div>
                       <div className="text-[9px] font-mono uppercase tracking-widest text-neutral-300 font-semibold opacity-90">Black Women Owned</div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <div className="flex gap-4 p-6 bg-black/60 border border-white/10 rounded-2xl items-center text-left backdrop-blur-md shadow-lg">
+                    <div className="flex gap-4 p-6 bg-[#1E1B18] border border-[#1E1B18]/10 rounded-2xl items-center text-left shadow-lg">
                       <div className="text-3xl font-semibold text-[#F2901C]">85%</div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-white">Black Ownership</h4>
-                        <p className="text-[11px] text-neutral-200 font-normal mt-1">Average black ownership maintained across our investment portfolio.</p>
+                        <p className="text-[11px] text-neutral-300 font-normal mt-1">Average black ownership maintained across our investment portfolio.</p>
                       </div>
                     </div>
-                    <div className="flex gap-4 p-6 bg-black/60 border border-white/10 rounded-2xl items-center text-left backdrop-blur-md shadow-lg">
+                    <div className="flex gap-4 p-6 bg-[#1E1B18] border border-[#1E1B18]/10 rounded-2xl items-center text-left shadow-lg">
                       <div className="text-3xl font-semibold text-[#F2901C]">R1.2bn</div>
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-white">Rural Development</h4>
-                        <p className="text-[11px] text-neutral-200 font-normal mt-1">Dedicated funding deployed to support township and rural economies.</p>
+                        <p className="text-[11px] text-neutral-300 font-normal mt-1">Dedicated funding deployed to support township and rural economies.</p>
                       </div>
                     </div>
                   </div>
@@ -1452,7 +1462,7 @@ export default function App() {
                   <div className="mt-12 text-center">
                     <button
                       onClick={() => navigate('/performance-report-2025')}
-                      className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F2901C] hover:text-white transition-colors bg-black/45 hover:bg-black/65 border border-[#F2901C]/30 hover:border-white/50 px-6 py-3 rounded-full backdrop-blur-xs shadow-md transition-all duration-300"
+                      className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F2901C] hover:text-white transition-colors bg-[#1E1B18] hover:bg-[#1E1B18]/90 border border-[#F2901C]/30 hover:border-white/50 px-6 py-3 rounded-full shadow-md transition-all duration-300"
                     >
                       View Full Performance Report 2025 <span className="text-xs">→</span>
                     </button>

@@ -129,6 +129,17 @@ export default function PerformanceReport2025() {
   return (
     <div className="min-h-screen bg-[#161412] text-white font-sans selection:bg-[#F2901C] selection:text-[#1E1B18] relative overflow-x-hidden">
       
+      {/* Background Image Layer */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center pointer-events-none z-0 opacity-[0.12] mix-blend-luminosity"
+        style={{
+          backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg")',
+        }}
+      ></div>
+
+      {/* Dark Vignette Overlay for excellent readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#161412]/90 via-[#161412]/75 to-[#161412]/95 pointer-events-none z-0"></div>
+
       {/* Glow Backdrops */}
       <div className="absolute top-0 right-1/4 w-128 h-128 bg-[#F2901C]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C79F6E]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
