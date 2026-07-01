@@ -249,7 +249,7 @@ export default function InvesteeStoryDetail() {
                   allowFullScreen
                 ></iframe>
                 
-                {/* Fallback floating button for sandbox/embed restrictions */}
+                 {/* Fallback floating button for sandbox/embed restrictions */}
                 <div className="absolute bottom-4 left-4 z-10 flex gap-2">
                   <a
                     href={story.videoUrl}
@@ -257,7 +257,7 @@ export default function InvesteeStoryDetail() {
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-black/75 hover:bg-[#F2901C] text-white hover:text-black rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer"
                   >
-                    Watch on YouTube ↗
+                    Watch on {story.videoUrl.includes("facebook.com") || story.videoUrl.includes("fb.watch") ? "Facebook" : "YouTube"} ↗
                   </a>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function InvesteeStoryDetail() {
                   rel="noopener noreferrer"
                   className="font-bold text-[#F2901C] hover:underline flex items-center gap-1 uppercase tracking-wider shrink-0 text-[10px]"
                 >
-                  Watch Directly on YouTube ↗
+                  Watch Directly on {story.videoUrl.includes("facebook.com") || story.videoUrl.includes("fb.watch") ? "Facebook" : "YouTube"} ↗
                 </a>
               </div>
             </div>

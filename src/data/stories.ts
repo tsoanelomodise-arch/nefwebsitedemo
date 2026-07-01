@@ -92,12 +92,15 @@ export const STORIES: Story[] = [
       "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop"
     ],
-    videoUrl: "https://www.youtube.com/watch?v=I43dWe93u84"
+    videoUrl: "https://www.facebook.com/watch/?v=701058885772089"
   }
 ];
 
 export function getYouTubeEmbedUrl(url: string, autoplay = true): string {
   if (!url) return "";
+  if (url.includes("facebook.com") || url.includes("fb.watch") || url.includes("fb.com")) {
+    return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=0&width=560`;
+  }
   let videoId = "";
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);

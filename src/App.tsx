@@ -1830,7 +1830,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-black/75 hover:bg-[#F2901C] text-white hover:text-black rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center lg:gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer"
                 >
-                  Watch on YouTube ↗
+                  Watch on {latestStory.videoUrl.includes("facebook.com") || latestStory.videoUrl.includes("fb.watch") ? "Facebook" : "YouTube"} ↗
                 </a>
               </div>
             </motion.div>
