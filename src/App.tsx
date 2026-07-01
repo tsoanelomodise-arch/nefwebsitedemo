@@ -70,7 +70,7 @@ const NAV_LINKS = [
   },
   { id: "04", title: "Investee Stories", href: "/investee-stories", isExternal: true },
   { id: "05", title: "FAQ", href: "/faq", isExternal: true },
-  { id: "06", title: "Performance Report 2025", href: "/performance-report-2025", isExternal: true },
+  { id: "06", title: "Performance Report 2025", href: "https://nefperformancedemo.wonderlandstudio.co.za/", isExternal: true },
   { id: "07", title: "Contact", href: "#contact", isExternal: false }
 ];
 
@@ -229,7 +229,11 @@ export default function App() {
     setActiveMegaMenu(null);
     
     if (item.isExternal) {
-      navigate(item.href);
+      if (item.href.startsWith("http://") || item.href.startsWith("https://")) {
+        window.location.href = item.href;
+      } else {
+        navigate(item.href);
+      }
     } else {
       if (isSubPage) {
         navigate("/");
@@ -428,7 +432,7 @@ export default function App() {
                       <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#C79F6E] border-b border-[#EFE6DA]/30 pb-2">Transparency & Audit</h4>
                       <div className="flex flex-col gap-2">
                         <button
-                          onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                          onClick={() => handleNavItemClick({ href: "https://nefperformancedemo.wonderlandstudio.co.za/", isExternal: true })}
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
@@ -623,28 +627,28 @@ export default function App() {
                     <div className="col-span-3 bg-[#1E1B18] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border border-white/5 min-h-[220px] group cursor-pointer"
                       onClick={() => {
                         setActiveMegaMenu(null);
-                        navigate("/investee-stories/mamelodi-square");
+                        navigate("/investee-stories/the-orchards");
                       }}
                     >
                       {/* Background styled image with dark blending */}
                       <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-all duration-500 bg-cover bg-center mix-blend-luminosity"
-                        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop')` }}
+                        style={{ backgroundImage: `url('https://donotdelete.wonderlandstudio.co.za/nef/shopping.jpeg')` }}
                       ></div>
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18] via-[#1E1B18]/70 to-transparent z-10"></div>
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2901C]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F2901C]/20 transition-all duration-500 z-10"></div>
                       
                       <div className="space-y-3 relative z-20">
                         <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Latest Success Story</span>
-                        <h4 className="text-lg font-sans font-black uppercase tracking-tight text-white group-hover:text-[#F2901C] transition-colors">Mamelodi Square</h4>
+                        <h4 className="text-lg font-sans font-black uppercase tracking-tight text-white group-hover:text-[#F2901C] transition-colors">The Orchards</h4>
                         <p className="text-white/60 text-[11px] font-light leading-relaxed">
-                          How a landmark R50M retail development created 250+ community jobs and transformed local commerce infrastructure.
+                          How a strategic R120M retail development in Pretoria North created 250+ community jobs and supported 15 local black-owned SMEs.
                         </p>
                       </div>
                       <div className="relative z-20 mt-6 flex justify-between items-center w-full">
                         <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
                           Read Story <span className="text-xs">→</span>
                         </span>
-                        <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Urban Property</span>
+                        <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Property & Retail</span>
                       </div>
                     </div>
                   </>
@@ -765,7 +769,7 @@ export default function App() {
                     Mandate, Mission & Vision
                   </button>
                   <button
-                    onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                    onClick={() => handleNavItemClick({ href: "https://nefperformancedemo.wonderlandstudio.co.za/", isExternal: true })}
                     className="text-sm font-sans font-normal text-left text-neutral-600 hover:text-[#F2901C] transition-colors"
                   >
                     Performance Report 2025
@@ -1461,7 +1465,7 @@ export default function App() {
 
                   <div className="mt-12 text-center">
                     <button
-                      onClick={() => navigate('/performance-report-2025')}
+                      onClick={() => window.location.href = 'https://nefperformancedemo.wonderlandstudio.co.za/'}
                       className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F2901C] hover:text-white transition-colors bg-[#1E1B18] hover:bg-[#1E1B18]/90 border border-[#F2901C]/30 hover:border-white/50 px-6 py-3 rounded-full shadow-md transition-all duration-300"
                     >
                       View Full Performance Report 2025 <span className="text-xs">→</span>
@@ -1659,7 +1663,7 @@ export default function App() {
                       </li>
                       <li>
                         <button
-                          onClick={() => handleNavItemClick({ href: "/performance-report-2025", isExternal: true })}
+                          onClick={() => handleNavItemClick({ href: "https://nefperformancedemo.wonderlandstudio.co.za/", isExternal: true })}
                           className="text-xs text-neutral-500 hover:text-[#F2901C] transition-colors font-light text-left shadow-none p-0 bg-transparent border-0 cursor-pointer"
                         >
                           Performance Report 2025

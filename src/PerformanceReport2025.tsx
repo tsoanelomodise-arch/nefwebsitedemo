@@ -131,14 +131,11 @@ export default function PerformanceReport2025() {
       
       {/* Background Image Layer */}
       <div 
-        className="absolute inset-0 bg-cover bg-center pointer-events-none z-0 opacity-[0.12] mix-blend-luminosity"
+        className="absolute inset-0 bg-cover bg-center pointer-events-none z-0 opacity-100"
         style={{
-          backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg")',
+          backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/background_2.png")',
         }}
       ></div>
-
-      {/* Dark Vignette Overlay for excellent readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#161412]/90 via-[#161412]/75 to-[#161412]/95 pointer-events-none z-0"></div>
 
       {/* Glow Backdrops */}
       <div className="absolute top-0 right-1/4 w-128 h-128 bg-[#F2901C]/5 rounded-full blur-[10rem] pointer-events-none z-0"></div>
@@ -185,31 +182,13 @@ export default function PerformanceReport2025() {
       <header className="pt-24 pb-12 px-4 md:px-12 max-w-7xl mx-auto relative z-10">
         <div className="relative min-h-[75vh] md:min-h-[85vh] bg-[#1E1B18] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl flex flex-col justify-between p-8 md:p-16 border border-white/5">
           
-          {/* Background Video Layer playing looping cinematic NEF support footage */}
-          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[55%] h-full pointer-events-none overflow-hidden">
-            <video 
-              src="https://nef.wonderlandstudio.co.za/images/Camera_pans_capturing_motion_202606092000.mp4" 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-full object-cover object-left select-none scale-x-[-1] opacity-75"
-            />
-            {/* Smooth linear fade to pure dark brown on the left side to blend into the text zone */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1E1B18] via-[#1E1B18]/90 to-transparent lg:block hidden"></div>
-            {/* Vertically faded back-cover mask for smaller screens */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18] via-[#1E1B18]/50 to-transparent lg:hidden block"></div>
-          </div>
-
-          {/* Golden Orange Geometric Accent Stripe mimicking the logo's curved branding */}
-          <div className="absolute right-0 top-0 w-full lg:w-[60%] h-full pointer-events-none z-10 overflow-hidden opacity-50">
-            {/* Stripe 1 */}
-            <div className="absolute right-[5%] top-[-30%] w-12 md:w-16 h-[160%] bg-gradient-to-b from-[#F2901C]/0 via-[#F2901C]/10 to-[#F2901C]/30 rotate-[35deg] rounded-full transform origin-top-right"></div>
-            {/* Stripe 2 */}
-            <div className="absolute right-[15%] top-[-25%] w-16 md:w-20 h-[155%] bg-gradient-to-b from-transparent via-[#C79F6E]/15 to-[#C79F6E]/50 rotate-[35deg] rounded-full transform origin-top-right"></div>
-            {/* Stripe 3 - The vibrant gold diagonal stripe from NEF emblem */}
-            <div className="absolute right-[25%] top-[-40%] w-20 md:w-32 h-[180%] bg-gradient-to-b from-[#F2901C]/10 via-[#F2901C]/30 to-[#F2901C]/5 rotate-[35deg] rounded-full transform origin-top-right"></div>
-          </div>
+          {/* Background Image Layer */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center pointer-events-none z-0 opacity-100"
+            style={{
+              backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg")',
+            }}
+          ></div>
 
           {/* Central content Spacer */}
           <div className="relative z-10 w-full mb-8"></div>

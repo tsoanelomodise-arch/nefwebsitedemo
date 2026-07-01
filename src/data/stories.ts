@@ -36,7 +36,7 @@ export const STORIES: Story[] = [
       "Beyond the economic impact, The Orchards has also become a focal point for social interaction. The centre's design includes public spaces that encourage community gathering, making it more than just a place to shop. It is a place where neighbors meet, where families spend time together, and where the spirit of community is celebrated.",
       "Today, The Orchards is more than just a shopping destination; it is a hub of economic activity that continues to inspire local entrepreneurs to dream big and contribute to South Africa's growth story. It stands as a shining example of what can be achieved when vision, investment, and community commitment come together."
     ],
-    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1000&auto=format&fit=crop",
+    image: "https://donotdelete.wonderlandstudio.co.za/nef/shopping.jpeg",
     quote: "The NEF didn't just provide funding; they provided a partnership that understood our vision for the community.",
     impact: [
       "Created 250+ permanent jobs",
@@ -93,45 +93,6 @@ export const STORIES: Story[] = [
       "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop"
     ],
     videoUrl: "https://www.youtube.com/watch?v=I43dWe93u84"
-  },
-  {
-    id: "mamelodi-square",
-    title: "Mamelodi Square: Bringing Modern Retail to the Township",
-    category: "Retail Development",
-    date: "January 22, 2024",
-    author: "NEF Editorial",
-    summary: "A landmark development that brings convenience and economic opportunity to one of South Africa's most vibrant townships.",
-    content: [
-      "Mamelodi Square is a flagship project that highlights the NEF's focus on township economy revitalization. By bringing a modern, high-quality shopping experience to Mamelodi, the development has reduced the need for residents to travel long distances for their daily needs.",
-      "The project was developed with a strong emphasis on local participation, from the construction phase through to the final retail mix. This approach has ensured that the development is deeply rooted in the community it serves.",
-      "As a vibrant centre of commerce, Mamelodi Square is proving that township markets are ripe for investment and capable of sustaining sophisticated retail developments that drive local growth."
-    ],
-    fullContent: [
-      "Mamelodi Square is a flagship project that highlights the NEF's focus on township economy revitalization. By bringing a modern, high-quality shopping experience to Mamelodi, the development has reduced the need for residents to travel long distances for their daily needs.",
-      "The project was developed with a strong emphasis on local participation, from the construction phase through to the final retail mix. This approach has ensured that the development is deeply rooted in the community it serves.",
-      "The development of Mamelodi Square was a response to the growing demand for modern retail facilities in one of South Africa's largest and most vibrant townships. For too long, residents had to travel to the city center or surrounding suburbs for basic services and quality shopping. Mamelodi Square changes that narrative by providing a world-class retail environment right on their doorstep.",
-      "The NEF's investment was instrumental in de-risking the project and attracting other institutional investors. The funding supported the construction of the 16,000sqm center, which now houses over 40 tenants, including major national supermarkets, fashion retailers, and essential services like banks and pharmacies.",
-      "A key feature of the Mamelodi Square project was its commitment to local economic empowerment. During the construction phase, hundreds of jobs were created for local residents, and many local sub-contractors were given the opportunity to participate in the project. This focus on local involvement has continued into the operational phase, with many of the retail staff being recruited from the surrounding community.",
-      "As a vibrant centre of commerce, Mamelodi Square is proving that township markets are ripe for investment and capable of sustaining sophisticated retail developments that drive local growth. It is a model for future township developments across the country."
-    ],
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1000&auto=format&fit=crop",
-    quote: "Mamelodi Square is a symbol of dignity and progress for our community.",
-    impact: [
-      "R250 million total investment",
-      "40+ National and local retail tenants",
-      "Significant reduction in local travel costs for residents"
-    ],
-    stats: [
-      { label: "Investment", value: "R250M", icon: "TrendingUp" },
-      { label: "Tenants", value: "40+", icon: "Store" },
-      { label: "GLA", value: "16,000m²", icon: "Maximize" },
-      { label: "Jobs", value: "300+", icon: "Users" }
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop"
-    ],
-    videoUrl: "https://www.youtube.com/watch?v=mCstRzPqX0k"
   }
 ];
 
