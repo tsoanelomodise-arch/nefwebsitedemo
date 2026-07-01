@@ -26,14 +26,14 @@ const HERO_SLIDES = [
     subtitle: "we can absolutely help you",
     title: "Empowering Black Business",
     description: "The National Empowerment Fund is dedicated to the economic empowerment of black South Africans through innovative funding solutions.",
-    image: "https://nef.wonderlandstudio.co.za/images/be58a4d8-d701-4998-b65a-6b3c7f29e28f.png"
+    image: "https://donotdelete.wonderlandstudio.co.za/nef/coffee_shop.jpeg"
   },
   {
     id: "02",
     subtitle: "driving transformation",
     title: "Sustainable Economic Growth",
     description: "We provide financial and non-financial support to black-owned businesses, ensuring sustainable growth and economic transformation.",
-    image: "https://donotdelete.wonderlandstudio.co.za/nef/crane_image_202606291236.jpeg"
+    image: "https://donotdelete.wonderlandstudio.co.za/nef/tourism.jpeg"
   },
   {
     id: "03",
