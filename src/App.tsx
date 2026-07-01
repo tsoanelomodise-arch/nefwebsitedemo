@@ -1239,14 +1239,25 @@ export default function App() {
                       </h2>
 
                       {/* Content Area with a neat, warm light border top divider */}
-                      <div className="space-y-4 pt-8 border-t border-white/10">
-                        <span className="text-[9px] font-mono tracking-widest text-[#C79F6E] uppercase block font-bold">Featured Partner</span>
-                        <h3 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight text-white leading-tight">
-                          {latestStory.title}
-                        </h3>
-                        <p className="text-white/60 text-sm md:text-base max-w-md font-light leading-relaxed">
-                          {latestStory.summary}
-                        </p>
+                      <div className="border-t border-white/10 pt-8 min-h-[170px]">
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={latestStory.id}
+                            initial={{ opacity: 0, y: 4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -4 }}
+                            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
+                            className="space-y-4"
+                          >
+                            <span className="text-[9px] font-mono tracking-widest text-[#C79F6E] uppercase block font-bold">Featured Partner</span>
+                            <h3 className="text-2xl md:text-3xl font-sans font-light uppercase tracking-tight text-white leading-tight">
+                              {latestStory.title}
+                            </h3>
+                            <p className="text-white/60 text-sm md:text-base max-w-md font-light leading-relaxed">
+                              {latestStory.summary}
+                            </p>
+                          </motion.div>
+                        </AnimatePresence>
                       </div>
                     </div>
 
@@ -1275,98 +1286,114 @@ export default function App() {
                     
                     {/* ENLARGED HERO VIDEO CARD (Landscape portrait card with custom play interactive frame) */}
                     <div className="md:col-span-7 flex flex-col justify-between">
-                      <div 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setPlayingHomeVideo(true);
-                        }}
-                        className="aspect-[3/4] bg-[#2C2621]/90 rounded-[2.8rem] overflow-hidden relative group border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] cursor-pointer"
-                      >
-                        <img 
-                          src={latestStory.image} 
-                          alt={latestStory.title} 
-                          className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
-                          referrerPolicy="no-referrer"
-                        />
-                        
-                        {/* High-Contrast Floating White Play Button from Design Reference */}
-                        <div className="absolute inset-0 flex items-center justify-center z-20">
-                          <div className="w-16 h-16 rounded-full bg-white text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#F2901C] group-hover:text-white relative">
-                            <span className="absolute inset-0 rounded-full bg-white/30 animate-ping group-hover:bg-[#F2901C]/30"></span>
-                            <Play size={18} fill="currentColor" className="relative z-10 translate-x-0.5" />
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={latestStory.id}
+                          initial={{ opacity: 0, scale: 0.99, y: 2 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.99, y: -2 }}
+                          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPlayingHomeVideo(true);
+                          }}
+                          className="aspect-[3/4] bg-[#2C2621]/90 rounded-[2.8rem] overflow-hidden relative group border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] cursor-pointer h-full w-full"
+                        >
+                          <img 
+                            src={latestStory.image} 
+                            alt={latestStory.title} 
+                            className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
+                            referrerPolicy="no-referrer"
+                          />
+                          
+                          {/* High-Contrast Floating White Play Button from Design Reference */}
+                          <div className="absolute inset-0 flex items-center justify-center z-20">
+                            <div className="w-16 h-16 rounded-full bg-white text-[#1E1B18] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-[#F2901C] group-hover:text-white relative">
+                              <span className="absolute inset-0 rounded-full bg-white/30 animate-ping group-hover:bg-[#F2901C]/30"></span>
+                              <Play size={18} fill="currentColor" className="relative z-10 translate-x-0.5" />
+                            </div>
                           </div>
-                        </div>
 
-                        {/* Dark Vignette Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
-                        
-                        {/* Metadata Tagline Overlay */}
-                        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-10 gap-4">
-                          <div className="space-y-2 text-left">
-                            <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#F2901C] text-[#1E1B18] px-3.5 py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
-                            <h4 className="text-base font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
+                          {/* Dark Vignette Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
+                          
+                          {/* Metadata Tagline Overlay */}
+                          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-10 gap-4">
+                            <div className="space-y-2 text-left">
+                              <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] bg-[#F2901C] text-[#1E1B18] px-3.5 py-1.5 rounded-full shadow-lg block w-max">Success Documentary</span>
+                              <h4 className="text-base font-sans font-medium text-white line-clamp-1">{latestStory.title}</h4>
+                            </div>
+                            <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] shrink-0">
+                              <ArrowRight size={12} className="text-white group-hover:text-[#1E1B18]" />
+                            </div>
                           </div>
-                          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] shrink-0">
-                            <ArrowRight size={12} className="text-white group-hover:text-[#1E1B18]" />
-                          </div>
-                        </div>
-                      </div>
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
 
                     {/* Supporting cards row stacked vertically (Testimonial & Impact stats) */}
                     <div className="md:col-span-5 flex flex-col gap-8 justify-between">
-                      
-                      {/* Card 1: Testimonial Card */}
-                      <div 
-                        onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
-                      >
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
-                        
-                        <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block mb-4">Testimonial</span>
-                        
-                        <p className="text-white/80 text-[11px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-5">
-                          "{latestStory.quote}"
-                        </p>
-                        
-                        <div className="flex justify-between items-center relative z-10 mt-6 pt-4 border-t border-white/5">
-                          <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#F2901C] transition-colors font-bold">{latestStory.author}</span>
-                          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] transition-all">
-                            <ArrowRight size={10} className="text-white group-hover:text-[#1E1B18]" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Card 2: Impact stats Card */}
-                      <div 
-                        onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
-                        className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
-                      >
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
-                        
-                        <div className="space-y-4">
-                          <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Impact stats</span>
-                          <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#F2901C] transition-colors">
-                            {latestStory.title}
-                          </h4>
-                          <div className="space-y-2 pt-3 border-t border-white/10">
-                            {latestStory.impact?.slice(0, 2).map((item, idx) => (
-                              <div key={idx} className="flex items-start gap-2.5 text-[10px] text-white/70 font-light font-sans">
-                                <span className="text-[#C79F6E] mt-0.5 font-bold">•</span>
-                                <span className="line-clamp-2">{item}</span>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={latestStory.id}
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0], delay: 0.05 }}
+                          className="flex flex-col gap-8 h-full w-full justify-between"
+                        >
+                          {/* Card 1: Testimonial Card */}
+                          <div 
+                            onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
+                            className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
+                          >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+                            
+                            <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block mb-4">Testimonial</span>
+                            
+                            <p className="text-white/80 text-[11px] md:text-xs font-light leading-relaxed italic relative z-10 my-auto line-clamp-5">
+                              "{latestStory.quote}"
+                            </p>
+                            
+                            <div className="flex justify-between items-center relative z-10 mt-6 pt-4 border-t border-white/5">
+                              <span className="text-[8px] font-mono tracking-widest text-[#C79F6E] uppercase group-hover:text-[#F2901C] transition-colors font-bold">{latestStory.author}</span>
+                              <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F2901C] group-hover:text-[#1E1B18] transition-all">
+                                <ArrowRight size={10} className="text-white group-hover:text-[#1E1B18]" />
                               </div>
-                            ))}
+                            </div>
                           </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center relative z-10 mt-6 border-t border-white/10 pt-4">
-                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
-                            Read Full Story <span className="text-xs">→</span>
-                          </span>
-                          <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Interactive</span>
-                        </div>
-                      </div>
 
+                          {/* Card 2: Impact stats Card */}
+                          <div 
+                            onClick={() => navigate(`/investee-stories/${latestStory.id}`)}
+                            className="flex-1 bg-white/5 rounded-[2.2rem] p-8 flex flex-col justify-between relative group cursor-pointer border border-white/10 shadow-xl overflow-hidden hover:border-[#F2901C]/30 hover:bg-white/10 transition-all duration-500"
+                          >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2901C]/5 rounded-full blur-xl pointer-events-none group-hover:bg-[#F2901C]/10 transition-all duration-500"></div>
+                            
+                            <div className="space-y-4">
+                              <span className="text-[8px] font-extrabold uppercase tracking-[0.25em] text-[#F2901C] block">Impact stats</span>
+                              <h4 className="text-xs md:text-sm font-sans font-bold uppercase tracking-tight text-white line-clamp-2 leading-snug group-hover:text-[#F2901C] transition-colors">
+                                {latestStory.title}
+                              </h4>
+                              <div className="space-y-2 pt-3 border-t border-white/10">
+                                {latestStory.impact?.slice(0, 2).map((item, idx) => (
+                                  <div key={idx} className="flex items-start gap-2.5 text-[10px] text-white/70 font-light font-sans">
+                                    <span className="text-[#C79F6E] mt-0.5 font-bold">•</span>
+                                    <span className="line-clamp-2">{item}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            <div className="flex justify-between items-center relative z-10 mt-6 border-t border-white/10 pt-4">
+                              <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2901C] flex items-center gap-1.5 group-hover:translate-x-1 transition-all duration-300">
+                                Read Full Story <span className="text-xs">→</span>
+                              </span>
+                              <span className="text-[8px] font-mono font-bold text-white/30 uppercase">Interactive</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
 
                     {/* Decorative Design Elements: Carousel Indicators exactly inspired by Design Reference */}
