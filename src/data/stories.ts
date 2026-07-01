@@ -75,7 +75,7 @@ export const STORIES: Story[] = [
       "One of Busamed's core values is its commitment to transformation and skills development. The group actively recruits and trains black medical professionals, providing them with opportunities to excel in specialized fields. This focus on empowerment extends beyond the clinical staff to all levels of the organization, creating a culture of excellence and inclusivity.",
       "The success of Busamed demonstrates that with the right backing, black-owned enterprises can compete and excel in highly specialized and capital-intensive sectors, driving both economic value and social good. It is a story of vision, perseverance, and the power of strategic empowerment."
     ],
-    image: "https://images.unsplash.com/photo-1586773860418-d3b3b998cf67?q=80&w=1000&auto=format&fit=crop",
+    image: "https://donotdelete.wonderlandstudio.co.za/nef/medical.jpg",
     quote: "Our goal was to create a healthcare legacy that reflects the diversity and excellence of South Africa.",
     impact: [
       "7 World-class hospitals established",
