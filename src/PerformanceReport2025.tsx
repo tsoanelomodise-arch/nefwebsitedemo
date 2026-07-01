@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Download, TrendingUp, Users, Briefcase, Globe, Award, BarChart3, PieChart, Activity, CheckCircle, FileText, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { PremiumIcon } from './components/PremiumIcon';
 
 // Custom high-fidelity NEF Logo Component from the Cover Page
 const NefLogo = ({ className = "text-white" }: { className?: string }) => (
@@ -64,10 +65,10 @@ export default function PerformanceReport2025() {
   const [activeYearIndex, setActiveYearIndex] = useState(4); // Default to latest (2025)
 
   const stats = [
-    { label: "Total Approvals", value: "R7.4bn", description: "All-time high strategic funding approvals", icon: Award, color: "bg-[#F2901C]", textColor: "text-white" },
-    { label: "Jobs Supported", value: "112,000+", description: "Decent opportunities created & sustained", icon: Users, color: "bg-[#C79F6E]", textColor: "text-white" },
-    { label: "SMMEs Funded", value: "1,240+", description: "Black-owned small and medium enterprises", icon: Briefcase, color: "bg-[#F2901C]", textColor: "text-white" },
-    { label: "Black Women Owned", value: "42%", description: "Direct ownership by black female industrialists", icon: Globe, color: "bg-[#C79F6E]", textColor: "text-white" },
+    { label: "Total Approvals", value: "R7.4bn", description: "All-time high strategic funding approvals", icon: Award, iconName: "Award" as const, color: "bg-[#F2901C]", textColor: "text-white" },
+    { label: "Jobs Supported", value: "112,000+", description: "Decent opportunities created & sustained", icon: Users, iconName: "Users" as const, color: "bg-[#C79F6E]", textColor: "text-white" },
+    { label: "SMMEs Funded", value: "1,240+", description: "Black-owned small and medium enterprises", icon: Briefcase, iconName: "Briefcase" as const, color: "bg-[#F2901C]", textColor: "text-white" },
+    { label: "Black Women Owned", value: "42%", description: "Direct ownership by black female industrialists", icon: Globe, iconName: "Globe" as const, color: "bg-[#C79F6E]", textColor: "text-white" },
   ];
 
   const highlights = [
@@ -75,19 +76,22 @@ export default function PerformanceReport2025() {
       title: "Strategic Growth Catalyst",
       description: "Significant capital expansion supporting high-growth industries including agro-processing, green energy, telecommunications, and advanced manufacturing.",
       trend: "+18% YoY Growth",
-      icon: TrendingUp
+      icon: TrendingUp,
+      iconName: "TrendingUp" as const
     },
     {
       title: "Streamlined Dispensation Protocols",
       description: "Implemented state-of-the-art diagnostic assessment systems, cutting application turnaround times by up to 30% without breaching compliance frameworks.",
       trend: "30% Faster Turnaround",
-      icon: BarChart3
+      icon: BarChart3,
+      iconName: "BarChart3" as const
     },
     {
       title: "Township & Rural Revitalization",
       description: "Delivering crucial economic support directly to overlooked municipal jurisdictions, reinforcing local bakeries, clinics, and infrastructure networks.",
       trend: "R1.2bn Disbursed",
-      icon: PieChart
+      icon: PieChart,
+      iconName: "PieChart" as const
     }
   ];
 
@@ -317,7 +321,7 @@ export default function PerformanceReport2025() {
 
                   <div className="flex justify-between items-start mb-6">
                     <div className={`w-12 h-12 rounded-2xl ${stat.color} flex items-center justify-center text-[#1E1B18] scale-100 group-hover:scale-110 transition-transform shadow-md shadow-[#F2901C]/10`}>
-                      <stat.icon size={22} />
+                      <PremiumIcon name={stat.iconName} size={22} variant="minimal" color="currentColor" interactive={false} />
                     </div>
                     <span className="text-[9px] font-mono uppercase tracking-widest text-[#F2901C] font-bold bg-[#F2901C]/10 px-2.5 py-1 rounded-full">Approved</span>
                   </div>
@@ -368,7 +372,7 @@ export default function PerformanceReport2025() {
 
                 <div>
                   <div className="w-10 h-10 rounded-xl bg-[#F2901C]/10 text-[#F2901C] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <item.icon size={20} />
+                    <PremiumIcon name={item.iconName} size={20} variant="minimal" color="currentColor" interactive={false} />
                   </div>
                   <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-3 group-hover:text-[#F2901C] transition-colors">{item.title}</h3>
                   <p className="text-xs text-neutral-400 leading-relaxed font-light mb-6">{item.description}</p>

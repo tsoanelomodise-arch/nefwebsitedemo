@@ -3,31 +3,32 @@ import { CheckCircle2, Zap, Target, Users, TrendingUp, ShieldCheck, Info } from 
 import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const FEATURES = [
   {
     id: "01",
     title: "Funding Range",
     description: "Financial support ranging from R250,000 up to R10 million per project.",
-    icon: Zap
+    iconName: "Zap" as const
   },
   {
     id: "02",
     title: "Ownership Requirement",
     description: "Targeted at businesses with at least 50.1% black ownership and management.",
-    icon: Users
+    iconName: "Users" as const
   },
   {
     id: "03",
     title: "Strategic Support",
     description: "Provision of both financial and non-financial support to ensure business sustainability.",
-    icon: ShieldCheck
+    iconName: "ShieldCheck" as const
   },
   {
     id: "04",
     title: "Growth Focus",
     description: "Supports both new start-ups and the expansion of existing black-owned enterprises.",
-    icon: TrendingUp
+    iconName: "TrendingUp" as const
   }
 ];
 
@@ -72,11 +73,17 @@ export default function EntrepreneurshipFinance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-12 group hover:bg-black transition-colors duration-500"
+              className="bg-white p-12 group hover:bg-black transition-colors duration-500 text-left"
             >
               <div className="flex justify-between items-start mb-8">
                 <span className="text-sm font-bold opacity-40 group-hover:text-white transition-colors">{feature.id}</span>
-                <feature.icon size={32} className="text-black group-hover:text-gold-foil transition-colors" />
+                <PremiumIcon 
+                  name={feature.iconName} 
+                  size={24} 
+                  variant="boxed" 
+                  className="bg-neutral-50 border-neutral-100/50 group-hover:bg-[#F2901C]/15 group-hover:text-[#F2901C] group-hover:border-[#F2901C]/30 text-black" 
+                  interactive={true} 
+                />
               </div>
               <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4 group-hover:text-white transition-colors">
                 {feature.title}
@@ -94,19 +101,19 @@ export default function EntrepreneurshipFinance() {
               <div className="w-8 h-px bg-black"></div>
               Key Criteria
             </h2>
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-6 text-left">
               {CRITERIA.map((item, i) => (
                 <div key={i} className="flex items-start gap-4 p-6 bg-gray-50 border-l-4 border-gold-foil">
-                  <CheckCircle2 size={20} className="text-black mt-1 shrink-0" />
+                  <PremiumIcon name="CheckCircle2" size={18} variant="minimal" color="black" className="mt-1" interactive={false} />
                   <p className="text-gray-600 leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="space-y-8">
-            <div className="p-8 bg-black text-white">
-              <Info size={32} className="text-gold-foil mb-6" />
+          <div className="space-y-8 text-left">
+            <div className="p-8 bg-black text-white rounded-2xl">
+              <PremiumIcon name="Info" size={24} variant="accent" color="#F2901C" className="mb-6 bg-white/10 border-white/5" interactive={false} />
               <h3 className="text-xl font-bold uppercase tracking-tighter mb-4">Focus Sectors</h3>
               <div className="flex flex-wrap gap-2">
                 {["Franchising", "Procurement", "Start-ups", "Expansion Capital"].map((sector, i) => (
@@ -117,8 +124,8 @@ export default function EntrepreneurshipFinance() {
               </div>
             </div>
             
-            <div className="p-8 border border-gray-200">
-              <Target size={32} className="text-black mb-6" />
+            <div className="p-8 border border-gray-200 rounded-2xl">
+              <PremiumIcon name="Target" size={24} variant="boxed" className="mb-6" interactive={false} />
               <h3 className="text-xl font-bold uppercase tracking-tighter mb-4">Our Objective</h3>
               <p className="text-sm text-gray-500 leading-relaxed italic">
                 "To promote and support entrepreneurship and business growth among black people through 

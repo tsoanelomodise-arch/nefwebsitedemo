@@ -3,6 +3,7 @@ import { CheckCircle2, Info, Target, ShieldCheck, Users, Zap, Play } from "lucid
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const CRITERIA_SECTIONS = [
   {
@@ -109,7 +110,7 @@ export default function FundingCriteria() {
               business viability and transformation impact.
             </p>
             <div className="flex items-center gap-4 p-6 bg-white border-l-2 border-[#F2901C] rounded-r-3xl shadow-sm border-y border-r border-[#EFE6DA]/40">
-              <Info className="text-[#F2901C] shrink-0" size={18} />
+              <PremiumIcon name="Info" size={16} variant="accent" color="#F2901C" interactive={false} />
               <p className="text-xs text-neutral-500 italic font-light">
                 "Our goal is to ensure that every funded project has the best chance of long-term success."
               </p>
@@ -159,7 +160,7 @@ export default function FundingCriteria() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {section.items.map((item, i) => (
                     <div key={i} className="flex items-start gap-4 p-8 bg-white border border-[#EFE6DA]/80 hover:bg-[#1E1B18] group transition-all duration-300 rounded-[2rem] shadow-2xs hover:shadow-lg">
-                      <CheckCircle2 size={18} className="text-[#F2901C] shrink-0 mt-0.5 group-hover:text-white" />
+                      <PremiumIcon name="CheckCircle2" size={16} variant="minimal" color="currentColor" className="text-[#F2901C] shrink-0 mt-0.5 group-hover:text-white" interactive={false} />
                       <p className="text-neutral-500 group-hover:text-white/80 transition-colors leading-relaxed font-light text-sm md:text-base">
                         {item}
                       </p>

@@ -401,7 +401,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="ShieldCheck" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Mandate, Vision & Mission</h5>
@@ -415,7 +415,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="Users" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Leadership & Board</h5>
@@ -436,7 +436,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <Briefcase size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="Briefcase" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Performance Report 2025</h5>
@@ -450,7 +450,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="ArrowRight" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">General FAQ & Criteria</h5>
@@ -497,7 +497,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <SlidersHorizontal size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="SlidersHorizontal" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Portfolio Finder</h5>
@@ -511,7 +511,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <ShieldCheck size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="ShieldCheck" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Funding Criteria</h5>
@@ -525,7 +525,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <Zap size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="Zap" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Check Your Eligibility</h5>
@@ -546,7 +546,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <Users size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="Users" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Non-Financial Support</h5>
@@ -560,7 +560,7 @@ export default function App() {
                           className="group p-3 rounded-2xl hover:bg-[#FCFAF7] transition-all duration-300 text-left flex gap-4"
                         >
                           <div className="w-10 h-10 shrink-0 bg-neutral-100 rounded-xl flex items-center justify-center border border-neutral-200/50 group-hover:bg-[#F2901C]/15 group-hover:border-[#F2901C]/30 transition-colors">
-                            <ArrowRight size={18} className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" />
+                            <PremiumIcon name="ArrowRight" size={16} variant="minimal" color="currentColor" className="text-[#1E1B18] group-hover:text-[#F2901C] transition-colors" interactive={false} />
                           </div>
                           <div>
                             <h5 className="font-bold text-xs uppercase tracking-tight text-[#1E1B18] group-hover:text-[#C79F6E] transition-colors">Application Roadmap</h5>
@@ -1196,12 +1196,18 @@ export default function App() {
 
               {/* Success Stories Preview Section */}
               <section className="py-28 px-8 md:px-24 bg-gradient-to-br from-[#1E1B18] via-[#26211D] to-[#12100E] text-white overflow-hidden relative">
-                {/* Background Image (Custom Pastel Gradient matching the reference) */}
+                {/* Background Image (Custom Pastel Gradient or Story Specific Background) */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-500 z-0"
+                  className="absolute inset-0 bg-cover bg-center pointer-events-none transition-all duration-700 z-0"
                   style={{
-                    backgroundImage: 'url("https://donotdelete.wonderlandstudio.co.za/nef/background_1.png")',
-                    opacity: 1.0, // Set to exactly 100% as requested for premium visual balance and high readability
+                    backgroundImage: `url(${
+                      latestStory.id === 'the-orchards' 
+                        ? 'https://donotdelete.wonderlandstudio.co.za/nef/shopping.jpeg' 
+                        : latestStory.id === 'busamed-healthcare'
+                        ? 'https://donotdelete.wonderlandstudio.co.za/nef/medical.jpg'
+                        : 'https://donotdelete.wonderlandstudio.co.za/nef/background_1.png'
+                    })`,
+                    opacity: (latestStory.id === 'the-orchards' || latestStory.id === 'busamed-healthcare') ? 0.25 : 1.0, // Subdued opacity for complex image backgrounds to guarantee readability
                   }}
                   id="investee-stories-bg"
                 ></div>

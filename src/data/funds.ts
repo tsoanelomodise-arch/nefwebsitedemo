@@ -31,6 +31,7 @@ export const NEF_FUNDS = [
       sectors: ["Franchising", "Procurement", "Start-ups", "Expansion Capital"]
     },
     icon: Zap,
+    iconName: "Zap" as const,
     image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1000&auto=format&fit=crop",
     color: "bg-gold-foil"
   },
@@ -50,6 +51,7 @@ export const NEF_FUNDS = [
       sectors: ["Acquisition Finance", "Project Finance", "Expansion Capital", "Capital Markets"]
     },
     icon: Briefcase,
+    iconName: "Briefcase" as const,
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
     color: "bg-white"
   },
@@ -69,6 +71,7 @@ export const NEF_FUNDS = [
       sectors: ["Agro-processing", "Tourism", "Manufacturing", "Services"]
     },
     icon: Users,
+    iconName: "Users" as const,
     image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop",
     color: "bg-gray-200"
   },
@@ -88,6 +91,7 @@ export const NEF_FUNDS = [
       sectors: ["Energy", "Mining", "Infrastructure", "Manufacturing"]
     },
     icon: ShieldCheck,
+    iconName: "ShieldCheck" as const,
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
     color: "bg-gold-foil"
   }

@@ -3,39 +3,40 @@ import { ChevronDown, HelpCircle, FileText, Clock, Users, ShieldCheck } from "lu
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 const FAQS = [
   {
     question: "What documents are required for an application?",
     answer: "Required documents typically include a comprehensive business plan, 3-5 year financial projections, B-BBEE certificates, tax clearance certificates, company registration documents (CIPC), and certified ID copies of all directors/owners.",
-    icon: FileText
+    iconName: "FileText" as const
   },
   {
     question: "How long does the approval process take?",
     answer: "The duration of the approval process varies depending on the complexity of the project and the completeness of the application. Generally, it can take between 3 to 6 months from the initial submission to final disbursement.",
-    icon: Clock
+    iconName: "Clock" as const
   },
   {
     question: "What is the minimum black ownership requirement?",
     answer: "To qualify for NEF funding, a business must have a minimum of 50.1% black ownership and management control. We also look for active operational involvement by the black entrepreneurs in the business.",
-    icon: Users
+    iconName: "Users" as const
   },
   {
     question: "Does the NEF provide non-financial support?",
     answer: "Yes, the NEF provides extensive non-financial support through our Post-Investment unit. This includes business mentorship, technical assistance, and strategic guidance to ensure the long-term sustainability of the business.",
-    icon: ShieldCheck
+    iconName: "ShieldCheck" as const
   }
 ];
 
 interface AccordionItemProps {
   question: string;
   answer: string;
-  icon: any;
+  iconName: any;
   isOpen: boolean;
   onClick: () => void;
 }
 
-function AccordionItem({ question, answer, icon: Icon, isOpen, onClick }: AccordionItemProps) {
+function AccordionItem({ question, answer, iconName, isOpen, onClick }: AccordionItemProps) {
   return (
     <div className="border-b border-gray-100 last:border-none">
       <button
@@ -43,9 +44,12 @@ function AccordionItem({ question, answer, icon: Icon, isOpen, onClick }: Accord
         className="w-full py-8 flex items-center justify-between text-left group transition-all"
       >
         <div className="flex items-center gap-6">
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-gold-foil text-black' : 'bg-gray-50 text-gray-400 group-hover:bg-black group-hover:text-white'}`}>
-            <Icon size={20} />
-          </div>
+          <PremiumIcon 
+            name={iconName} 
+            size={20} 
+            variant={isOpen ? "accent" : "boxed"} 
+            interactive={false} 
+          />
           <h3 className={`text-xl font-bold uppercase tracking-tighter transition-colors ${isOpen ? 'text-black' : 'text-gray-600 group-hover:text-black'}`}>
             {question}
           </h3>

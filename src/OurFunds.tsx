@@ -6,6 +6,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
 import { NEF_FUNDS } from "./data/funds";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 export default function OurFunds() {
   const navigate = useNavigate();
@@ -135,7 +136,7 @@ export default function OurFunds() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14">
             <div className="max-w-3xl text-left">
               <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C79F6E] mb-3 flex items-center gap-2">
-                <SlidersHorizontal size={12} className="text-[#F2901C]" />
+                <PremiumIcon name="SlidersHorizontal" size={14} variant="accent" color="#F2901C" interactive={false} />
                 Portfolio Finder
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-3xl font-sans font-black text-[#1E1B18] tracking-tighter uppercase leading-[0.95]">
@@ -391,7 +392,7 @@ export default function OurFunds() {
                 
                 <div className="relative z-10 flex items-center justify-between">
                   <div className="w-11 h-11 rounded-full bg-[#1E1B18] flex items-center justify-center text-white group-hover:bg-[#F2901C] group-hover:text-white transition-colors duration-300 shadow-sm">
-                    <fund.icon size={18} />
+                    <PremiumIcon name={fund.iconName} size={18} variant="minimal" color="currentColor" interactive={false} />
                   </div>
                   <div className="flex items-center gap-2 opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-1.5">
                     <span className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18]">Learn More</span>
@@ -465,7 +466,7 @@ export default function OurFunds() {
                     className={`w-12 h-12 ${fund.color} flex items-center justify-center transition-transform hover:scale-110 active:scale-95`}
                     title={`Remove ${fund.title}`}
                   >
-                    <fund.icon size={20} className="text-black" />
+                    <PremiumIcon name={fund.iconName} size={20} variant="minimal" color="black" interactive={false} />
                   </button>
                   <div className="absolute -top-2 -right-2 bg-gold-foil text-black rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                     <X size={12} />
@@ -525,7 +526,7 @@ export default function OurFunds() {
                         <th key={fund.id} className="w-1/4 p-6 text-left border-b border-gray-200">
                           <div className="flex flex-col gap-4">
                             <div className={`w-12 h-12 ${fund.color} flex items-center justify-center`}>
-                              <fund.icon size={24} className="text-black" />
+                              <PremiumIcon name={fund.iconName} size={24} variant="minimal" color="black" interactive={false} />
                             </div>
                             <div className="text-left">
                               <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 block">{fund.id}</span>
@@ -633,7 +634,7 @@ export default function OurFunds() {
               />
               <div className="absolute inset-0 bg-[#F2901C] mix-blend-multiply opacity-40 animate-fade-in"></div>
               <div className="absolute bottom-8 left-8">
-                <selectedFund.icon size={48} className="text-white" />
+                <PremiumIcon name={selectedFund.iconName} size={36} variant="glass" interactive={false} />
               </div>
             </div>
 
