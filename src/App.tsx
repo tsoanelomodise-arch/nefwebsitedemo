@@ -13,7 +13,7 @@ import NonFinancialSupport from "./NonFinancialSupport";
 import FundChatbot from "./components/FundChatbot";
 import BackToTopButton from "./components/BackToTopButton";
 import { NEF_FUNDS } from "./data/funds";
-import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
+import { STORIES, getYouTubeEmbedUrl, getVideoThumbnailFrameUrl } from "./data/stories";
 
 import MandateVisionMission from "./MandateVisionMission";
 import FAQ from "./FAQ";
@@ -1299,12 +1299,15 @@ export default function App() {
                           }}
                           className="aspect-[3/4] bg-[#2C2621]/90 rounded-[2.8rem] overflow-hidden relative group border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] cursor-pointer h-full w-full"
                         >
-                          <img 
-                            src={latestStory.image} 
-                            alt={latestStory.title} 
-                            className="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
-                            referrerPolicy="no-referrer"
-                          />
+                          <div className="absolute inset-0 overflow-hidden bg-black/40">
+                            <iframe 
+                              src={getVideoThumbnailFrameUrl(latestStory.videoUrl)} 
+                              title={latestStory.title}
+                              className="absolute inset-0 w-full h-full scale-[1.8] pointer-events-none opacity-50 group-hover:opacity-75 group-hover:scale-[1.85] transition-all duration-1000 ease-out"
+                              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              style={{ border: 0 }}
+                            />
+                          </div>
                           
                           {/* High-Contrast Floating White Play Button from Design Reference */}
                           <div className="absolute inset-0 flex items-center justify-center z-20">

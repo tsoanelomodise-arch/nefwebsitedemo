@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { CheckCircle2, Info, Target, ShieldCheck, Users, Zap, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";
@@ -131,7 +131,7 @@ export default function FundingCriteria() {
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="w-14 h-14 bg-[#F2901C] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
-                <Play fill="white" size={18} className="translate-x-0.5" />
+                <PremiumIcon name="Play" size={18} variant="minimal" color="currentColor" interactive={false} className="translate-x-0.5" />
               </button>
             </div>
           </motion.div>

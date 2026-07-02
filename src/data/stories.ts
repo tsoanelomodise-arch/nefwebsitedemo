@@ -112,3 +112,19 @@ export function getYouTubeEmbedUrl(url: string, autoplay = true): string {
   return `https://www.youtube.com/embed/${videoId}${autoplay ? "?autoplay=1&mute=1&rel=0&modestbranding=1" : "?rel=0&modestbranding=1"}`;
 }
 
+export function getVideoThumbnailFrameUrl(url: string): string {
+  if (!url) return "";
+  if (url.includes("facebook.com") || url.includes("fb.watch") || url.includes("fb.com")) {
+    return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=0&width=560&t=16`;
+  }
+  let videoId = "";
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    videoId = match[2];
+  } else {
+    videoId = url;
+  }
+  return `https://www.youtube.com/embed/${videoId}?start=16&autoplay=0&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1`;
+}
+

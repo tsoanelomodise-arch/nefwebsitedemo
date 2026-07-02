@@ -1,15 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { 
-  ArrowLeft, ArrowRight, Quote, Calendar, User, Filter, Play, X,
-  TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
-} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
-
-const IconMap: Record<string, any> = {
-  TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
-};
+import { PremiumIcon } from "./components/PremiumIcon";
 
 export default function InvesteeStories() {
   const navigate = useNavigate();
@@ -99,7 +92,7 @@ export default function InvesteeStories() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 border-b border-[#EFE6DA]/40 pb-12">
           <div className="flex items-center gap-4 shrink-0">
             <div className="w-9 h-9 rounded-full bg-[#1E1B18] flex items-center justify-center text-[#F2901C] shadow-xs">
-              <Filter className="w-3.5 h-3.5" />
+              <PremiumIcon name="Filter" size={14} variant="minimal" color="currentColor" interactive={false} />
             </div>
             <div className="flex flex-col">
               <span className="text-[9px] font-bold uppercase tracking-widest text-[#1E1B18]">Industry Focus</span>
@@ -163,7 +156,7 @@ export default function InvesteeStories() {
                       {/* Interactive Play Button in list */}
                       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                         <div className="w-14 h-14 rounded-full bg-[#EECFBA]/90 text-[#1E1B18] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#F2901C] group-hover:text-white">
-                          <Play size={18} fill="currentColor" className="ml-0.5 text-inherit" />
+                          <PremiumIcon name="Play" size={18} variant="minimal" color="currentColor" interactive={false} className="ml-0.5 text-inherit" />
                         </div>
                       </div>
                       <div className="absolute top-6 left-6 bg-[#F2901C] text-white px-4 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-widest shadow-md z-10">
@@ -180,11 +173,10 @@ export default function InvesteeStories() {
                     <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#C79F6E] block mb-6">Key Impact</span>
                     <div className="grid grid-cols-2 gap-6">
                       {story.stats?.slice(0, 4).map((stat, i) => {
-                        const Icon = stat.icon ? IconMap[stat.icon] : null;
                         return (
                           <div key={i} className="flex items-center gap-4">
                             <div className="w-9 h-9 rounded-full bg-[#F2901C]/10 flex items-center justify-center text-[#F2901C] shrink-0 border border-[#F2901C]/5">
-                              {Icon && <Icon className="w-4 h-4" />}
+                              {stat.icon && <PremiumIcon name={stat.icon} size={16} variant="minimal" color="currentColor" interactive={false} />}
                             </div>
                             <div>
                               <div className="text-base font-light text-[#1E1B18] leading-none mb-1 font-sans">{stat.value}</div>
@@ -201,8 +193,8 @@ export default function InvesteeStories() {
                 <div className="w-full md:w-1/2 space-y-12">
                   <div className="space-y-6">
                     <div className="flex items-center gap-6 text-[8px] font-bold uppercase tracking-widest text-neutral-400">
-                      <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5 text-[#F2901C]" /> {story.date}</span>
-                      <span className="flex items-center gap-2"><User className="w-3.5 h-3.5 text-[#F2901C]" /> {story.author}</span>
+                      <span className="flex items-center gap-2"><PremiumIcon name="Calendar" size={14} variant="minimal" color="#F2901C" interactive={false} /> {story.date}</span>
+                      <span className="flex items-center gap-2"><PremiumIcon name="User" size={14} variant="minimal" color="#F2901C" interactive={false} /> {story.author}</span>
                     </div>
                     <h2 className="text-2xl md:text-4xl font-sans font-light tracking-tight leading-tight text-[#1E1B18] uppercase">
                       {story.title}
@@ -219,7 +211,7 @@ export default function InvesteeStories() {
                   </div>
 
                   <div className="relative p-10 bg-white border border-[#EFE6DA]/75 rounded-[2rem] shadow-2xs">
-                    <Quote className="absolute top-6 right-6 w-10 h-10 text-[#F2901C]/20" />
+                    <PremiumIcon name="Quote" size={40} variant="minimal" color="rgba(242, 144, 28, 0.2)" className="absolute top-6 right-6" interactive={false} />
                     <p className="text-base md:text-lg font-light text-[#1E1B18] leading-relaxed relative z-10 italic">
                       {story.quote}
                     </p>
@@ -233,7 +225,7 @@ export default function InvesteeStories() {
                   >
                     <span className="text-[10px] font-bold uppercase tracking-widest">Read Full Case Study</span>
                     <div className="w-8 h-8 rounded-full border border-[#1E1B18]/10 flex items-center justify-center group-hover:border-[#F2901C] group-hover:bg-[#F2901C] group-hover:text-white transition-all shadow-2xs bg-white">
-                      <ArrowRight className="w-4 h-4" />
+                      <PremiumIcon name="ArrowRight" size={16} variant="minimal" color="currentColor" interactive={false} />
                     </div>
                   </motion.button>
                 </div>
@@ -258,7 +250,7 @@ export default function InvesteeStories() {
                 className="group flex items-center gap-4 text-[#1E1B18] disabled:opacity-20 disabled:cursor-not-allowed hover:text-[#F2901C] transition-colors"
               >
                 <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#F2901C] transition-colors bg-white">
-                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <PremiumIcon name="ArrowLeft" size={14} variant="minimal" interactive={false} />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-widest">Previous</span>
               </button>
@@ -286,7 +278,7 @@ export default function InvesteeStories() {
               >
                 <span className="text-[9px] font-bold uppercase tracking-widest">Next</span>
                 <div className="w-8 h-8 rounded-full border border-[#EFE6DA]/70 flex items-center justify-center group-hover:border-[#F2901C] transition-colors bg-white">
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <PremiumIcon name="ArrowRight" size={14} variant="minimal" interactive={false} />
                 </div>
               </button>
             </div>
@@ -364,7 +356,7 @@ export default function InvesteeStories() {
                 onClick={() => setPlayingVideoId(null)}
                 className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-[#F2901C] hover:text-[#1E1B18] flex items-center justify-center transition-all duration-300"
               >
-                <X size={20} />
+                <PremiumIcon name="X" size={20} variant="minimal" interactive={false} />
               </button>
               
               <iframe

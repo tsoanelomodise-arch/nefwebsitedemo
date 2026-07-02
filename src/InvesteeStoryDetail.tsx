@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { 
-  ArrowLeft, Quote, Calendar, User, Share2, Facebook, Twitter, Linkedin, ArrowRight, Check,
-  TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
-} from "lucide-react";
 import { STORIES, getYouTubeEmbedUrl } from "./data/stories";
-
-const IconMap: Record<string, any> = {
-  TrendingUp, Users, Briefcase, Maximize, Hospital, Bed, Stethoscope, Store
-};
+import { PremiumIcon } from "./components/PremiumIcon";
 
 export default function InvesteeStoryDetail() {
   const { id } = useParams();
@@ -100,7 +93,7 @@ export default function InvesteeStoryDetail() {
               </span>
               <div className="h-px w-12 bg-white/20"></div>
               <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
-                <Calendar className="w-3 h-3" /> {story.date}
+                <PremiumIcon name="Calendar" size={12} variant="minimal" color="currentColor" interactive={false} /> {story.date}
               </span>
             </div>
             
@@ -122,7 +115,7 @@ export default function InvesteeStoryDetail() {
           className="absolute top-24 left-6 md:top-28 md:left-12 z-20 group flex items-center gap-4 text-white/50 hover:text-gold-foil transition-colors"
         >
           <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-gold-foil transition-colors bg-black/25 backdrop-blur-md">
-            <ArrowLeft className="w-4 h-4" />
+            <PremiumIcon name="ArrowLeft" size={16} variant="minimal" color="currentColor" interactive={false} />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-widest">Back to Stories</span>
         </motion.button>
@@ -143,11 +136,10 @@ export default function InvesteeStoryDetail() {
               
               <div className="space-y-8">
                 {story.stats?.map((stat, i) => {
-                  const Icon = stat.icon ? IconMap[stat.icon] : null;
                   return (
                     <div key={i} className="flex items-start gap-6">
                       <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gold-foil shrink-0">
-                        {Icon && <Icon className="w-6 h-6" />}
+                        {stat.icon && <PremiumIcon name={stat.icon} size={24} variant="minimal" color="currentColor" interactive={false} />}
                       </div>
                       <div className="space-y-1">
                         <div className="text-4xl font-bold text-gold-foil leading-none">{stat.value}</div>
@@ -165,7 +157,7 @@ export default function InvesteeStoryDetail() {
                   onClick={() => navigate("/how-to-apply")}
                   className="w-full bg-gold-foil text-black py-5 text-xs font-bold uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3"
                 >
-                  Apply for Funding <ArrowRight className="w-4 h-4" />
+                  Apply for Funding <PremiumIcon name="ArrowRight" size={16} variant="minimal" color="currentColor" interactive={false} />
                 </motion.button>
               </div>
 
@@ -179,9 +171,9 @@ export default function InvesteeStoryDetail() {
                         initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0 }}
-                        className="text-[10px] font-bold uppercase tracking-widest text-gold-foil flex items-center gap-1"
+                        className="text-[10px] font-bold uppercase tracking-widest text-gold-foil flex items-center gap-1.5"
                       >
-                        <Check className="w-3 h-3" /> Link Copied
+                        <PremiumIcon name="Check" size={12} variant="minimal" color="currentColor" interactive={false} /> Link Copied
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -194,7 +186,7 @@ export default function InvesteeStoryDetail() {
                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group"
                     title="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4 text-white/40 group-hover:text-black" />
+                    <PremiumIcon name="Facebook" size={16} variant="minimal" color="currentColor" className="text-white/40 group-hover:text-black" interactive={false} />
                   </motion.button>
                   <motion.button 
                     whileHover={{ scale: 1.1, backgroundColor: "var(--gold-foil)" }}
@@ -203,7 +195,7 @@ export default function InvesteeStoryDetail() {
                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group"
                     title="Share on Twitter"
                   >
-                    <Twitter className="w-4 h-4 text-white/40 group-hover:text-black" />
+                    <PremiumIcon name="Twitter" size={16} variant="minimal" color="currentColor" className="text-white/40 group-hover:text-black" interactive={false} />
                   </motion.button>
                   <motion.button 
                     whileHover={{ scale: 1.1, backgroundColor: "var(--gold-foil)" }}
@@ -212,7 +204,7 @@ export default function InvesteeStoryDetail() {
                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group"
                     title="Share on LinkedIn"
                   >
-                    <Linkedin className="w-4 h-4 text-white/40 group-hover:text-black" />
+                    <PremiumIcon name="Linkedin" size={16} variant="minimal" color="currentColor" className="text-white/40 group-hover:text-black" interactive={false} />
                   </motion.button>
                   <motion.button 
                     whileHover={{ scale: 1.1, backgroundColor: "var(--gold-foil)" }}
@@ -221,7 +213,7 @@ export default function InvesteeStoryDetail() {
                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group"
                     title="Copy Link"
                   >
-                    <Share2 className="w-4 h-4 text-white/40 group-hover:text-black" />
+                    <PremiumIcon name="Share2" size={16} variant="minimal" color="currentColor" className="text-white/40 group-hover:text-black" interactive={false} />
                   </motion.button>
                 </div>
               </div>
@@ -276,7 +268,7 @@ export default function InvesteeStoryDetail() {
 
             {/* Quote Block */}
             <div className="relative p-16 bg-gray-50 border-l-8 border-gold-foil">
-              <Quote className="absolute top-8 right-8 w-16 h-16 text-gold-foil/20" />
+              <PremiumIcon name="Quote" size={64} variant="minimal" color="rgba(199, 159, 110, 0.2)" className="absolute top-8 right-8" interactive={false} />
               <p className="text-3xl font-medium text-gray-900 leading-tight relative z-10">
                 {story.quote}
               </p>
@@ -357,7 +349,7 @@ export default function InvesteeStoryDetail() {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-gold-foil">{s.category}</span>
                   <h3 className="text-xl font-bold tracking-tighter group-hover:text-gold-foil transition-colors">{s.title}</h3>
                   <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    Read Story <ArrowRight className="w-3 h-3" />
+                    Read Story <PremiumIcon name="ArrowRight" size={12} variant="minimal" color="currentColor" interactive={false} />
                   </div>
                 </div>
               </motion.div>

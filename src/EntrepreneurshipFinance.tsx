@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { CheckCircle2, Zap, Target, Users, TrendingUp, ShieldCheck, Info } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./components/Breadcrumbs";

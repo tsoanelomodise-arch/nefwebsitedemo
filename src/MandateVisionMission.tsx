@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight, ArrowLeft, Target, Eye, ShieldCheck, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { PremiumIcon } from "./components/PremiumIcon";
 
 export default function MandateVisionMission() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function MandateVisionMission() {
           className="pointer-events-auto group flex items-center gap-4 text-[#1E1B18]/45 hover:text-[#1E1B18] transition-colors"
         >
           <div className="w-9 h-9 rounded-full border border-[#1E1B18]/10 flex items-center justify-center group-hover:border-[#1E1B18] transition-colors bg-white/40 backdrop-blur-md">
-            <ArrowLeft className="w-4 h-4" />
+            <PremiumIcon name="ArrowLeft" size={16} variant="minimal" interactive={false} />
           </div>
           <span className="text-[9px] font-bold uppercase tracking-widest">Home</span>
         </button>
@@ -64,7 +65,7 @@ export default function MandateVisionMission() {
                 className="group flex items-center gap-6 text-left"
               >
                 <div className="w-14 h-14 rounded-full bg-[#1E1B18] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-md">
-                  <ArrowRight className="w-5 h-5 text-[#F2901C]" />
+                  <PremiumIcon name="ArrowRight" size={20} variant="minimal" color="#F2901C" interactive={false} />
                 </div>
                 <div className="space-y-1">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#1E1B18] block">Apply Now</span>
@@ -134,7 +135,7 @@ export default function MandateVisionMission() {
               {/* Play Button Overlay */}
               <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
                 <button className="w-14 h-14 rounded-full bg-[#F2901C] flex items-center justify-center shadow-lg hover:bg-[#E58E62] hover:scale-110 transition-transform">
-                  <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+                  <PremiumIcon name="Play" size={20} variant="minimal" color="white" interactive={false} className="ml-0.5" />
                 </button>
               </div>
             </div>
@@ -148,14 +149,14 @@ export default function MandateVisionMission() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
                 <div className="space-y-4 p-8 bg-[#1E1B18] text-white rounded-[1.8rem] relative group overflow-hidden shadow-sm">
-                  <ShieldCheck className="w-7 h-7 text-[#F2901C] relative z-10" />
+                  <PremiumIcon name="ShieldCheck" size={28} variant="minimal" color="#F2901C" interactive={false} className="relative z-10" />
                   <h3 className="text-sm font-bold uppercase tracking-widest relative z-10">The NEF Act</h3>
                   <p className="text-xs text-white/55 font-light leading-relaxed relative z-10">
                     Legislation designed to redress economic imbalances of the past.
                   </p>
                 </div>
                 <div className="space-y-4 p-8 border border-[#EFE6DA]/85 hover:border-[#F2901C] rounded-[1.8rem] transition-colors bg-white shadow-sm">
-                  <Target className="w-7 h-7 text-[#E58E62]" />
+                  <PremiumIcon name="Target" size={28} variant="minimal" color="#E58E62" interactive={false} />
                   <h3 className="text-sm font-bold uppercase tracking-widest text-[#1E1B18]">Thought Leadership</h3>
                   <p className="text-xs text-[#3A3530]/70 font-light leading-relaxed">
                     Pioneering new models for sustainable black economic empowerment.
@@ -204,7 +205,7 @@ export default function MandateVisionMission() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-[#F2901C]/95 text-[#1E1B18] flex items-center justify-center rounded-2xl shadow-lg">
-                <Eye className="w-8 h-8" />
+                <PremiumIcon name="Eye" size={32} variant="minimal" interactive={false} />
               </div>
             </div>
           </div>
@@ -221,7 +222,7 @@ export default function MandateVisionMission() {
                 />
               </div>
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-white/5 backdrop-blur-sm flex items-center justify-center rounded-2xl border border-white/10">
-                <Target className="w-8 h-8 text-[#F2901C]" />
+                <PremiumIcon name="Target" size={32} variant="minimal" color="#F2901C" interactive={false} />
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-12">

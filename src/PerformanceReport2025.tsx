@@ -152,7 +152,7 @@ export default function PerformanceReport2025() {
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C79F6E] hover:text-[#F2901C] transition-colors group"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+          <PremiumIcon name="ArrowLeft" size={16} variant="minimal" interactive={false} className="group-hover:-translate-x-1 transition-transform" />
           Back to Home
         </button>
 
@@ -174,7 +174,7 @@ export default function PerformanceReport2025() {
               </>
             ) : (
               <>
-                <Download size={14} />
+                <PremiumIcon name="Download" size={14} variant="minimal" interactive={false} />
                 Download PDF
               </>
             )}
@@ -246,7 +246,7 @@ export default function PerformanceReport2025() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[#F2901C] text-white flex items-center justify-center">
-                  <CheckCircle size={18} />
+                  <PremiumIcon name="CheckCircle" size={18} variant="minimal" interactive={false} />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#F2901C]">Performance Report Compiled</h4>
@@ -723,7 +723,7 @@ export default function PerformanceReport2025() {
                     onClick={handleDownload}
                     className="inline-flex items-center gap-3 px-6 py-3 bg-[#F2901C] hover:bg-white hover:text-[#1E1B18] text-white font-sans font-extrabold uppercase text-[9px] tracking-widest transition-all rounded-full shadow-md cursor-pointer"
                   >
-                    <Download size={14} />
+                    <PremiumIcon name="Download" size={14} variant="minimal" interactive={false} />
                     Extract Raw Dataset
                   </button>
                 </div>

@@ -227,7 +227,7 @@ export default function CheckEligibility() {
   const renderResults = () => (
     <div className="flex-1 flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-700 no-print">
       <div className="flex justify-center mb-8">
-        {scoreData.passedAll ? <Award className="w-24 h-24 text-gold-foil" /> : <AlertTriangle className="w-24 h-24 text-gold-foil" />}
+        {scoreData.passedAll ? <PremiumIcon name="Award" size={96} variant="glowing" /> : <PremiumIcon name="AlertTriangle" size={96} variant="glowing" />}
       </div>
       <h1 className="text-6xl md:text-8xl font-black uppercase text-cotton-blush mb-6 tracking-tighter">
         {scoreData.passedAll ? "Ready to Apply" : "Gaps Detected"}
@@ -247,7 +247,7 @@ export default function CheckEligibility() {
           <ul className="space-y-4">
             {scoreData.failedCriteria.map((c, i) => (
               <li key={i} className="flex items-start gap-4 text-cotton-blush/80 font-bold uppercase text-xs tracking-wider">
-                <XCircle className="w-5 h-5 text-gold-foil shrink-0" /> {c.title}
+                <PremiumIcon name="XCircle" size={20} variant="minimal" color="#C5A059" interactive={false} /> {c.title}
               </li>
             ))}
           </ul>
@@ -269,17 +269,17 @@ export default function CheckEligibility() {
           <div className="flex items-center gap-4">
             {currentStep >= 0 && (
               <button onClick={handleRestart} className="flex items-center gap-2 border-2 border-cotton-blush/20 bg-forest-earth/40 px-6 py-3 rounded-full hover:bg-gold-foil/10 hover:border-gold-foil text-[10px] font-black tracking-widest uppercase transition-all">
-                <RotateCcw className="w-4 h-4" /> Restart
+                <PremiumIcon name="RotateCcw" size={16} variant="minimal" interactive={false} /> Restart
               </button>
             )}
             <button onClick={() => setShowMasterScore(true)} className="flex items-center gap-2 border-2 border-gold-foil/30 bg-gold-foil/5 px-6 py-3 rounded-full text-[10px] font-black tracking-widest uppercase text-gold-foil hover:bg-gold-foil/10 transition-all shadow-lg">
-              <ShieldCheck className="w-4 h-4" /> Master Score
+              <PremiumIcon name="ShieldCheck" size={16} variant="minimal" interactive={false} /> Master Score
             </button>
           </div>
           <div className="flex items-center gap-6">
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-3 border-2 border-cotton-blush/20 bg-forest-earth/40 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:border-gold-foil">
-                <FileText className="w-4 h-4 text-gold-foil" /> Downloads <ChevronDown className="w-3 h-3" />
+                <PremiumIcon name="FileText" size={16} variant="minimal" color="#C5A059" interactive={false} /> Downloads <PremiumIcon name="ChevronDown" size={12} variant="minimal" interactive={false} />
               </button>
               {showDropdown && (
                 <div className="absolute right-0 mt-4 w-64 bg-pine-oak/95 border-2 border-gold-foil/30 rounded-[2rem] overflow-hidden shadow-2xl z-50 backdrop-blur-xl">
@@ -307,7 +307,7 @@ export default function CheckEligibility() {
             <div className="flex-1 flex flex-col lg:flex-row gap-12 animate-in fade-in duration-700 print:block">
               <div className="flex-1 space-y-10 pr-4 overflow-y-auto no-scrollbar no-print">
                  <div className="bg-cotton-blush/5 p-10 rounded-[3rem] border border-cotton-blush/20 shadow-xl">
-                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><Users className="w-5 h-5"/> Empowerment Mandate</h3>
+                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><PremiumIcon name="Users" size={20} variant="minimal" color="#C5A059" interactive={false} /> Empowerment Mandate</h3>
                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                      <div className="space-y-3">
                        <label className="text-[10px] uppercase font-black tracking-widest text-cotton-blush/50">Black Ownership %</label>
@@ -329,7 +329,7 @@ export default function CheckEligibility() {
 
                  <div className="bg-cotton-blush/5 p-10 rounded-[3rem] border border-cotton-blush/20 shadow-xl">
                     <div className="flex justify-between items-center mb-8">
-                      <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil flex items-center gap-3"><Calculator className="w-5 h-5"/> Financial Assumptions</h3>
+                      <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil flex items-center gap-3"><PremiumIcon name="Calculator" size={20} variant="minimal" color="#C5A059" interactive={false} /> Financial Assumptions</h3>
                       <button 
                         onClick={() => setShowProjectionsModal(true)}
                         className="text-[10px] font-black uppercase tracking-widest text-gold-foil border border-gold-foil/30 px-4 py-2 rounded-full hover:bg-gold-foil hover:text-forest-earth transition-all"
@@ -358,7 +358,7 @@ export default function CheckEligibility() {
                  </div>
 
                  <div className="bg-cotton-blush/5 p-10 rounded-[3rem] border border-cotton-blush/20 shadow-xl">
-                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><Zap className="w-5 h-5"/> Social Impact (Jobs)</h3>
+                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><PremiumIcon name="Zap" size={20} variant="minimal" color="#C5A059" interactive={false} /> Social Impact (Jobs)</h3>
                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                      <div className="space-y-3">
                        <label className="text-[10px] uppercase font-black tracking-widest text-cotton-blush/50">Total Jobs</label>
@@ -380,7 +380,7 @@ export default function CheckEligibility() {
                  </div>
 
                  <div className="bg-cotton-blush/5 p-10 rounded-[3rem] border border-cotton-blush/20 shadow-xl">
-                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><FolderCheck className="w-5 h-5"/> Evidence Vault</h3>
+                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-8 flex items-center gap-3"><PremiumIcon name="FolderCheck" size={20} variant="minimal" color="#C5A059" interactive={false} /> Evidence Vault</h3>
                    <div className="flex flex-col gap-6">
                      <label className="flex items-center gap-5 cursor-pointer group">
                        <input type="checkbox" checked={vaultState.bbbeeCert} onChange={e => setVaultState({...vaultState, bbbeeCert: e.target.checked})} className="w-8 h-8 accent-gold-foil cursor-pointer" />
@@ -398,7 +398,7 @@ export default function CheckEligibility() {
                  </div>
                  
                  <div className="bg-gold-foil/10 p-10 rounded-[3rem] border border-gold-foil/30 shadow-xl mt-6">
-                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><FileText className="w-5 h-5"/> Executive Summary Draft</h3>
+                   <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><PremiumIcon name="FileText" size={20} variant="minimal" color="#C5A059" interactive={false} /> Executive Summary Draft</h3>
                    <p className="text-cotton-blush leading-relaxed font-light text-lg">
                        This <strong className="text-white font-bold">{stageName.toLowerCase()}</strong> is currently structured with <strong className="text-gold-foil font-bold">{planData.blackOwnership || 0}% Black Ownership</strong> and <strong className="text-gold-foil font-bold">{planData.womenOwnership || 0}% Women Ownership</strong>, operating primarily in an <strong className="text-white font-bold">{planData.locationType}</strong> setting. 
                        Financially, the projections indicate a monthly gross revenue of <strong className="text-gold-foil font-bold">{formatZAR(revenue)}</strong> operating at a <strong className="text-white font-bold">{grossMargin.toFixed(1)}% gross margin</strong>, leading to a net profitability of <strong className="text-gold-foil font-bold">{formatZAR(netProfit)}</strong> per month. 
@@ -426,8 +426,8 @@ export default function CheckEligibility() {
                 </div>
 
                 <div className="flex gap-4 no-print">
-                   <button onClick={() => setShowEmailModal(true)} className="flex-1 bg-gold-foil text-forest-earth font-black py-6 rounded-full uppercase tracking-widest text-[10px] hover:bg-[#D4B473] transition-all shadow-xl flex items-center justify-center gap-3"><Mail className="w-4 h-4"/> Email Case</button>
-                   <button onClick={() => window.print()} className="flex-1 border-2 border-cotton-blush/20 text-cotton-blush font-black py-6 rounded-full uppercase tracking-widest text-[10px] hover:border-gold-foil transition-all shadow-md flex items-center justify-center gap-3"><Printer className="w-4 h-4"/> Print Case</button>
+                   <button onClick={() => setShowEmailModal(true)} className="flex-1 bg-gold-foil text-forest-earth font-black py-6 rounded-full uppercase tracking-widest text-[10px] hover:bg-[#D4B473] transition-all shadow-xl flex items-center justify-center gap-3"><PremiumIcon name="Mail" size={16} variant="minimal" interactive={false} /> Email Case</button>
+                   <button onClick={() => window.print()} className="flex-1 border-2 border-cotton-blush/20 text-cotton-blush font-black py-6 rounded-full uppercase tracking-widest text-[10px] hover:border-gold-foil transition-all shadow-md flex items-center justify-center gap-3"><PremiumIcon name="Printer" size={16} variant="minimal" interactive={false} /> Print Case</button>
                 </div>
               </div>
             </div>
@@ -554,7 +554,7 @@ export default function CheckEligibility() {
                             </div>
 
                             <div className="bg-gold-foil/10 p-8 rounded-[3rem] border-[3px] border-gold-foil/30 shadow-2xl flex justify-between items-center relative overflow-hidden">
-                                <div className="absolute -right-4 -top-4 opacity-10"><Briefcase className="w-32 h-32 text-gold-foil"/></div>
+                                <div className="absolute -right-4 -top-4 opacity-10"><PremiumIcon name="Briefcase" size={128} variant="minimal" color="#C5A059" interactive={false} /></div>
                                 <div className="relative z-10">
                                     <span className="block text-[10px] font-black uppercase tracking-widest text-gold-foil/70 mb-1">Net Asset Value</span>
                                     <span className={`text-4xl font-black ${statementTotals.netAssets >= 0 ? 'text-gold-foil' : 'text-red-500'}`}>{formatZAR(statementTotals.netAssets)}</span>
@@ -565,7 +565,7 @@ export default function CheckEligibility() {
                         {/* Right Column: Income & Expenses */}
                         <div className="space-y-8">
                             <div className="bg-cotton-blush/5 p-8 rounded-[3rem] border border-cotton-blush/10 shadow-xl">
-                                <h4 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><TrendingUp className="w-5 h-5"/> Monthly Income</h4>
+                                <h4 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><PremiumIcon name="TrendingUp" size={20} variant="minimal" color="#C5A059" interactive={false} /> Monthly Income</h4>
                                 <div className="space-y-4">
                                     <StatementInput label="Gross Salary" value={income.salary} onChange={v => setIncome({...income, salary: v})} />
                                     <StatementInput label="Commission / Bonuses" value={income.commission} onChange={v => setIncome({...income, commission: v})} />
@@ -579,7 +579,7 @@ export default function CheckEligibility() {
                             </div>
 
                             <div className="bg-cotton-blush/5 p-8 rounded-[3rem] border border-cotton-blush/10 shadow-xl">
-                                <h4 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><Calculator className="w-5 h-5"/> Monthly Expenses</h4>
+                                <h4 className="text-xs font-black uppercase tracking-[0.4em] text-gold-foil mb-6 flex items-center gap-3"><PremiumIcon name="Calculator" size={20} variant="minimal" color="#C5A059" interactive={false} /> Monthly Expenses</h4>
                                 <div className="space-y-4">
                                     <StatementInput label="Salary Deductions (Tax)" value={expenses.deductions} onChange={v => setExpenses({...expenses, deductions: v})} />
                                     <StatementInput label="Housing (Bond/Rent)" value={expenses.housing} onChange={v => setExpenses({...expenses, housing: v})} />
@@ -596,7 +596,7 @@ export default function CheckEligibility() {
                             </div>
 
                             <div className="bg-gold-foil/10 p-8 rounded-[3rem] border-[3px] border-gold-foil/30 shadow-2xl flex justify-between items-center relative overflow-hidden">
-                                <div className="absolute -right-4 -top-4 opacity-10"><BarChart3 className="w-32 h-32 text-gold-foil"/></div>
+                                <div className="absolute -right-4 -top-4 opacity-10"><PremiumIcon name="BarChart3" size={128} variant="minimal" color="#C5A059" interactive={false} /></div>
                                 <div className="relative z-10">
                                     <span className="block text-[10px] font-black uppercase tracking-widest text-gold-foil/70 mb-1">Net Surplus / Deficit</span>
                                     <span className={`text-4xl font-black ${statementTotals.netSurplus >= 0 ? 'text-gold-foil' : 'text-red-500'}`}>{formatZAR(statementTotals.netSurplus)}</span>
